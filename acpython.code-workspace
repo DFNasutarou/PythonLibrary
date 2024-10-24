@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "acpython"
+		}
+	],
+	"settings": {
+		"generateSnippet.snippetFilePath": ".vscode\\"
+	}
+}

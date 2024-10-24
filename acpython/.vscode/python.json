@@ -3013,14 +3013,8 @@
 	"abc": {
 		"prefix": "abc",
 		"body": [
-			"ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+			"ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
 		],
 		"description": "説明"
-	},
-	"sample": {
-		"prefix": "ショートカットキー",
-		"body": [
-		],
-		"description": "説明"
-	},
 	}
+}

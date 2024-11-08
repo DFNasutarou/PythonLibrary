@@ -955,7 +955,7 @@
       "  def print(s): #デバッグ用",
       "    ans = []",
       "    for i in range(s._n):",
-      "      ans.add(s.get(i))",
+      "      ans.append(s.get(i))",
       "    print(*ans)",
       "",
       "'''",
@@ -3053,6 +3053,37 @@
       "      node = node.Son[c]",
       "    return node.value"
     ]
+  },
+  "map": {
+    "scope": "python",
+    "prefix": "map",
+    "body": [
+      "import random",
+      "class Map:",
+      "    HASH_NUM = 30",
+      "    HASH = random.randint(0, 1 << HASH_NUM)",
+      "    def __init__(s, init = None):",
+      "        s.init = init",
+      "        s.R = {}",
+      "    def set(s, key, value):",
+      "        key = Map.getKey(key)",
+      "        s.R[key] = value",
+      "    def get(s, key):",
+      "        key = Map.getKey(key)",
+      "        if key in s.R:",
+      "            return s.R[key]",
+      "        return s.init",
+      "    @staticmethod",
+      "    def getKey(key):",
+      "        match key:",
+      "            case int():",
+      "                return key ^ Map.HASH",
+      "            case list():",
+      "                return tuple(key)",
+      "            case _:",
+      "                return key"
+    ],
+    "description": "安全なMAP\n参考：Associative Array"
   },
   "unionFindPotensial": {
     "prefix": "unionFindPotensial",

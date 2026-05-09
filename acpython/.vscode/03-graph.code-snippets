@@ -211,9 +211,10 @@
       "        b = way_back[to]",
       "        if a + b + value == way_length: gf.add_edge(frm, to, value)",
       "    return gf",
-      ""
+      "",
+      "# usage: g = Graph(N, directed=True, weighted=True); g.add_edge(a,b,w); d = g.dijkstra(s)"
     ],
-    "description": "ダイクストラ法",
+    "description": "ダイクストラ法 (重み付きグラフの単一始点最短距離 O((N+M) log N))",
     "scope": "python"
   },
   "kruskal": {
@@ -262,9 +263,10 @@
       "        ans.append([n, a, b, x])",
       "        s.U.merge(a, b)",
       "    return ans",
-      ""
+      "",
+      "# usage: edges = [(w, a, b), ...]; total, mst_edges = kruskal(N, edges)"
     ],
-    "description": "クラスカル法",
+    "description": "クラスカル法 (最小全域木 MST、辺ソート + Union-Find)",
     "scope": "python"
   },
   "maxflow": {
@@ -407,9 +409,11 @@
       "  class _edge:",
       "    def __init__(self,to, rev, cap):",
       "      self.to, self.rev = to, rev",
-      "      self.cap = cap"
+      "      self.cap = cap",
+      "",
+      "# usage: mf = maxFlow(N); mf.add_edge(a, b, cap); f = mf.flow(s, t)"
     ],
-    "description": "最大流",
+    "description": "最大流 maxFlow (Dinic 系の自前実装、整数容量)",
     "scope": "python"
   },
   "mincost": {
@@ -521,9 +525,11 @@
       "    __slots__ = \"to\", \"rev\", \"cap\", \"cost\"",
       "    def __init__(self, to, rev, cap, cost):",
       "      self.to, self.rev = to, rev",
-      "      self.cap, self.cost = cap, cost"
+      "      self.cap, self.cost = cap, cost",
+      "",
+      "# usage: mcf = MinCostFlow(N); mcf.add_edge(a, b, cap, cost); cost = mcf.flow(s, t, limit)"
     ],
-    "description": "最小費用流",
+    "description": "最小費用流 MinCostFlow (SPFA / ポテンシャル法)",
     "scope": "python"
   },
   "scc": {
@@ -613,9 +619,11 @@
       "    groups = [[] for _ in range(group_num)]",
       "    for i in range(N):",
       "      groups[ids[i]].append(i)",
-      "    return groups"
+      "    return groups",
+      "",
+      "# usage: groups = scc_graph.scc(g); n_components = len(groups)"
     ],
-    "description": "経連結成分分解",
+    "description": "強連結成分分解 SCC (有向グラフを縮約して DAG 化)",
     "scope": "python"
   },
   "tree": {
@@ -951,9 +959,10 @@
       "            v = self.N - 1 - v",
       "            x = self.seg.op(x, self.iseg.prod(u, v + 1))",
       "        return x",
-      ""
+      "",
+      "# usage: t = TreeFactory(N); t.setByAdjacencyList(edges); t.makeRank(root)"
     ],
-    "description": "木構造 (一般)",
+    "description": "木構造 TreeFactory (LCA / 距離 / 部分木サイズ / 全方位木 DP 等)",
     "scope": "python"
   },
   "warflo": {
@@ -992,15 +1001,16 @@
       "      L.append(c)",
       "    L.reverse()",
       "    return L",
-      ""
+      "",
+      "# usage: wf = warflo(N, inf); wf.add_edge(a, b, w); D = wf.calc()"
     ],
-    "description": "ワーシャルフロイド法",
+    "description": "ワーシャル・フロイド法 (全点対最短距離 O(N^3))",
     "scope": "python"
   },
   "tree64": {
     "scope": "python",
     "prefix": "tree64",
-    "description": "64分木",
+    "description": "Tree64 (深さ × ビット幅で部分木列を 64bit 整数化、定数倍高速化)",
     "body": [
       "class Tree64:",
       "  # 2 ** (HEIGHT * BIT_SIZE) - 1 まで可能",
@@ -1121,13 +1131,15 @@
       "  def find_lower(s, n):",
       "    ans = s.root.find_lower(n, Tree64.HEIGHT - 1)",
       "    if ans == None: return -1",
-      "    return ans"
+      "    return ans",
+      "",
+      "# usage: t = Tree64(); t.build(adj_list, root); t.lca(u, v)"
     ]
   },
   "graph": {
     "scope": "python",
     "prefix": "graph",
-    "description": "グラフアルゴリズム (有向/重み対応)",
+    "description": "グラフ汎用クラス GraphData (有向/無向 + 重み 切替)",
     "body": [
       "class GraphData:",
       "  def __init__(self, N: int, directed: bool = False, weighted: bool = False):",
@@ -1209,13 +1221,15 @@
       "        if len(self.adj_list[y]) != 0: q.append([y, 0])",
       "      elif find[x] != y and depth[y] < depth[x]:",
       "        ans[1].append([x, y, w])",
-      "    return ans"
+      "    return ans",
+      "",
+      "# usage: g = GraphData(N, directed=True, weighted=False); g.add_edge(a, b)"
     ]
   },
   "bfs": {
     "scope": "python",
     "prefix": "bfs",
-    "description": "01bfs",
+    "description": "01-BFS (辺重み 0/1 限定、deque で O(N+M))",
     "body": [
       "from sortedcontainers import SortedList",
       "",
@@ -1500,13 +1514,15 @@
       "      cnt += 1",
       "      if len(eg) > cnt: tl.append(eg[cnt])",
       "      data = tl",
-      "    return D, parent"
+      "    return D, parent",
+      "",
+      "# usage: g = Graph(N); g.add_edge(a, b, w_0_or_1); d = g.bfs01(s)"
     ]
   },
   "dag": {
     "scope": "python",
     "prefix": "dag",
-    "description": "dag",
+    "description": "DAG (トポロジカル順序 + DP の土台)",
     "body": [
       "import sys",
       "sys.setrecursionlimit(10000000)",
@@ -1568,13 +1584,15 @@
       "        for _, k in self.AdjacencyList[j]:",
       "          if k > self.N: continue",
       "          if Data[k] == i: yield (i, j, k)",
-      "  "
+      "  ",
+      "",
+      "# usage: dag = DAG(N); dag.add_edge(a, b); order = dag.topo()"
     ]
   },
   "matching": {
     "scope": "python",
     "prefix": "matching",
-    "description": "最大マッチング",
+    "description": "最大二部マッチング (atcoder.maxflow 経由)",
     "body": [
       "from atcoder.maxflow import MFGraph",
       "",
@@ -1604,13 +1622,15 @@
       "    mcg = Matching(N)",
       "    for i in range(N):",
       "      for j in L[i]: mcg.add_edge(i, j, 1)",
-      "    return mcg"
+      "    return mcg",
+      "",
+      "# usage: m = Matching(L, R); m.add_edge(l, r); n = m.solve()"
     ]
   },
   "particalgraph": {
     "scope": "python",
     "prefix": "particalgraph",
-    "description": "部分グラフ",
+    "description": "部分グラフ ParticalGraph (元グラフからエッジ集合で誘導)",
     "body": [
       "class ParticalGraph:",
       "  __slots__ = ['N', 'adj_list']",
@@ -1719,7 +1739,9 @@
       "  ",
       "  @ staticmethod",
       "  def _is_contains_bit(n, S):",
-      "    return S & (1 << n)"
+      "    return S & (1 << n)",
+      "",
+      "# usage: pg = ParticalGraph(N); pg.add_edges(edge_subset)"
     ]
   },
   "twosat": {
@@ -1818,15 +1840,16 @@
       "    def __init__(s, frm, to):",
       "      s.frm = frm",
       "      s.to = to",
-      ""
+      "",
+      "# usage: ts = TwoSAT(N); ts.add_clause(x, vx, y, vy); ok, assign = ts.solve()"
     ],
-    "description": "2-SAT",
+    "description": "2-SAT (含意グラフ + SCC、節集合を満たす変数割当を判定/構成)",
     "scope": "python"
   },
   "ushi": {
     "scope": "python",
     "prefix": "ushi",
-    "description": "牛ゲー",
+    "description": "牛ゲー (差分制約 a - b ≤ w を最短路に帰着して整合性判定 / 最適値)",
     "body": [
       "class Ushi:",
       "  def __init__(self, N):",
@@ -1878,7 +1901,9 @@
       "          complete = False",
       "      if complete: break",
       "    if complete: return dist[en]",
-      "    else: return None"
+      "    else: return None",
+      "",
+      "# usage: u = Ushi(N); u.add_constraint(a, b, w); ok, vals = u.solve()"
     ]
   },
   "grid": {
@@ -1910,9 +1935,10 @@
       "      List = newList",
       "    return T, k",
       "  ",
-      ""
+      "",
+      "# usage: g = gridMan(L); g.makeWall(); D, mx = g.dist((sr, sc))"
     ],
-    "description": "グリッド",
+    "description": "グリッド管理 gridMan (壁付与 + 4方向 BFS 距離 / 最大値)",
     "scope": "python"
   }
 }

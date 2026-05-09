@@ -25,9 +25,10 @@
       "    t = ((s.H1[r] - s.H1[l] * s.P1[r - l]) % s.MOD1 + s.MOD1) % s.MOD1",
       "    k = ((s.H2[r] - s.H2[l] * s.P2[r - l]) % s.MOD2 + s.MOD2) % s.MOD2",
       "    return (t, k)",
-      ""
+      "",
+      "# usage: r = Rori(S); r.hash(l, r); r.same(l1, r1, l2, r2)"
     ],
-    "description": "ローリングハッシュ",
+    "description": "ローリングハッシュ Rori (二重 mod、文字列の部分一致を O(1) で比較)",
     "scope": "python"
   },
   "string": {
@@ -226,15 +227,16 @@
       "  n = len(s)",
       "  s2 = list(map(ord, s))",
       "  return sa_is(s2, 255)",
-      ""
+      "",
+      "# usage: 内部関数を直接 import する用途別ライブラリ"
     ],
-    "description": "文字列操作アルゴリズム",
+    "description": "文字列アルゴリズム集 (suffix array / LCP / 文字列ソート関連まとめ)",
     "scope": "python"
   },
   "eertree": {
     "scope": "python",
     "prefix": "eertree",
-    "description": "回文木",
+    "description": "eertree / 回文木 (文字列内の全ての異なる回文部分文字列を管理)",
     "body": [
       "class eertree:",
       "  class node:",
@@ -347,13 +349,15 @@
       "  def checkStr(self,  x, length):",
       "    if length >= len(self.S) - 1 : return False",
       "    return x == self.S[-2 - length]",
-      "  "
+      "  ",
+      "",
+      "# usage: et = eertree(); et.add(c); et.count_palindromes()"
     ]
   },
   "hensyuKyori": {
     "scope": "python",
     "prefix": "hensyuKyori",
-    "description": "編集距離を求める",
+    "description": "編集距離 (Levenshtein 距離、DP O(|S| * |T|))",
     "body": [
       "def chmin(data, i, x):",
       "  if data[i] > x: data[i] = x",
@@ -395,13 +399,15 @@
       "      chmin(dp[i], k, dp[i - 1][k] + c)",
       "  k = M - N + K",
       "  # for d in dp: print(d)",
-      "  return dp[-1][k]"
+      "  return dp[-1][k]",
+      "",
+      "# usage: d = edit_distance(S, T)"
     ]
   },
   "suffixarray": {
     "scope": "python",
     "prefix": "suffixarray",
-    "description": "SuffixArrayアルゴリズム",
+    "description": "Suffix Array (atcoder.string ラッパ、部分文字列順序付け + LCP)",
     "body": [
       "import atcoder.string",
       "class SA:",
@@ -449,13 +455,14 @@
       "    \"\"\"",
       "    for i in range(self.N):",
       "      print(self.S[self.sa[i]:])",
-      ""
+      "",
+      "# usage: sa = SA(S); sa.suffix_array(); sa.lcp_array()"
     ]
   },
   "zalg": {
     "scope": "python",
     "prefix": "zalg",
-    "description": "Zアルゴリズム",
+    "description": "Z-algorithm (atcoder.string ラッパ、各位置からの最長一致長 O(N))",
     "body": [
       "import atcoder.string",
       "class Zalg:",
@@ -471,7 +478,9 @@
       "    zアルゴリズム",
       "    Longest Common Prefix",
       "    \"\"\"",
-      "    return atcoder.string.z_algorithm(s)"
+      "    return atcoder.string.z_algorithm(s)",
+      "",
+      "# usage: z = Zalg(S); arr = z.z_array()"
     ]
   }
 }

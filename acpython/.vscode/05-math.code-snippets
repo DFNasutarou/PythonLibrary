@@ -37,9 +37,10 @@
       "# ここに処理を書く",
       "def proc(L):",
       "  pass",
-      ""
+      "",
+      "# usage: exe(L, MOD) # L が in-place で畳み込まれる"
     ],
-    "description": "アダマール変換",
+    "description": "アダマール変換 FWT (XOR 畳み込み、長さ 2^k)",
     "scope": "python"
   },
   "comb": {
@@ -137,9 +138,10 @@
       "      ans *= a * b % self.MOD ",
       "      ans %= self.MOD",
       "    return ans",
-      ""
+      "",
+      "# usage: c = comb(N, MOD); c.nCr(n, r); c.H(n, r)"
     ],
-    "description": "二項係数",
+    "description": "二項係数 nCr (前計算 階乗+逆元、O(N) 前処理 / O(1) クエリ)",
     "scope": "python"
   },
   "convmod": {
@@ -282,9 +284,11 @@
       "        i = 0",
       "      else:",
       "        i += 1",
-      "    return a"
+      "    return a",
+      "",
+      "# usage: c = Convolution(MOD); h = c.convolve(f, g)"
     ],
-    "description": "畳み込みMOD",
+    "description": "畳み込み MOD (NTT、特定 mod 用)",
     "scope": "python"
   },
   "convolve_ll": {
@@ -330,9 +334,9 @@
       "",
       "    return h[:len(f) + len(g) - 1]",
       "",
-      ""
+      "# usage: h = convolve(f, g)"
     ],
-    "description": "畳み込み",
+    "description": "畳み込み (numpy.convolve、整数係数 / 高速だが MOD 不可)",
     "scope": "python"
   },
   "divhoujo": {
@@ -366,9 +370,10 @@
       "    ans += p",
       "    ans %= MOD",
       "  return ans",
-      ""
+      "",
+      "# usage: ans = exe(x)"
     ],
-    "description": "約数包除",
+    "description": "除数包除 (約数包除原理 / ディリクレ畳み込み)",
     "scope": "python"
   },
   "divisor": {
@@ -385,9 +390,10 @@
       "      if i != n // i:",
       "        R.append(n // i)",
       "  return L + R[::-1]",
-      ""
+      "",
+      "# usage: divs = divisor(n)"
     ],
-    "description": "約数",
+    "description": "約数列挙 (O(√N))",
     "scope": "python"
   },
   "gyoretu": {
@@ -417,9 +423,10 @@
       "        x = mat_mul(x, x)",
       "        n >>= 1",
       "    return y",
-      ""
+      "",
+      "# usage: A = mat_pow(M, k)  # M 正方、k 指数"
     ],
-    "description": "行列累乗",
+    "description": "行列累乗 mat_pow (ダブリング、MOD は冒頭で要定義)",
     "scope": "python"
   },
   "hakidasi": {
@@ -440,9 +447,10 @@
       "      if (L[j] >> i) & 1:",
       "        L[j] ^= L[k - 1]",
       "  return L",
-      ""
+      "",
+      "# usage: basis = hakidasi(L)"
     ],
-    "description": "掃き出し法",
+    "description": "XOR 掃き出し (整数列を GF(2) 上で階段化、in-place)",
     "scope": "python"
   },
   "inv": {
@@ -472,9 +480,10 @@
       "    for i in range(2, n + 1):",
       "      I.append(s.MOD - I[s.MOD % i] * (s.MOD // i) % s.MOD)",
       "    return I",
-      ""
+      "",
+      "# usage: inv = Inv(MOD); inv.invx(a); inv.invL(n)"
     ],
-    "description": "逆元",
+    "description": "逆元 Inv クラス (modpow + 単発逆元 + 逆元リスト)",
     "scope": "python"
   },
   "kika": {
@@ -492,9 +501,10 @@
       "    D = D[i:]",
       "    D = turn(D)",
       "  return D",
-      ""
+      "",
+      "# usage: D2 = turn(D); D3 = trim(D)"
     ],
-    "description": "幾何",
+    "description": "幾何ユーティリティ (2D 配列の 90° 回転 / 余白トリム)",
     "scope": "python"
   },
   "kyori": {
@@ -514,9 +524,10 @@
       "  ma = abs(a[0] - b[0])",
       "  ma = max(ma, abs(a[1] - b[1]))",
       "  return ma",
-      ""
+      "",
+      "# usage: d = mdist(a, b)  # a, b = (x, y)"
     ],
-    "description": "距離",
+    "description": "2D 距離関数 (Euclid edist / Manhattan mdist / Chebyshev cdist)",
     "scope": "python"
   },
   "math": {
@@ -588,9 +599,10 @@
       "    m0, m1 = m1, m0",
       "  if m0 < 0: m0 += b // s",
       "  return (s, m0)",
-      ""
+      "",
+      "# usage: 内部関数を直接利用 (inv_mod(x, m) など)"
     ],
-    "description": "数学",
+    "description": "数学ユーティリティ集 (inv_mod 等の素朴関数)",
     "scope": "python"
   },
   "period": {
@@ -621,9 +633,10 @@
       "    else:",
       "      D[loop[i]] = d",
       "  return D",
-      ""
+      "",
+      "# usage: ans = period(L, K, x=0)  # x から f を K 回適用"
     ],
-    "description": "周期",
+    "description": "周期検出 (写像 f を K 回適用、ρ 検出で O(K の log) 化)",
     "scope": "python"
   },
   "prime": {
@@ -710,9 +723,11 @@
       "          p[i] += 1",
       "    if x != 1:",
       "      p[x] = 1",
-      "    return p"
+      "    return p",
+      "",
+      "# usage: pr = Prime(N); pr.getPrimeList(); pr.factorize(x)"
     ],
-    "description": "素数列挙・素因数分解",
+    "description": "素数列挙 + 素因数分解 Prime クラス (線形篩 O(N))",
     "scope": "python"
   },
   "totu": {
@@ -787,9 +802,10 @@
       "  ans = (S2 - b) // 2 + 1",
       "  ans += b # (辺上の格子点を含める)",
       "  return ans",
-      ""
+      "",
+      "# usage: hull = convex_hull(points)"
     ],
-    "description": "凸法",
+    "description": "凸包 (Andrew monotone chain、上下凸包の併合 O(N log N))",
     "scope": "python"
   },
   "touhi": {
@@ -810,9 +826,10 @@
       "    p[0] += p[1]",
       "    p[0] %= MOD",
       "  return p",
-      ""
+      "",
+      "# usage: s, last = nib(x, t, MOD)"
     ],
-    "description": "等比数列の和",
+    "description": "等比数列和 (1 + x + ... + x^t mod MOD、ダブリング O(log t))",
     "scope": "python"
   },
   "tousa": {
@@ -836,15 +853,17 @@
       "        ret[i+1] = ret[i]+self.A[i+1]",
       "    for i in range(self.N-1):",
       "        ret[i+1] += ret[i]",
-      "    return ret"
+      "    return ret",
+      "",
+      "# usage: im = Imos(N); im.add(l, r, init, diff); A = im.calc()"
     ],
-    "description": "区間に等差数列を足す",
+    "description": "区間に等差数列を加算 (Imos の 2 階差分版)",
     "scope": "python"
   },
   "convolution": {
     "scope": "python",
     "prefix": "convolution",
-    "description": "その他畳み込み（作業中）",
+    "description": "その他の畳み込み集 (AND / OR / SUBSET, Zeta/Mobius 変換)",
     "body": [
       "class Convolution:",
       "  @staticmethod",
@@ -950,13 +969,15 @@
       "    while i < n:",
       "      for j in range(n):",
       "        if j & i == 0: op(f, i, j)",
-      "      i <<= 1"
+      "      i <<= 1",
+      "",
+      "# usage: h = Convolution.andProductConv(a, b, MOD)"
     ]
   },
   "gensikon": {
     "scope": "python",
     "prefix": "gensikon",
-    "description": "原子根関連",
+    "description": "原始根関連 Gensikon (位数判定 / 原始根求解)",
     "body": [
       "class Gensikon:",
       "  #xの原子根を求める",
@@ -1005,13 +1026,15 @@
       "      Y = Y * R % M",
       "      if Y in D:",
       "          return D[Y] + i*sq",
-      "    return -1"
+      "    return -1",
+      "",
+      "# usage: g = Gensikon.primitive_root(p)"
     ]
   },
   "Packer": {
     "scope": "python",
     "prefix": "Packer",
-    "description": "配列を整数にする",
+    "description": "タプル↔整数パッカー (辞書 key 高速化、(a,b) を 1 整数に)",
     "body": [
       "class Packer():",
       "  def __init__(self, N: int = 10**6, size = 2) -> None:",
@@ -1034,13 +1057,15 @@
       "      data.append(packed & self.mask)",
       "      packed >>= self.shift",
       "    data.append(packed)",
-      "    return data[::-1]"
+      "    return data[::-1]",
+      "",
+      "# usage: p = Packer(N=10**6, size=2); k = p.pack(a, b); a, b = p.unpack(k)"
     ]
   },
   "radix_convert": {
     "scope": "python",
     "prefix": "radix_convert",
-    "description": "進数変換",
+    "description": "進数変換 Radix_Convert (任意基数 ↔ 10 進の相互変換)",
     "body": [
       "class Radix_Convert:",
       "  @staticmethod",
@@ -1076,13 +1101,15 @@
       "    n進数をm進数に変換",
       "    \"\"\"",
       "    x = Radix_Convert.toDec(x, n)",
-      "    return Radix_Convert.fromDec(x, m)"
+      "    return Radix_Convert.fromDec(x, m)",
+      "",
+      "# usage: dec = Radix_Convert.toDec(x, n); x = Radix_Convert.fromDec(dec, n)"
     ]
   },
   "hakidasi2": {
     "scope": "python",
     "prefix": "hakidasi2",
-    "description": "掃き出し法",
+    "description": "XOR 基底クラス XORBasis (掃き出し法のクラス版、追加/包含/次元)",
     "body": [
       "class XORBasis:",
       "  \"\"\"",
@@ -1184,13 +1211,14 @@
       "      if self.basis[bit] != 0:",
       "        lst.append((bit, self.basis[bit], self.basis_mask[bit]))",
       "    return lst",
-      ""
+      "",
+      "# usage: b = XORBasis(); b.add(x); b.contains(x); b.dim()"
     ]
   },
   "way12": {
     "scope": "python",
     "prefix": "way12",
-    "description": "写像12相",
+    "description": "写像 12 相 (n 玉を k 箱に入れる、玉/箱/制約 の 12 通り)",
     "body": [
       "class way12():",
       "  def __init__(self, num, mod):",
@@ -1302,13 +1330,14 @@
       "          case 1: return 1",
       "          case 2: return self.part(k, n - k)",
       "    return 0",
-      ""
+      "",
+      "# usage: w = way12(N, MOD); w.case_XX(n, k)"
     ]
   },
   "bunkatu": {
     "scope": "python",
     "prefix": "bunkatu",
-    "description": "分割数",
+    "description": "分割数 (n を正整数の順不同和で表す通り数、O(N√N))",
     "body": [
       "class Bunkatu:",
       "  @staticmethod",
@@ -1343,7 +1372,8 @@
       "      ans.extend(Bunkatu._bunkatu_sub(N - i, i, T))",
       "    ans.append(D + [N])",
       "    return ans",
-      ""
+      "",
+      "# usage: P = Bunkatu.bunkatu(N)  # P[i] = i の分割数"
     ]
   },
   "ragu": {
@@ -1432,9 +1462,10 @@
       "",
       "MOD = 998244353",
       "inv = Inv(MOD)",
-      ""
+      "",
+      "# usage: y = ragu1(xs, ys, target_x)  # 等間隔なら ragu2"
     ],
-    "description": "ラグなんとか補間",
+    "description": "ラグランジュ補間 (1 次元、O(N) で f(x_target) を求める)",
     "scope": "python"
   }
 }

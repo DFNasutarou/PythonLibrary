@@ -4,7 +4,7 @@
     {
       "label": "Run exe.py (input.txt -> output.txt)",
       "type": "shell",
-      "command": "python exe.py < input.txt > output.txt & type output.txt & echo. & echo === %TIME% ===",
+      "command": "\"D:\\tools\\pypy3.10-v7.3.12-win64\\python.exe\" exe.py < input.txt > output.txt & type output.txt & echo. & echo === %TIME% ===",
       "options": {
         "cwd": "${workspaceFolder:acpython}",
         "shell": {

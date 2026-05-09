@@ -17,9 +17,11 @@
       "  def push(self, x): heapq.heappush(self.q, x * self.mlt)",
       "  def pushpop(self, x): return heapq.heappushpop(self.q, x * self.mlt) * self.mlt",
       "  def is_empty(self): return self.q == []",
-      "  def reset(self): self.q = []"
+      "  def reset(self): self.q = []",
+      "",
+      "# usage: q = HeapQue(is_max=True); q.push(x); q.pop()"
     ],
-    "description": "ヒープ",
+    "description": "ヒープキュー HeapQue (最大/最小切替・default 値・push/pop/top/pushpop)",
     "scope": "python"
   },
   "input": {
@@ -29,7 +31,7 @@
       "input = sys.stdin.readline",
       ""
     ],
-    "description": "入力が重いとき",
+    "description": "入力高速化 (input = sys.stdin.readline)",
     "scope": "python"
   },
   "list": {
@@ -37,7 +39,7 @@
     "body": [
       "${1:A} = list(map(int, input().split()))$0"
     ],
-    "description": "1行を int リストに",
+    "description": "1行を int リストに変換 (placeholder で変数名指定)",
     "scope": "python"
   },
   "listfor": {
@@ -45,7 +47,7 @@
     "body": [
       "${1:Q} = [list(map(int, input().split())) for _ in range(${2:N})]$0"
     ],
-    "description": "N 行を int リストの 2D に",
+    "description": "N 行を int リストの 2D に (Q 名前と N サイズを placeholder で指定)",
     "scope": "python"
   },
   "queue": {
@@ -55,9 +57,10 @@
       "q = queue.Queue()",
       "put = q.put",
       "get = q.get",
-      ""
+      "",
+      "# usage: put(x); x = get()"
     ],
-    "description": "キュー",
+    "description": "FIFO キュー (queue.Queue の薄いラッパ、put/get エイリアス)",
     "scope": "python"
   },
   "sort": {
@@ -68,7 +71,7 @@
       "    return ${1:a < b}",
       "${2:arr} = sorted(${2:arr}, key=cmp_to_key(cmpstr))$0"
     ],
-    "description": "比較関数",
+    "description": "cmp_to_key で比較関数 sort (比較式と対象リストを placeholder)",
     "scope": "python"
   },
   "abc": {
@@ -76,13 +79,13 @@
     "body": [
       "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
     ],
-    "description": "アルファベット定数",
+    "description": "アルファベット 26 文字定数 ABC",
     "scope": "python"
   },
   "saiki": {
     "scope": "python",
     "prefix": "saiki",
-    "description": "再帰上限の引き上げ",
+    "description": "再帰上限の引き上げ (sys.setrecursionlimit)",
     "body": [
       "import sys",
       "sys.setrecursionlimit(${1:500000000})$0"
@@ -91,7 +94,7 @@
   "itertools": {
     "scope": "python",
     "prefix": "itertools",
-    "description": "itertools関連",
+    "description": "itertools 系ユーティリティ (ランレングス圧縮 rle / rle_int)",
     "body": [
       "import itertools",
       "class itr:",
@@ -109,13 +112,15 @@
       "      ランレングス圧縮を行う",
       "    \"\"\"",
       "    ans = [(int(k), len(list(g))) for k,g in itertools.groupby(S)]",
-      "    return ans"
+      "    return ans",
+      "",
+      "# usage: itr.rle(\"aabbb\") -> [(\"a\",2),(\"b\",3)]"
     ]
   },
   "deque": {
     "scope": "python",
     "prefix": "deque",
-    "description": "両端に要素追加、両端から要素取得、ランダムアクセスをならしO(1)",
+    "description": "両端キュー Deque (両端 O(1)・ランダムアクセス対応・二重スタック実装)",
     "body": [
       "class Deque:",
       "  def __init__(self, d: list[int] = []):",
@@ -164,13 +169,15 @@
       "    self.R = d[len(d) // 2:]",
       "  def getList(self):",
       "    \"\"\"チェック用 O(N)\"\"\"",
-      "    return self.L[::-1] + self.R"
+      "    return self.L[::-1] + self.R",
+      "",
+      "# usage: dq = Deque([1,2,3]); dq.add_r(4); dq.pop_l()"
     ]
   },
   "query": {
     "scope": "python",
     "prefix": "query",
-    "description": "クエリソルバ",
+    "description": "クエリ種別ディスパッチャ Query_solve (ops[i-ind](*que) で呼び分け)",
     "body": [
       "class Query_solve:",
       "  def __init__(self, ops, ind = 1):",
@@ -179,7 +186,9 @@
       "  def solve(self, Query):",
       "    for query in Query:",
       "      i, que = query[0], query[1:]",
-      "      self.ops[i - self.ind](*que)"
+      "      self.ops[i - self.ind](*que)",
+      "",
+      "# usage: solver = Query_solve([op_add, op_get]); solver.solve(Q)"
     ]
   }
 }

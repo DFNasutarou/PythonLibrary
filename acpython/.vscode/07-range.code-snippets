@@ -36,9 +36,10 @@
       "  def func(s, x, n):",
       "    a, b = s.L[n]",
       "    return a * x + b",
-      ""
+      "",
+      "# usage: cht = CHT(); cht.add(a, b); v = cht.query(x)"
     ],
-    "description": "Convex-Hull Trick",
+    "description": "Convex Hull Trick (傾き単調なら直線追加 O(1)、min/max クエリ)",
     "scope": "python"
   },
   "mo": {
@@ -92,15 +93,17 @@
       "  def r_plus(s):",
       "    s.r += 1",
       "  def r_minus(s):",
-      "    s.r -= 1"
+      "    s.r -= 1",
+      "",
+      "# usage: m = Mo(N, Query); m.run(add, sub, ans_callback)"
     ],
-    "description": "moアルゴリズム",
+    "description": "Mo's algorithm (区間クエリのオフライン処理、√N ブロック並べ替え)",
     "scope": "python"
   },
   "rangeaffine": {
     "scope": "python",
     "prefix": "rangeaffine",
-    "description": "区間関数アルゴリズム",
+    "description": "区間関数アフィン RangeAffine (range_min / max / sum のヘルパ集)",
     "body": [
       "class RangeAffine:",
       "  @ staticmethod",
@@ -173,13 +176,15 @@
       "      sm += L[i] * n",
       "      D.append([L[i], n])",
       "      ans[i + 1] = sm",
-      "    return ans"
+      "    return ans",
+      "",
+      "# usage: m = RangeAffine.range_min_sum_list(L)"
     ]
   },
   "imos2d": {
     "scope": "python",
     "prefix": "imos2d",
-    "description": "二次元配列でいもす法",
+    "description": "2D いもす法 (矩形加算 + 累積和、計算 O(HW))",
     "body": [
       "class Imos2D:",
       "  def __init__(self, H, W) -> None:",
@@ -206,13 +211,14 @@
       "      for i in range(1, self.H):",
       "        ret[i][j] += ret[i - 1][j]",
       "    return ret",
-      ""
+      "",
+      "# usage: im = Imos2D(H, W); im.add(r1, c1, r2, c2, v); G = im.calc()"
     ]
   },
   "squaresplit": {
     "scope": "python",
     "prefix": "squaresplit",
-    "description": "平方分割 gfと一緒に使用",
+    "description": "平方分割 SquareSpilit (区間更新 + 区間取得、gf と組み合わせ前提)",
     "body": [
       "class SquareSpilit:",
       "  class Query_solve:",
@@ -282,7 +288,9 @@
       "    ans = self.qs.solve_myself(ind, value)",
       "    for b in self.effort_list[ind]:",
       "      self.qs.effort_other(ind, b, value)",
-      "    return ans"
+      "    return ans",
+      "",
+      "# usage: sq = SquareSpilit(N); sq.update(l, r, v); a = sq.get(l, r)"
     ]
   }
 }

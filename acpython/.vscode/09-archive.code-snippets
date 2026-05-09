@@ -2,7 +2,7 @@
   "lazysegold": {
     "scope": "python",
     "prefix": "lazysegold",
-    "description": "遅延評価セグ木 (自己完結版・ACL 不要)",
+    "description": "遅延評価セグ木 (自己完結版・ACL 不要・op/e/mapping/composition/id 渡し)",
     "body": [
       "class lazySegTree:",
       "  #遅延評価セグメント木",
@@ -181,7 +181,8 @@
       "  return 0",
       "",
       "seg = lazySegTree(op, e, mapping, composition, id, a)",
-      ""
+      "",
+      "# usage: t = lazySegTree(op, e, mapping, composition, id, v); t.apply(l, r, f)"
     ]
   },
   "lazysegacl": {
@@ -458,13 +459,15 @@
       "    if func_upper == None: return func_lower",
       "    f0, f1 = func_lower >> LSTFactory.RNG, func_lower % (1 << LSTFactory.RNG)",
       "    g0, g1 = func_upper >> LSTFactory.RNG, func_upper % (1 << LSTFactory.RNG)",
-      "    return ((f0 * g0 % LSTFactory.MOD) << LSTFactory.RNG) + ((g0 * f1 + g1) % LSTFactory.MOD)"
+      "    return ((f0 * g0 % LSTFactory.MOD) << LSTFactory.RNG) + ((g0 * f1 + g1) % LSTFactory.MOD)",
+      "",
+      "# usage: ACL 互換 — t = LazySegTree(...); t.apply(l, r, f); t.prod(l, r)"
     ]
   },
   "tree_old": {
     "scope": "python",
     "prefix": "tree_old",
-    "description": "木構造 (旧版 Tree クラス・現役 TreeFactory より機能少ないシンプル版)",
+    "description": "木構造 (旧 Tree クラス・現役 TreeFactory より機能少ないシンプル版)",
     "body": [
       "class Tree:",
       "  def __init__(s, num):",
@@ -650,7 +653,8 @@
       "        u = s.dub[u][k]",
       "        v = s.dub[v][k]",
       "    return s.dub[u][0]",
-      ""
+      "",
+      "# usage: t = Tree(N); t.set(u, v); t.makeRank(root)"
     ]
   },
   "primeold": {
@@ -680,7 +684,8 @@
       "  if x != 1:",
       "    p[x] = 1",
       "  return p",
-      ""
+      "",
+      "# usage: factors = prime(x)  # {素因数: 指数} を返す"
     ]
   }
 }

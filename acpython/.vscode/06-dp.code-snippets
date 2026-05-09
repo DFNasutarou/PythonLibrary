@@ -65,15 +65,16 @@
       "    s.DP[x] += s.DP[y]",
       "  def inv(s, a, mod): #逆元",
       "    return pow(a, mod - 2, mod)",
-      ""
+      "",
+      "# usage: t = Tree(N); t.set(u, v); ans = t.dp(root)"
     ],
-    "description": "木DP",
+    "description": "木 DP (子の DFS 結果から親へ集約する典型木 DP テンプレ)",
     "scope": "python"
   },
   "dfa": {
     "scope": "python",
     "prefix": "dfa",
-    "description": "オートマトンDP（桁DP等）",
+    "description": "オートマトン DP (桁 DP 含む、I-DFA を構築して状態遷移で集計)",
     "body": [
       "from collections import defaultdict",
       "import itertools ",
@@ -307,13 +308,15 @@
       "    def next(self, state, alphabet, i): return state + int(alphabet) ",
       "    def accept(self, state) -> bool: return state == self._n",
       "    def unsuccessful(self, state) -> bool: return state == self._n + 1",
-      "    def stateList(self): return range(self._n + 1)"
+      "    def stateList(self): return range(self._n + 1)",
+      "",
+      "# usage: dfa = I_DFA(...); dfa.add_transition(s, c, t); ans = dfa.run(N)"
     ]
   },
   "nfa": {
     "scope": "python",
     "prefix": "nfa",
-    "description": "オートマトンDP(NFA有り)",
+    "description": "オートマトン DP NFA 有り版 (ε 遷移と非決定性を扱える)",
     "body": [
       "from collections import defaultdict",
       "import itertools",
@@ -611,13 +614,14 @@
       "    dfa_state_size = len(state_map)  # DFAの状態数",
       "",
       "    return dfa_state_size, alphabet, dfa_transitions, state_map[dfa_start_state], list(dfa_accept_states)",
-      ""
+      "",
+      "# usage: nfa = NFA(...); nfa.add_transition(...); ans = nfa.run()"
     ]
   },
   "slopetrick": {
     "scope": "python",
     "prefix": "slopetrick",
-    "description": "slopetrick",
+    "description": "Slope Trick (区分線形凸関数を左右ヒープで管理、最小値追跡)",
     "body": [
       "import heapq",
       "class HeapQue:",
@@ -690,13 +694,15 @@
       "    self.add_L += a",
       "    self.add_R += b",
       "  def debug(self):",
-      "    print(self.min, self.L.q, self.R.q)"
+      "    print(self.min, self.L.q, self.R.q)",
+      "",
+      "# usage: st = SlopeTrick(); st.add_left(a); st.add_right(a); st.min()"
     ]
   },
   "LIS": {
     "scope": "python",
     "prefix": "LIS",
-    "description": "最長部分増加列",
+    "description": "最長増加部分列 LIS (bisect で O(N log N))",
     "body": [
       "import bisect",
       "",
@@ -744,7 +750,9 @@
       "         n = bisect.bisect_left(LIS, A[i])",
       "         LIS[n] = A[i]",
       "         data[i] = n + 1",
-      "    return LIS, data"
+      "    return LIS, data",
+      "",
+      "# usage: lis = LIS(); lis.add(x); length = lis.length()"
     ]
   }
 }

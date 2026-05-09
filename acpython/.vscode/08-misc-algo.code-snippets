@@ -84,9 +84,10 @@
       "    \"\"\"",
       "    binary_str = bin(n)[2:]",
       "    return binary_str.zfill(M)",
-      ""
+      "",
+      "# usage: ba = BitAll(N); ba.update(i, x, kind); ba.getV(r, kind)"
     ],
-    "description": "説明",
+    "description": "BIT 全部入り BitAll (用途別 BIT の集合管理、index 振り分け)",
     "scope": "python"
   },
   "nibutan": {
@@ -140,9 +141,11 @@
       "      return L[mid] >= n ",
       "    ok = len(L) - 1",
       "    ng = -1",
-      "    return nibutan.nibutan(ok, ng, op)"
+      "    return nibutan.nibutan(ok, ng, op)",
+      "",
+      "# usage: x = nibutan.nibutan(ok, ng, op); i = nibutan.le(L, n)"
     ],
-    "description": "二分探索",
+    "description": "二分探索 (汎用 nibutan + ソート列向け lt / le / gt / ge staticmethod)",
     "scope": "python"
   },
   "tentou": {
@@ -194,9 +197,10 @@
       "    ans -= b.getV(d)",
       "    b.update(d, 1)",
       "  return ans",
-      ""
+      "",
+      "# usage: cnt = inversion_count(A)"
     ],
-    "description": "転倒数",
+    "description": "転倒数 (BIT で O(N log N))",
     "scope": "python"
   }
 }

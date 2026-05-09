@@ -130,9 +130,10 @@
       "      D[i][2] = i",
       "    D.sort(key = lambda x: x[1])",
       "    return [D[i][2] for i in range(N)]",
-      ""
+      "",
+      "# usage: t = AVL(); t.insert(k, v); t.get(k); t.remove(k)"
     ],
-    "description": "avl木",
+    "description": "AVL 木 (平衡二分探索木、key/value 対応)",
     "scope": "python"
   },
   "BIT": {
@@ -164,9 +165,10 @@
       "      ans += s.T[x - 1]",
       "      x -= x & -x",
       "    return ans",
-      ""
+      "",
+      "# usage: bit = BIT(N); bit.update(i, x); s = bit.getV(r)"
     ],
-    "description": "BIT",
+    "description": "BIT / フェニック木 (1点更新・区間和、全操作 O(log N))",
     "scope": "python"
   },
   "lazyseg": {
@@ -228,9 +230,11 @@
       "    if func_upper == None: return func_lower",
       "    f0, f1 = func_lower >> LSTFactory.RNG, func_lower % (1 << LSTFactory.RNG)",
       "    g0, g1 = func_upper >> LSTFactory.RNG, func_upper % (1 << LSTFactory.RNG)",
-      "    return ((f0 * g0 % LSTFactory.MOD) << LSTFactory.RNG) + ((g0 * f1 + g1) % LSTFactory.MOD)"
+      "    return ((f0 * g0 % LSTFactory.MOD) << LSTFactory.RNG) + ((g0 * f1 + g1) % LSTFactory.MOD)",
+      "",
+      "# usage: t = LSTFactory.build(...); t.apply(l, r, f); t.prod(l, r)"
     ],
-    "description": "遅延評価セグメント木 (自前実装)",
+    "description": "遅延評価セグ木 (atcoder.lazysegtree ラッパ、用途別 factory)",
     "scope": "python"
   },
   "union": {
@@ -283,9 +287,11 @@
       "    ans = []",
       "    for i in range(len(self.T)):",
       "      ans.append(self.root(i))",
-      "    print(*ans)"
+      "    print(*ans)",
+      "",
+      "# usage: u = Union(N); u.merge(a, b); r = u.root(x); u.size(x)"
     ],
-    "description": "UnionFind",
+    "description": "Union-Find (経路圧縮 + サイズマージ、ほぼ O(α(N)))",
     "scope": "python"
   },
   "seg": {
@@ -420,9 +426,10 @@
       "  def opfunc(s, t): return [s[0] * t[0] % segtreeFactory.MOD, (t[0] * s[1] + t[1]) % segtreeFactory.MOD] # 左を内側にして結合",
       "",
       "seg = segtreeFactory.makeMaxSegTree(N)",
-      ""
+      "",
+      "# usage: t = segtree([0]*N, op=lambda a,b:a+b, e=lambda:0); t.set(i,x); t.prod(l,r)"
     ],
-    "description": "セグメント木 (汎用 op/e 渡し)",
+    "description": "セグメント木 (op / e を関数で渡す汎用版)",
     "scope": "python"
   },
   "wavelet": {
@@ -637,9 +644,10 @@
       "    while not d.empty():",
       "      pass",
       "    #途中",
-      ""
+      "",
+      "# usage: w = WaveletMatrix(A); w.kth(l, r, k); w.rank(l, r, x)"
     ],
-    "description": "ウェーブレットマトリクス",
+    "description": "ウェーブレット行列 (静的列の k-th / select / 区間内 quantile)",
     "scope": "python"
   },
   "multiset": {
@@ -692,9 +700,11 @@
       "    if not n is None: self.delete(n)",
       "    return n",
       "  def top_max(self): return self.maq.top()",
-      "  def top_min(self): return self.miq.top()"
+      "  def top_min(self): return self.miq.top()",
+      "",
+      "# usage: ms = MultiSet(); ms.add(x); ms.remove(x); m = ms.min()"
     ],
-    "description": "マルチセット",
+    "description": "マルチセット (ヒープ実装、追加/削除/min 全 O(log N))",
     "scope": "python"
   },
   "linkedlist": {
@@ -789,15 +799,16 @@
       "  def __iter__(s):",
       "    node_data = s.list",
       "    return iter(node_data)",
-      ""
+      "",
+      "# usage: ll = DoubleLinkedList(); n = ll.append(x); ll.remove(n)"
     ],
-    "description": "連結リスト add/insertとremoveをO(1)",
+    "description": "双方向連結リスト (add / insert / remove 全 O(1))",
     "scope": "python"
   },
   "trie": {
     "scope": "python",
     "prefix": "trie",
-    "description": "文字列の集合を木構造として表す",
+    "description": "トライ木 (文字列集合の prefix 共有表現)",
     "body": [
       "class Trie:",
       "  def __init__(s):",
@@ -824,7 +835,9 @@
       "      if c not in node.Son:",
       "        return False",
       "      node = node.Son[c]",
-      "    return node.value"
+      "    return node.value",
+      "",
+      "# usage: t = Trie(); t.add(\"abc\"); t.find(\"ab\")"
     ]
   },
   "map": {
@@ -854,9 +867,11 @@
       "            case list():",
       "                return tuple(key)",
       "            case _:",
-      "                return key"
+      "                return key",
+      "",
+      "# usage: m = Map(); m.set(k, v); v = m.get(k)"
     ],
-    "description": "安全なMAP\n参考：Associative Array"
+    "description": "ハッシュ Map (衝突攻撃耐性のランダム化キー、HASH_NUM ビット)"
   },
   "union_potential": {
     "prefix": "union_potential",
@@ -905,15 +920,16 @@
       "    print(\"parent\\t: \", *self.T, sep = \"\\t\")",
       "    print(\"potential: \", *self.W, sep = \"\\t\")",
       "    print(\"root\\t: \", *ans, sep = \"\\t\")",
-      ""
+      "",
+      "# usage: u = UnionPotential(N); u.merge(a, b, w); d = u.diff(a, b)"
     ],
-    "description": "ポテンシャル付きUnionFind",
+    "description": "ポテンシャル付き Union-Find (重み付き連結・差分検査)",
     "scope": "python"
   },
   "BinaryTrie": {
     "scope": "python",
     "prefix": "BinaryTrie",
-    "description": "集合からxor最小値を取得",
+    "description": "Binary Trie (xor 最小値検索・整数集合 [0, 2^BIT_SIZE))",
     "body": [
       "class BinaryTrie:",
       "  # 2 ** (BIT_SIZE) - 1 まで可能",
@@ -979,13 +995,14 @@
       "      a = n >> d & 1",
       "      if s.data[a ^ 1] != None: a ^= 1",
       "      return (a << d) + s.data[a].findXorMax(n, d - 1)",
-      ""
+      "",
+      "# usage: t = BinaryTrie(); t.add(x); t.xor_min(q)"
     ]
   },
   "cartesianTree": {
     "scope": "python",
     "prefix": "cartesianTree",
-    "description": "cartesianTree",
+    "description": "カルテシアン木 (区間 min/max の階層構造、RMQ 前処理など)",
     "body": [
       "from typing import Any, Callable",
       "",
@@ -1106,13 +1123,15 @@
       "      else:",
       "        R[i - 1], P[i] = i, i - 1",
       "    return CartesianTree(N, A, L, R, P, root)",
-      "  "
+      "  ",
+      "",
+      "# usage: t = CartesianTree(A, op=min); root = t.root"
     ]
   },
   "sortedSet": {
     "scope": "python",
     "prefix": "sortedSet",
-    "description": "SortedSet tatyamさんのやつ",
+    "description": "Sorted Set (tatyam 実装、平方分割で全操作 O(√N))",
     "body": [
       "# https://github.com/tatyam-prime/SortedSet/blob/main/SortedSet.py",
       "import math",
@@ -1269,13 +1288,15 @@
       "            if a[-1] > x:",
       "                return ans + bisect_right(a, x)",
       "            ans += len(a)",
-      "        return ans"
+      "        return ans",
+      "",
+      "# usage: s = SortedSet([1,2,3]); s.add(x); s.lt(x); s.le(x); s.gt(x)"
     ]
   },
   "rangeList": {
     "scope": "python",
     "prefix": "rangeList",
-    "description": "範囲の組のリスト",
+    "description": "区間 [l, r) のマージ管理 (重なる区間を自動結合・含有判定)",
     "body": [
       "class RangeList:",
       "  def __init__(self, v : list[int, int]):",
@@ -1340,13 +1361,15 @@
       "        result.append([l, r, i])",
       "      ret = r",
       "      if ret >= end: return result",
-      "    return []"
+      "    return []",
+      "",
+      "# usage: rl = RangeList([(1,3),(5,7)]); rl.add(2, 6); rl.contains(x)"
     ]
   },
   "union_persist": {
     "scope": "python",
     "prefix": "union_persist",
-    "description": "部分永続UnionFind",
+    "description": "永続 Union-Find (過去の時刻状態にも問い合わせ可能)",
     "body": [
       "class UnionPersistentPart:",
       "  def __init__(self,N):",
@@ -1439,13 +1462,15 @@
       "        y = self.parent[y]",
       "        if x == y: return yt",
       "        yt = self.time[y]",
-      "    return -1"
+      "    return -1",
+      "",
+      "# usage: u = UnionPersistentPart(N); v = u.merge(a, b); u.same(a, b, version=v)"
     ]
   },
   "dynamic_segtree": {
     "scope": "python",
     "prefix": "dynamic_segtree",
-    "description": "要素番号が多くても使えるsegtree",
+    "description": "動的セグ木 (要素 index が大きくても座圧不要・遅延ノード生成)",
     "body": [
       "class dinamic_segtree:",
       "  def __init__(self, N, op, e):",
@@ -1603,13 +1628,14 @@
       "  def efunc(): return [1, 0]",
       "  @staticmethod",
       "  def opfunc(s, t): return [s[0] * t[0] % segtreeFactory.MOD, (t[0] * s[1] + t[1]) % segtreeFactory.MOD] # 左を内側にして結合",
-      ""
+      "",
+      "# usage: t = dinamic_segtree(N, op, e); t.set(i, x); t.prod(l, r)"
     ]
   },
   "packed2dlist": {
     "scope": "python",
     "prefix": "packed2dlist",
-    "description": "二次元リストのパッククラス",
+    "description": "2D 座標 (a, b) を 1 整数にパックして保持するリスト (高速化用)",
     "body": [
       "class Packed2DList(list):",
       "  \"\"\"",
@@ -1801,7 +1827,9 @@
       "    if b < 0 or b > self.mask:",
       "      return 0",
       "    packed = (a << self.shift) | b",
-      "    return super().count(packed)"
+      "    return super().count(packed)",
+      "",
+      "# usage: p = Packed2DList(); p.append((a, b)); a, b = p.unpack(0)"
     ]
   }
 }

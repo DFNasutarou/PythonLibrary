@@ -1,0 +1,10 @@
+{
+  "Sample": {
+    "scope": "python",
+    "prefix": "pref",
+    "description": "[内部用テンプレ] 新規スニペット追加用ひな型",
+    "body": [
+      "#sample"
+    ]
+  }
+}

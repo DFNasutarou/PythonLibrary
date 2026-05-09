@@ -1,0 +1,185 @@
+{
+  "heapq": {
+    "prefix": "heapq",
+    "body": [
+      "import heapq",
+      "class HeapQue:",
+      "  def __init__(self, is_max = False, default = None):",
+      "    self.q = []",
+      "    self.mlt = -1 if is_max else 1 # 最大値を管理する場合は反転させる",
+      "    self.default = default",
+      "  def pop(self): ",
+      "    if self.is_empty(): return self.default",
+      "    return heapq.heappop(self.q) * self.mlt",
+      "  def top(self):",
+      "    if self.is_empty(): return self.default",
+      "    n = self.pop(); self.push(n); return n",
+      "  def push(self, x): heapq.heappush(self.q, x * self.mlt)",
+      "  def pushpop(self, x): return heapq.heappushpop(self.q, x * self.mlt) * self.mlt",
+      "  def is_empty(self): return self.q == []",
+      "  def reset(self): self.q = []"
+    ],
+    "description": "ヒープ",
+    "scope": "python"
+  },
+  "input": {
+    "prefix": "input",
+    "body": [
+      "import sys",
+      "input = sys.stdin.readline",
+      ""
+    ],
+    "description": "入力が重いとき",
+    "scope": "python"
+  },
+  "list": {
+    "prefix": "li",
+    "body": [
+      "${1:A} = list(map(int, input().split()))$0"
+    ],
+    "description": "1行を int リストに",
+    "scope": "python"
+  },
+  "listfor": {
+    "prefix": "listfor",
+    "body": [
+      "${1:Q} = [list(map(int, input().split())) for _ in range(${2:N})]$0"
+    ],
+    "description": "N 行を int リストの 2D に",
+    "scope": "python"
+  },
+  "queue": {
+    "prefix": "queue",
+    "body": [
+      "import queue",
+      "q = queue.Queue()",
+      "put = q.put",
+      "get = q.get",
+      ""
+    ],
+    "description": "キュー",
+    "scope": "python"
+  },
+  "sort": {
+    "prefix": "sort",
+    "body": [
+      "from functools import cmp_to_key",
+      "def cmpstr(a, b):",
+      "    return ${1:a < b}",
+      "${2:arr} = sorted(${2:arr}, key=cmp_to_key(cmpstr))$0"
+    ],
+    "description": "比較関数",
+    "scope": "python"
+  },
+  "abc": {
+    "prefix": "abc",
+    "body": [
+      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
+    ],
+    "description": "アルファベット定数",
+    "scope": "python"
+  },
+  "saiki": {
+    "scope": "python",
+    "prefix": "saiki",
+    "description": "再帰上限の引き上げ",
+    "body": [
+      "import sys",
+      "sys.setrecursionlimit(${1:500000000})$0"
+    ]
+  },
+  "itertools": {
+    "scope": "python",
+    "prefix": "itertools",
+    "description": "itertools関連",
+    "body": [
+      "import itertools",
+      "class itr:",
+      "  @ staticmethod",
+      "  def rle(S):",
+      "    \"\"\"",
+      "      ランレングス圧縮を行う",
+      "    \"\"\"",
+      "    ans = [(k, len(list(g))) for k,g in itertools.groupby(S)]",
+      "    return ans",
+      "  @ staticmethod",
+      "  def rle_int(S):",
+      "    \"\"\"",
+      "      0~9の数字とみなして",
+      "      ランレングス圧縮を行う",
+      "    \"\"\"",
+      "    ans = [(int(k), len(list(g))) for k,g in itertools.groupby(S)]",
+      "    return ans"
+    ]
+  },
+  "deque": {
+    "scope": "python",
+    "prefix": "deque",
+    "description": "両端に要素追加、両端から要素取得、ランダムアクセスをならしO(1)",
+    "body": [
+      "class Deque:",
+      "  def __init__(self, d: list[int] = []):",
+      "    self._normalize(d)",
+      "  def add_r(self, n):",
+      "    \"\"\"末尾に追加\"\"\"",
+      "    self.R.append(n)",
+      "    # print(\"add\", n, self.getList())",
+      "  def add_l(self, n):",
+      "    \"\"\"先頭に追加\"\"\"",
+      "    self.L.append(n)",
+      "    # print(\"add\", n, self.getList())",
+      "  def pop_r(self):",
+      "    \"\"\"末尾から取得\"\"\"",
+      "    if self.R == [] and len(self.L) == 1: ",
+      "      n = self.L.pop()",
+      "    else:",
+      "      if self.R == []: self._normalize(self.L[::-1])",
+      "      n = self.R.pop()",
+      "    # print(\"pop\", n, self.getList())",
+      "    return n",
+      "  def pop_l(self):",
+      "    \"\"\"先頭から取得\"\"\"",
+      "    if self.L == [] and  len(self.R) == 1: ",
+      "      n = self.R.pop()",
+      "    else:",
+      "      if self.L == []: self._normalize(self.R)",
+      "      n = self.L.pop()",
+      "    # print(\"pop\", n, self.getList())",
+      "    return n",
+      "  def size(self):",
+      "    \"\"\"要素数を返す\"\"\"",
+      "    return len(self.L) + len(self.R)",
+      "  def is_empty(self):",
+      "    \"\"\"空かどうか返す\"\"\"",
+      "    return self.size() == 0",
+      "  def get(self, ind):",
+      "    \"\"\"先頭からind番目を取得\"\"\"",
+      "    if ind < len(self.L):",
+      "      return self.L[-ind - 1]",
+      "    ind -= len(self.L)",
+      "    return self.R[ind]",
+      "      ",
+      "  def _normalize(self, d):",
+      "    self.L = d[:len(d) // 2][::-1]",
+      "    self.R = d[len(d) // 2:]",
+      "  def getList(self):",
+      "    \"\"\"チェック用 O(N)\"\"\"",
+      "    return self.L[::-1] + self.R"
+    ]
+  },
+  "query": {
+    "scope": "python",
+    "prefix": "query",
+    "description": "クエリソルバ",
+    "body": [
+      "class Query_solve:",
+      "  def __init__(self, ops, ind = 1):",
+      "    self.ops = ops",
+      "    self.ind = ind",
+      "  def solve(self, Query):",
+      "    for query in Query:",
+      "      i, que = query[0], query[1:]",
+      "      self.ops[i - self.ind](*que)"
+    ]
+  }
+}

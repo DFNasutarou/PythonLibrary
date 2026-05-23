@@ -136,8 +136,8 @@
     "description": "AVL 木 (平衡二分探索木、key/value 対応)",
     "scope": "python"
   },
-  "BIT": {
-    "prefix": "BIT",
+  "bit": {
+    "prefix": "bit",
     "body": [
       "class BIT:",
       "  ini = 0",
@@ -424,7 +424,7 @@
       "  @staticmethod",
       "  def makeSumSegTree(N, v = None):",
       "    if v == None: v = [0] * N",
-      "    return segtree(v, segtreeFactory.opsum, segtreeFactory.emax)",
+      "    return segtree(v, segtreeFactory.opsum, segtreeFactory.esum)",
       "  # サイズNのfuncSegTree (一次関数の結合)",
       "  @staticmethod",
       "  def makeFuncSegTree(N, v = None):",
@@ -440,6 +440,8 @@
       "  def opmin(a, b): return min(a, b)",
       "  @staticmethod",
       "  def opsum(a, b): return a + b",
+      "  @staticmethod",
+      "  def esum(): return 0",
       "  @staticmethod",
       "  def efunc(): return [1, 0]",
       "  @staticmethod",
@@ -1630,7 +1632,7 @@
       "  def makeMinSegTree(N): return dinamic_segtree(N, segtreeFactory.opmin, segtreeFactory.emin)",
       "  # サイズNのsumSegTree",
       "  @staticmethod",
-      "  def makeSumSegTree(N): return dinamic_segtree(N, segtreeFactory.opsum, segtreeFactory.emax)",
+      "  def makeSumSegTree(N): return dinamic_segtree(N, segtreeFactory.opsum, segtreeFactory.esum)",
       "  # サイズNのfuncSegTree (一次関数の結合)",
       "  @staticmethod",
       "  def makeFuncSegTree(N): return dinamic_segtree(N, segtreeFactory.opfunc, segtreeFactory.efunc)",
@@ -1644,6 +1646,8 @@
       "  def opmin(a, b): return min(a, b)",
       "  @staticmethod",
       "  def opsum(a, b): return a + b",
+      "  @staticmethod",
+      "  def esum(): return 0",
       "  @staticmethod",
       "  def efunc(): return [1, 0]",
       "  @staticmethod",

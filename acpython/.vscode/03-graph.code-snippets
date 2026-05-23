@@ -386,7 +386,7 @@
       "    while flow < flow_limit:",
       "      bfs()",
       "      if level[t] == -1: break",
-      "      for i in range(self._n): iter[i]",
+      "      for i in range(self._n): iter[i] = 0",
       "      while flow < flow_limit:",
       "        f = dfs(t, flow_limit - flow)",
       "        if not f: break",

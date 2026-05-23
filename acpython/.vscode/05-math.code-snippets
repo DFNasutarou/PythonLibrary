@@ -291,8 +291,8 @@
     "description": "畳み込み MOD (NTT、特定 mod 用)",
     "scope": "python"
   },
-  "convolve_ll": {
-    "prefix": "convolve_ll",
+  "convolvell": {
+    "prefix": "convolvell",
     "body": [
       "import numpy as np",
       "",

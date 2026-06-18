@@ -13,7 +13,7 @@
       "    return heapq.heappop(self.q) * self.mlt",
       "  def top(self):",
       "    if self.is_empty(): return self.default",
-      "    n = self.pop(); self.push(n); return n",
+      "    return self.q[0] * self.mlt",
       "  def push(self, x): heapq.heappush(self.q, x * self.mlt)",
       "  def pushpop(self, x): return heapq.heappushpop(self.q, x * self.mlt) * self.mlt",
       "  def is_empty(self): return self.q == []",
@@ -53,14 +53,14 @@
   "queue": {
     "prefix": "queue",
     "body": [
-      "import queue",
-      "q = queue.Queue()",
-      "put = q.put",
-      "get = q.get",
+      "from collections import deque",
+      "q = deque()",
+      "put = q.append",
+      "get = q.popleft",
       "",
       "# usage: put(x); x = get()"
     ],
-    "description": "FIFO キュー (queue.Queue の薄いラッパ、put/get エイリアス)",
+    "description": "FIFO キュー (deque の薄いラッパ、put/get エイリアス)",
     "scope": "python"
   },
   "sort": {

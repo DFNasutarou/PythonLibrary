@@ -52,7 +52,7 @@
       "  def r_minus(self):",
       "    self.r -= 1",
       "",
-      "# usage: m = Mo(N, Query); m.run(add, sub, ans_callback)"
+      "# usage: class MyMo(Mo): ...; ans = MyMo(N, Query).getAns()"
     ],
     "description": "Mo's algorithm (区間クエリのオフライン処理、√N ブロック並べ替え)",
     "scope": "python"
@@ -169,7 +169,7 @@
       "        ret[i][j] += ret[i - 1][j]",
       "    return ret",
       "",
-      "# usage: im = Imos2D(H, W); im.add(r1, c1, r2, c2, v); G = im.calc()"
+      "# usage: im = Imos2D(H, W); im.add(r1, c1, r2, c2, v); G = im.get_data()"
     ]
   },
   "squaresplit": {
@@ -247,7 +247,7 @@
       "      self.qs.effort_other(ind, b, value)",
       "    return ans",
       "",
-      "# usage: sq = SquareSpilit(N); sq.update(l, r, v); a = sq.get(l, r)"
+      "# usage: sq = SquareSpilit(gf, qs); ans = sq.query(q)"
     ]
   }
 }

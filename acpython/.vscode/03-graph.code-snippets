@@ -212,7 +212,7 @@
       "        if a + b + value == way_length: gf.add_edge(frm, to, value)",
       "    return gf",
       "",
-      "# usage: g = Graph(N, directed=True, weighted=True); g.add_edge(a,b,w); d = g.dijkstra(s)"
+      "# usage: g = Graph(N, directed=True, weighted=True); g.add_edge(a,b,w); d = Dijkstra(g).dist(s)"
     ],
     "description": "ダイクストラ法 (重み付きグラフの単一始点最短距離 O((N+M) log N))",
     "scope": "python"

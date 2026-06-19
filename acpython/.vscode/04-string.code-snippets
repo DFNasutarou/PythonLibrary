@@ -354,7 +354,7 @@
       "    return x == self.S[-2 - length]",
       "  ",
       "",
-      "# usage: et = eertree(); et.add(c); et.count_palindromes()"
+      "# usage: et = eertree(); et.addChar(c); cnt = et.getCount()"
     ]
   },
   "hensyukyori": {
@@ -398,7 +398,7 @@
       "  # for d in dp: print(d)",
       "  return dp[-1][k]",
       "",
-      "# usage: d = edit_distance(S, T)"
+      "# usage: d = hensyuKyori(S, T)"
     ]
   },
   "suffixarray": {

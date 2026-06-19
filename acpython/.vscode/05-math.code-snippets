@@ -141,9 +141,9 @@
       "      ans %= self.MOD",
       "    return ans",
       "",
-      "# usage: c = comb(N, MOD); c.nCr(n, r); c.H(n, r)"
+      "# usage: c = comb(N, MOD); c.com(n, k); c.com_multi(n, k)"
     ],
-    "description": "二項係数 nCr (前計算 階乗+逆元、O(N) 前処理 / O(1) クエリ)",
+    "description": "二項係数 comb (前計算 階乗+逆元、O(N) 前処理 / O(1) クエリ)",
     "scope": "python"
   },
   "convmod": {

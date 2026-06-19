@@ -131,7 +131,7 @@
       "    D.sort(key = lambda x: x[1])",
       "    return [D[i][2] for i in range(N)]",
       "",
-      "# usage: t = AVL(); t.insert(k, v); t.get(k); t.remove(k)"
+      "# usage: t = AVL(); t.insert(k, v); ok = t.check(k); t.delete(k)"
     ],
     "description": "AVL 木 (平衡二分探索木、key/value 対応)",
     "scope": "python"
@@ -724,7 +724,7 @@
       "  def top_max(self): return self.maq.top()",
       "  def top_min(self): return self.miq.top()",
       "",
-      "# usage: ms = MultiSet(); ms.add(x); ms.remove(x); m = ms.min()"
+      "# usage: ms = multiset(); ms.insert(x); ms.delete(x); m = ms.top_min()"
     ],
     "description": "マルチセット (ヒープ実装、追加/削除/min 全 O(log N))",
     "scope": "python"
@@ -822,7 +822,7 @@
       "    node_data = self.list",
       "    return iter(node_data)",
       "",
-      "# usage: ll = DoubleLinkedList(); n = ll.append(x); ll.remove(n)"
+      "# usage: ll = DoubleLinkedList(); ll.add(x); ll.remove(x)"
     ],
     "description": "双方向連結リスト (add / insert / remove 全 O(1))",
     "scope": "python"
@@ -859,7 +859,7 @@
       "      node = node.Son[c]",
       "    return node.value",
       "",
-      "# usage: t = Trie(); t.add(\"abc\"); t.find(\"ab\")"
+      "# usage: t = Trie(); t.insert(\"abc\", value); v = t.find(\"abc\")"
     ]
   },
   "map": {
@@ -1018,7 +1018,7 @@
       "      if self.data[a ^ 1] != None: a ^= 1",
       "      return (a << d) + self.data[a].findXorMax(n, d - 1)",
       "",
-      "# usage: t = BinaryTrie(); t.add(x); t.xor_min(q)"
+      "# usage: t = BinaryTrie(); t.insert(x); y = t.findXorMin(q)"
     ]
   },
   "cartesianTree": {

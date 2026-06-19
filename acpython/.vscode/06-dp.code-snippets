@@ -310,7 +310,7 @@
       "    def unsuccessful(self, state) -> bool: return state == self._n + 1",
       "    def stateList(self): return range(self._n + 1)",
       "",
-      "# usage: dfa = I_DFA(...); dfa.add_transition(s, c, t); ans = dfa.run(N)"
+      "# usage: dfa = DFA.Leq(N); ans = DFA.count(dfa, len(str(N)), DFA.ALP_DIGIT)"
     ]
   },
   "nfa": {
@@ -615,7 +615,7 @@
       "",
       "    return dfa_state_size, alphabet, dfa_transitions, state_map[dfa_start_state], list(dfa_accept_states)",
       "",
-      "# usage: nfa = NFA(...); nfa.add_transition(...); ans = nfa.run()"
+      "# usage: dfa = DFAFactory.make_dfa_by_nfa(...); ans = DFA.count(dfa, n, alphabet)"
     ]
   },
   "slopetrick": {
@@ -696,7 +696,7 @@
       "  def debug(self):",
       "    print(self.min, self.L.q, self.R.q)",
       "",
-      "# usage: st = SlopeTrick(); st.add_left(a); st.add_right(a); st.min()"
+      "# usage: st = SlopeTrick(); st.add_left(a); st.add_right(a); st.get_min()"
     ]
   },
   "LIS": {
@@ -753,25 +753,29 @@
       "         data[i] = n + 1",
       "    return LIS, data",
       "",
-      "# usage: lis = LIS(); lis.add(x); length = lis.length()"
+      "# usage: length = LIS.lis_length(A); dp = LIS.lis(A)"
     ]
   },
   "cht": {
     "prefix": "cht",
-    "description": "Convex Hull Trick (傾き単調なら直線追加 O(1)、min/max クエリ)",
+    "description": "Convex Hull Trick (傾き単調増加追加 + x単調増加クエリ、min/max 切替)",
     "scope": "python",
     "body": [
       "class CHT:",
-      "  # 最大値 を取得",
-      "  def __init__(self):",
+      "  # 単調CHT",
+      "  # add: 傾き a を単調増加順 / query: x を単調増加順",
+      "  # is_min=True なら min(a*x+b)、False なら max(a*x+b)",
+      "  def __init__(self, is_min=True):",
       "    self.L = []",
       "    self.cnt = 0",
+      "    self.is_min = is_min",
+      "    self.started = False",
       "  # ax + b の直線を追加",
       "  # aが昇順になるように追加すること",
       "  def add(self, a, b):",
       "    ab3 = [a, b]",
       "    if self.L and self.L[-1][0] == a:",
-      "      if self.L[-1][1] >= b: return",
+      "      if self.better_eq(self.L[-1][1], b): return",
       "      self.L.pop()",
       "    while len(self.L) >= 2:",
       "      ab1 = self.L[-2]",
@@ -779,27 +783,43 @@
       "      if not self.is_bad(ab1, ab2, ab3): break",
       "      self.L.pop()",
       "    self.L.append(ab3)",
-      "    if self.cnt >= len(self.L): self.cnt = len(self.L) - 1",
-      "  # xの最大値を取得",
+      "    if not self.is_min and self.cnt >= len(self.L): self.cnt = len(self.L) - 1",
+      "  # xでの最小値/最大値を取得",
       "  # 前回チェックしたxより小さい値はチェックできない",
-      "  def check(self, x):",
+      "  def query(self, x):",
+      "    if self.is_min and not self.started:",
+      "      self.cnt = len(self.L) - 1",
+      "      self.started = True",
       "    a = self.func(x, self.cnt)",
-      "    while self.cnt < len(self.L) - 1:",
-      "      b = self.func(x, self.cnt + 1)",
-      "      if a > b: break",
-      "      self.cnt += 1",
-      "      a = b",
+      "    if self.is_min:",
+      "      while self.cnt > 0:",
+      "        b = self.func(x, self.cnt - 1)",
+      "        if self.better(a, b): break",
+      "        self.cnt -= 1",
+      "        a = b",
+      "    else:",
+      "      while self.cnt < len(self.L) - 1:",
+      "        b = self.func(x, self.cnt + 1)",
+      "        if self.better(a, b): break",
+      "        self.cnt += 1",
+      "        a = b",
       "    return a",
       "  def is_bad(self, ab1, ab2, ab3):",
       "    a1, b1 = ab1",
       "    a2, b2 = ab2",
       "    a3, b3 = ab3",
-      "    return (b2 - b1) * (a2 - a3) >= (b3 - b2) * (a1 - a2)",
+      "    x = (b2 - b1) * (a2 - a3)",
+      "    y = (b3 - b2) * (a1 - a2)",
+      "    return x <= y if self.is_min else x >= y",
+      "  def better(self, a, b):",
+      "    return a < b if self.is_min else a > b",
+      "  def better_eq(self, a, b):",
+      "    return a <= b if self.is_min else a >= b",
       "  def func(self, x, n):",
       "    a, b = self.L[n]",
       "    return a * x + b",
       "",
-      "# usage: cht = CHT(); cht.add(a, b); v = cht.query(x)"
+      "# usage: cht = CHT(is_min=True); cht.add(a, b); v = cht.query(x)"
     ]
   }
 }

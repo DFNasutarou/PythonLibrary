@@ -85,7 +85,7 @@
       "    binary_str = bin(n)[2:]",
       "    return binary_str.zfill(M)",
       "",
-      "# usage: ba = BitAll(N); ba.update(i, x, kind); ba.getV(r, kind)"
+      "# usage: for s in BitAll.bitall(M): ...; idx = BitAll.set_bit_indices(s)"
     ],
     "description": "BIT 全部入り BitAll (用途別 BIT の集合管理、index 振り分け)",
     "scope": "python"

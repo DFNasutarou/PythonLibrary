@@ -730,6 +730,9 @@
       "    if x != 1:",
       "      p[x] = 1",
       "    return p",
+      "  def factorize(self, x):",
+      "    if x < len(self.lpf): return self.primeFactrizationSmall(x)",
+      "    return self.primeFactrizationBig(x)",
       "",
       "# usage: pr = Prime(N); pr.getPrimeList(); pr.factorize(x)"
     ],
@@ -1052,7 +1055,8 @@
       "    self.shift = bits if bits > 0 else 1",
       "    # b を取り出すためのマスク (1 << shift) - 1",
       "    self.mask = (1 << self.shift) - 1",
-      "  def pack(self, data):",
+      "  def pack(self, *data):",
+      "    if len(data) == 1 and not isinstance(data[0], int): data = data[0]",
       "    ans = 0",
       "    for d in data:",
       "      ans = ans << self.shift | d",
@@ -1218,7 +1222,7 @@
       "        lst.append((bit, self.basis[bit], self.basis_mask[bit]))",
       "    return lst",
       "",
-      "# usage: b = XORBasis(); b.add(x); b.contains(x); b.dim()"
+      "# usage: b = XORBasis([3, 5]); mask = b.represent(6); basis = b.get_basis_list()"
     ]
   },
   "way12": {

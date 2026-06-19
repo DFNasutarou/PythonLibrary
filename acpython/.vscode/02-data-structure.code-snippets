@@ -447,8 +447,6 @@
       "  @staticmethod",
       "  def opfunc(a, b): return [a[0] * b[0] % segtreeFactory.MOD, (b[0] * a[1] + b[1]) % segtreeFactory.MOD] # 左を内側にして結合",
       "",
-      "seg = segtreeFactory.makeMaxSegTree(N)",
-      "",
       "# usage: t = segtree([0]*N, op=lambda a,b:a+b, e=lambda:0); t.set(i,x); t.prod(l,r)"
     ],
     "description": "セグメント木 (op / e を関数で渡す汎用版)",
@@ -1315,7 +1313,7 @@
   "rangeList": {
     "scope": "python",
     "prefix": "rangeList",
-    "description": "区間 [l, r) のマージ管理 (重なる区間を自動結合・含有判定)",
+    "description": "区間リストの解析 (包含区間の削除・包含/非交差ペア検出・被覆に必要な区間列)",
     "body": [
       "class RangeList:",
       "  def __init__(self, v : list[int, int]):",
@@ -1324,7 +1322,7 @@
       "    入力：[[l1, r1], [l2, r2], ･･･]",
       "    保持：[[l1, r1, ind1], [l2, r2, ind2], ･･･]",
       "    \"\"\"",
-      "    self.v = [v[i] + [i] for i in range(len(v))]",
+      "    self.v = [list(v[i]) + [i] for i in range(len(v))]",
       "  def remove_nest(self):",
       "    \"\"\"",
       "    処理: li <= lj <= rj <= ri を満たす [lj, rj] を削除",
@@ -1382,7 +1380,7 @@
       "      if ret >= end: return result",
       "    return []",
       "",
-      "# usage: rl = RangeList([(1,3),(5,7)]); rl.add(2, 6); rl.contains(x)"
+      "# usage: rl = RangeList([(1,3),(5,7)]); pair = rl.find_nest_pair(); cover = rl.find_cover_ranges(l, r)"
     ]
   },
   "union_persist": {
@@ -1850,7 +1848,7 @@
       "    packed = (a << self.shift) | b",
       "    return super().count(packed)",
       "",
-      "# usage: p = Packed2DList(); p.append((a, b)); a, b = p.unpack(0)"
+      "# usage: p = Packed2DList(N=10**6); p.append(a, b); a, b = p[0]"
     ]
   }
 }

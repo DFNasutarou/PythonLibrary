@@ -25,8 +25,10 @@
       "    t = ((self.H1[r] - self.H1[l] * self.P1[r - l]) % self.MOD1 + self.MOD1) % self.MOD1",
       "    k = ((self.H2[r] - self.H2[l] * self.P2[r - l]) % self.MOD2 + self.MOD2) % self.MOD2",
       "    return (t, k)",
+      "  def same(self, l1, r1, l2, r2):",
+      "    return self.hashLR(l1, r1) == self.hashLR(l2, r2)",
       "",
-      "# usage: r = Rori(S); r.hash(l, r); r.same(l1, r1, l2, r2)"
+      "# usage: r = Rori(S); h = r.hashLR(l, r); ok = r.same(l1, r1, l2, r2)"
     ],
     "description": "ローリングハッシュ Rori (二重 mod、文字列の部分一致を O(1) で比較)",
     "scope": "python"
@@ -311,7 +313,7 @@
       "    Returns:",
       "        int: ユニークな回文の種類数",
       "    \"\"\"",
-      "    return len(self.nodelist)",
+      "    return len(self.nodelist) - 1",
       "  # 最大の長さの文字数",
       "  def getMaxSize(self) : return self.maxNode.length",
       "  # 最大の長さの文字",

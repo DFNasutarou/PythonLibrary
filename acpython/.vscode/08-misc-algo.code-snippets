@@ -196,7 +196,7 @@
       "    b.update(d, 1)",
       "  return ans",
       "",
-      "# usage: cnt = inversion_count(A)"
+      "# usage: cnt = tentou(A)"
     ],
     "description": "転倒数 (BIT で O(N log N))",
     "scope": "python"

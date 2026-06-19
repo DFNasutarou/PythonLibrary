@@ -257,14 +257,15 @@
       "  def exe(self):",
       "    self.C.sort()",
       "    ans = []",
+      "    total = 0",
       "    for i in range(len(self.C)):",
       "      x, a, b, n = self.C[i]",
       "      if self.U.merge(a, b):",
       "        ans.append([n, a, b, x])",
-      "        self.U.merge(a, b)",
-      "    return ans",
+      "        total += x",
+      "    return total, ans",
       "",
-      "# usage: edges = [(w, a, b), ...]; total, mst_edges = kruskal(N, edges)"
+      "# usage: k = Kruskal(N); k.add(a, b, w); total, mst_edges = k.exe()"
     ],
     "description": "クラスカル法 (最小全域木 MST、辺ソート + Union-Find)",
     "scope": "python"
@@ -535,14 +536,14 @@
     "body": [
       "class scc_graph:",
       "  @staticmethod",
-      "  def scc(gf : GraphDataDirected):",
+      "  def scc(N, g):",
       "    \"\"\"",
-      "    有向グラフから強連結成分分解",
+      "    有向グラフの隣接リストから強連結成分分解",
       "    \"\"\"",
-      "    return scc_graph._scc(gf.N, gf.AdjacencyList)",
+      "    return scc_graph._scc(N, g)",
       "  ",
       "  @staticmethod",
-      "  def scc_graph(gf : GraphDataDirected):",
+      "  def scc_graph(gf):",
       "    \"\"\"",
       "    有向グラフから強連結成分を圧縮した有向グラフを返す",
       "    番号の昇順に見るとDAGになっている",
@@ -585,7 +586,8 @@
       "          ord[v]=NG[0]",
       "          NG[0]+=1",
       "          visited.append(v)",
-      "          for _, to in g[v]:",
+      "          for edge in g[v]:",
+      "            to = edge[1] if isinstance(edge, (tuple, list)) else edge",
       "            if ord[to]==-1:",
       "              stack.append((to,v,0))",
       "              stack.append((to,v,1))",
@@ -619,7 +621,7 @@
       "      groups[ids[i]].append(i)",
       "    return groups",
       "",
-      "# usage: groups = scc_graph.scc(g); n_components = len(groups)"
+      "# usage: groups = scc_graph.scc(N, adj); n_components = len(groups)"
     ],
     "description": "強連結成分分解 SCC (有向グラフを縮約して DAG 化)",
     "scope": "python"
@@ -1000,7 +1002,7 @@
       "    L.reverse()",
       "    return L",
       "",
-      "# usage: wf = warflo(N, inf); wf.add_edge(a, b, w); D = wf.calc()"
+      "# usage: wf = warflo(N, inf); wf.add(a, b, w); D = wf.exe()"
     ],
     "description": "ワーシャル・フロイド法 (全点対最短距離 O(N^3))",
     "scope": "python"
@@ -1544,7 +1546,7 @@
       "      data = tl",
       "    return D, parent",
       "",
-      "# usage: g = Graph(N); g.add_edge(a, b, w_0_or_1); d = g.bfs01(s)"
+      "# usage: g = Graph(N, weighted=True); g.add_edge(a, b, w_0_or_1); d = BFS(g).bfs01(s)"
     ]
   },
   "dag": {
@@ -1652,7 +1654,7 @@
       "      for j in L[i]: mcg.add_edge(i, j, 1)",
       "    return mcg",
       "",
-      "# usage: m = Matching(L, R); m.add_edge(l, r); n = m.solve()"
+      "# usage: m = Matching(N); m.add_edge(l, r); n = m.flow()"
     ]
   },
   "particalgraph": {
@@ -1827,14 +1829,14 @@
       "    ord = [-1] * self._n",
       "    ids = [0] * self._n",
       "    # 再帰関数 ",
-      "    def dfs(self, v, now_ord, group_num):",
+      "    def dfs(rec, v, now_ord, group_num):",
       "      low[v] = ord[v] = now_ord",
       "      now_ord += 1",
       "      visited.append(v)",
       "      if v in self.g:",
       "        for to in self.g[v]:",
       "          if ord[to] == -1:",
-      "            now_ord, group_num = self(self, to, now_ord, group_num)",
+      "            now_ord, group_num = rec(rec, to, now_ord, group_num)",
       "            low[v] = min(low[v], low[to])",
       "          else:",
       "            low[v] = min(low[v], ord[to])",
@@ -1869,7 +1871,7 @@
       "      self.frm = frm",
       "      self.to = to",
       "",
-      "# usage: ts = TwoSAT(N); ts.add_clause(x, vx, y, vy); ok, assign = ts.solve()"
+      "# usage: ts = two_sat(N); ts.add_clause(x, vx, y, vy); ok = ts.satisfiable(); ans = ts.answer()"
     ],
     "description": "2-SAT (含意グラフ + SCC、節集合を満たす変数割当を判定/構成)",
     "scope": "python"
@@ -1931,7 +1933,7 @@
       "    if complete: return dist[en]",
       "    else: return None",
       "",
-      "# usage: u = Ushi(N); u.add_constraint(a, b, w); ok, vals = u.solve()"
+      "# usage: u = Ushi(N); u.add_edge(a, b, w); ans = u.ushi_maximam(st, en)"
     ]
   },
   "grid": {
@@ -1939,6 +1941,7 @@
     "body": [
       "class gridMan:",
       "  def __init__(self, L):",
+      "    L = [[0 if c == '.' else (-2 if c == '#' else c) for c in row] for row in L]",
       "    self.L = L",
       "    self.H = len(self.L)",
       "    self.W = len(self.L[0])",

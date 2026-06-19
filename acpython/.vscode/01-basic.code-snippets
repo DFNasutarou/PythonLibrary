@@ -68,7 +68,7 @@
     "body": [
       "from functools import cmp_to_key",
       "def cmpstr(a, b):",
-      "    return ${1:a < b}",
+      "    return (a > b) - (a < b)",
       "${2:arr} = sorted(${2:arr}, key=cmp_to_key(cmpstr))$0"
     ],
     "description": "cmp_to_key で比較関数 sort (比較式と対象リストを placeholder)",
@@ -88,7 +88,7 @@
     "description": "再帰上限の引き上げ (sys.setrecursionlimit)",
     "body": [
       "import sys",
-      "sys.setrecursionlimit(${1:500000000})$0"
+      "sys.setrecursionlimit(${1:10**7})$0"
     ]
   },
   "itertools": {

@@ -3,6 +3,8 @@
     "prefix": "rori",
     "body": [
       "class Rori:",
+      "  # hashLR(l, r): [l, r) のハッシュ値(2つのmodの組)を返す",
+      "  # same(l1, r1, l2, r2): [l1, r1) と [l2, r2) が同じ文字列かを返す",
       "  B1 = 1009",
       "  B2 = 1007",
       "  MOD1 = 10 ** 9 + 7",
@@ -28,7 +30,10 @@
       "  def same(self, l1, r1, l2, r2):",
       "    return self.hashLR(l1, r1) == self.hashLR(l2, r2)",
       "",
-      "# usage: r = Rori(S); h = r.hashLR(l, r); ok = r.same(l1, r1, l2, r2)"
+      "# usage",
+      "# r = Rori(S)",
+      "# h = r.hashLR(l, r)",
+      "# ok = r.same(l1, r1, l2, r2)"
     ],
     "description": "ローリングハッシュ Rori (二重 mod、文字列の部分一致を O(1) で比較)",
     "scope": "python"
@@ -233,7 +238,10 @@
       "  s2 = list(map(ord, s))",
       "  return sa_is(s2, 255)",
       "",
-      "# usage: 内部関数を直接 import する用途別ライブラリ"
+      "# usage",
+      "# sa = suffix_array(s)",
+      "# lcp = lcp_array(s, sa)",
+      "# z = z_algorithm(s)"
     ],
     "description": "文字列アルゴリズム集 (suffix array / LCP / 文字列ソート関連まとめ)",
     "scope": "python"
@@ -356,7 +364,10 @@
       "    return x == self.S[-2 - length]",
       "  ",
       "",
-      "# usage: et = eertree(); et.addChar(c); cnt = et.getCount()"
+      "# usage",
+      "# et = eertree()",
+      "# et.addChar(c)",
+      "# cnt = et.getCount()"
     ]
   },
   "hensyukyori": {
@@ -400,7 +411,8 @@
       "  # for d in dp: print(d)",
       "  return dp[-1][k]",
       "",
-      "# usage: d = hensyuKyori(S, T)"
+      "# usage",
+      "# d = hensyuKyori(S, T)"
     ]
   },
   "suffixarray": {
@@ -455,7 +467,10 @@
       "    for i in range(self.N):",
       "      print(self.S[self.sa[i]:])",
       "",
-      "# usage: sa = SA(S); sa.suffix_array(); sa.lcp_array()"
+      "# usage",
+      "# sa = SA(S)",
+      "# positions = sa.sa",
+      "# lcp = sa.lcp"
     ]
   },
   "zalg": {
@@ -479,7 +494,9 @@
       "    \"\"\"",
       "    return atcoder.string.z_algorithm(s)",
       "",
-      "# usage: z = Zalg(S); arr = z.z_array()"
+      "# usage",
+      "# z = Zalg(S)",
+      "# arr = z.z"
     ]
   }
 }

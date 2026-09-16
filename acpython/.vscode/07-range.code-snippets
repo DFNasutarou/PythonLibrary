@@ -3,6 +3,9 @@
     "prefix": "mo",
     "body": [
       "class Mo:",
+      "  # getAns(): 各クエリの答えのリストを返す",
+      "  # 以下はサブクラスでオーバーライドして使う拡張点:",
+      "  # ini(): 初期化 / l_plus,l_minus,r_plus,r_minus(): 区間の伸縮時の処理 / anser(i): i番目の答えを確定させる",
       "  def __init__(self, N, Query):",
       "    self.N = N",
       "    self.Query = Query",
@@ -52,7 +55,9 @@
       "  def r_minus(self):",
       "    self.r -= 1",
       "",
-      "# usage: class MyMo(Mo): ...; ans = MyMo(N, Query).getAns()"
+      "# usage",
+      "# class MyMo(Mo): ...",
+      "# ans = MyMo(N, Query).getAns()"
     ],
     "description": "Mo's algorithm (区間クエリのオフライン処理、√N ブロック並べ替え)",
     "scope": "python"
@@ -135,7 +140,8 @@
       "      ans[i + 1] = sm",
       "    return ans",
       "",
-      "# usage: m = RangeAffine.range_min_sum_list(L)"
+      "# usage",
+      "# m = RangeAffine.range_min_sum_list(L)"
     ]
   },
   "imos2d": {
@@ -144,6 +150,8 @@
     "description": "2D いもす法 (矩形加算 + 累積和、計算 O(HW))",
     "body": [
       "class Imos2D:",
+      "  # add(h1, w1, h2, w2, value): 矩形範囲[h1,h2)x[w1,w2)に value を加算する",
+      "  # get_data(): 累積和を取って現在の2次元配列を返す",
       "  def __init__(self, H, W) -> None:",
       "    self.H = H",
       "    self.W = W",
@@ -169,7 +177,10 @@
       "        ret[i][j] += ret[i - 1][j]",
       "    return ret",
       "",
-      "# usage: im = Imos2D(H, W); im.add(r1, c1, r2, c2, v); G = im.get_data()"
+      "# usage",
+      "# im = Imos2D(H, W)",
+      "# im.add(r1, c1, r2, c2, v)",
+      "# G = im.get_data()"
     ]
   },
   "squaresplit": {
@@ -247,7 +258,9 @@
       "      self.qs.effort_other(ind, b, value)",
       "    return ans",
       "",
-      "# usage: sq = SquareSpilit(gf, qs); ans = sq.query(q)"
+      "# usage",
+      "# sq = SquareSpilit(gf, qs)",
+      "# ans = sq.query(q)"
     ]
   }
 }

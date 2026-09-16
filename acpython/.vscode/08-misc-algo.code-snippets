@@ -85,7 +85,9 @@
       "    binary_str = bin(n)[2:]",
       "    return binary_str.zfill(M)",
       "",
-      "# usage: for s in BitAll.bitall(M): ...; idx = BitAll.set_bit_indices(s)"
+      "# usage",
+      "# for s in BitAll.bitall(M): ...",
+      "# idx = BitAll.set_bit_indices(s)"
     ],
     "description": "BIT 全部入り BitAll (用途別 BIT の集合管理、index 振り分け)",
     "scope": "python"
@@ -143,7 +145,9 @@
       "    ng = -1",
       "    return nibutan.nibutan(ok, ng, op)",
       "",
-      "# usage: x = nibutan.nibutan(ok, ng, op); i = nibutan.le(L, n)"
+      "# usage",
+      "# x = nibutan.nibutan(ok, ng, op)",
+      "# i = nibutan.le(L, n)"
     ],
     "description": "二分探索 (汎用 nibutan + ソート列向け lt / le / gt / ge staticmethod)",
     "scope": "python"
@@ -196,7 +200,8 @@
       "    b.update(d, 1)",
       "  return ans",
       "",
-      "# usage: cnt = tentou(A)"
+      "# usage",
+      "# cnt = tentou(A)"
     ],
     "description": "転倒数 (BIT で O(N log N))",
     "scope": "python"

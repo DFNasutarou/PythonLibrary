@@ -4,6 +4,12 @@
     "body": [
       "import heapq",
       "class HeapQue:",
+      "  # pop(): 最小(is_max時は最大)値を取り出す",
+      "  # top(): 最小(is_max時は最大)値を覗き見る",
+      "  # push(x): 値を追加する",
+      "  # pushpop(x): x を追加してから最小(is_max時は最大)値を取り出す",
+      "  # is_empty(): 空かどうかを返す",
+      "  # reset(): 中身を空にする",
       "  def __init__(self, is_max = False, default = None):",
       "    self.q = []",
       "    self.mlt = -1 if is_max else 1 # 最大値を管理する場合は反転させる",
@@ -19,35 +25,41 @@
       "  def is_empty(self): return self.q == []",
       "  def reset(self): self.q = []",
       "",
-      "# usage: q = HeapQue(is_max=True); q.push(x); q.pop()"
+      "# usage",
+      "# q = HeapQue(is_max=True)",
+      "# q.push(x)",
+      "# q.pop()"
     ],
     "description": "ヒープキュー HeapQue (最大/最小切替・default 値・push/pop/top/pushpop)",
     "scope": "python"
   },
-  "input": {
-    "prefix": "input",
+  "zaatsu": {
+    "prefix": "zaatsu",
     "body": [
-      "import sys",
-      "input = sys.stdin.readline",
-      ""
+      "class Zaatsu:",
+      "  # compress(): 初期化時に渡した A を順位(0-indexed, 小さい順)のリストに変換したものを返す",
+      "  # rank(x): 値 x の順位(0-indexed)を返す (x は A に含まれる値限定)",
+      "  # value(i): 順位 i に対応する元の値を返す",
+      "  def __init__(self, A):",
+      "    self.sorted = sorted(set(A))",
+      "    self.rank_map = {v: i for i, v in enumerate(self.sorted)}",
+      "    self.comp = self._compress(A)",
+      "  def compress(self):",
+      "    return self.comp",
+      "  def rank(self, x):",
+      "    return self.rank_map[x]",
+      "  def value(self, i):",
+      "    return self.sorted[i]",
+      "  def _compress(self, A):",
+      "    rank_map = self.rank_map",
+      "    return [rank_map[a] for a in A]",
+      "",
+      "# usage",
+      "# z = Zaatsu(${1:A})",
+      "# comp = z.compress()",
+      "# v = z.value(2)$0"
     ],
-    "description": "入力高速化 (input = sys.stdin.readline)",
-    "scope": "python"
-  },
-  "list": {
-    "prefix": "li",
-    "body": [
-      "${1:A} = list(map(int, input().split()))$0"
-    ],
-    "description": "1行を int リストに変換 (placeholder で変数名指定)",
-    "scope": "python"
-  },
-  "listfor": {
-    "prefix": "listfor",
-    "body": [
-      "${1:Q} = [list(map(int, input().split())) for _ in range(${2:N})]$0"
-    ],
-    "description": "N 行を int リストの 2D に (Q 名前と N サイズを placeholder で指定)",
+    "description": "座標圧縮 Zaatsu (値→順位/順位→値、前処理 O(N log N)・rank/value は O(1))",
     "scope": "python"
   },
   "queue": {
@@ -58,7 +70,9 @@
       "put = q.append",
       "get = q.popleft",
       "",
-      "# usage: put(x); x = get()"
+      "# usage",
+      "# put(x)",
+      "# x = get()"
     ],
     "description": "FIFO キュー (deque の薄いラッパ、put/get エイリアス)",
     "scope": "python"
@@ -68,10 +82,11 @@
     "body": [
       "from functools import cmp_to_key",
       "def cmpstr(a, b):",
+      "    # 比較ロジックをここで書き換える (0:等しい, 負:aが先, 正:bが先)",
       "    return (a > b) - (a < b)",
-      "${2:arr} = sorted(${2:arr}, key=cmp_to_key(cmpstr))$0"
+      "${1:arr} = sorted(${1:arr}, key=cmp_to_key(cmpstr))$0"
     ],
-    "description": "cmp_to_key で比較関数 sort (比較式と対象リストを placeholder)",
+    "description": "cmp_to_key で比較関数 sort (cmpstr の中身を書き換えて使う、対象リストを placeholder)",
     "scope": "python"
   },
   "abc": {
@@ -82,9 +97,9 @@
     "description": "アルファベット 26 文字定数 ABC",
     "scope": "python"
   },
-  "saiki": {
+  "reclimit": {
     "scope": "python",
-    "prefix": "saiki",
+    "prefix": "reclimit",
     "description": "再帰上限の引き上げ (sys.setrecursionlimit)",
     "body": [
       "import sys",
@@ -94,84 +109,44 @@
   "itertools": {
     "scope": "python",
     "prefix": "itertools",
-    "description": "itertools 系ユーティリティ (ランレングス圧縮 rle / rle_int)",
+    "description": "itertools 系ユーティリティ (rle/rle_int/unrle/accumulate/pairwise/flatten)",
     "body": [
       "import itertools",
       "class itr:",
-      "  @ staticmethod",
+      "  # rle(S): ランレングス圧縮 [(値, 個数), ...] を返す",
+      "  # rle_int(S): 0~9の数字とみなしてランレングス圧縮する",
+      "  # unrle(pairs): rle/rle_int の結果から元の列を復元する",
+      "  # accumulate(A, initial=0): 累積和のリストを返す (先頭に initial を含む)",
+      "  # pairwise(A): 隣接する要素のペア (a[i], a[i+1]) のリストを返す",
+      "  # flatten(A): 2次元リストを1次元に平坦化する",
+      "  @staticmethod",
       "  def rle(S):",
-      "    \"\"\"",
-      "      ランレングス圧縮を行う",
-      "    \"\"\"",
-      "    ans = [(k, len(list(g))) for k,g in itertools.groupby(S)]",
-      "    return ans",
-      "  @ staticmethod",
+      "    return [(k, len(list(g))) for k, g in itertools.groupby(S)]",
+      "  @staticmethod",
       "  def rle_int(S):",
-      "    \"\"\"",
-      "      0~9の数字とみなして",
-      "      ランレングス圧縮を行う",
-      "    \"\"\"",
-      "    ans = [(int(k), len(list(g))) for k,g in itertools.groupby(S)]",
+      "    return [(int(k), len(list(g))) for k, g in itertools.groupby(S)]",
+      "  @staticmethod",
+      "  def unrle(pairs):",
+      "    ans = []",
+      "    for v, c in pairs:",
+      "      ans.extend([v] * c)",
       "    return ans",
+      "  @staticmethod",
+      "  def accumulate(A, initial=0):",
+      "    return list(itertools.accumulate(A, initial=initial))",
+      "  @staticmethod",
+      "  def pairwise(A):",
+      "    return list(itertools.pairwise(A))",
+      "  @staticmethod",
+      "  def flatten(A):",
+      "    return list(itertools.chain.from_iterable(A))",
       "",
-      "# usage: itr.rle(\"aabbb\") -> [(\"a\",2),(\"b\",3)]"
-    ]
-  },
-  "deque": {
-    "scope": "python",
-    "prefix": "deque",
-    "description": "両端キュー Deque (両端 O(1)・ランダムアクセス対応・二重スタック実装)",
-    "body": [
-      "class Deque:",
-      "  def __init__(self, d: list[int] = []):",
-      "    self._normalize(d)",
-      "  def add_r(self, n):",
-      "    \"\"\"末尾に追加\"\"\"",
-      "    self.R.append(n)",
-      "    # print(\"add\", n, self.getList())",
-      "  def add_l(self, n):",
-      "    \"\"\"先頭に追加\"\"\"",
-      "    self.L.append(n)",
-      "    # print(\"add\", n, self.getList())",
-      "  def pop_r(self):",
-      "    \"\"\"末尾から取得\"\"\"",
-      "    if self.R == [] and len(self.L) == 1: ",
-      "      n = self.L.pop()",
-      "    else:",
-      "      if self.R == []: self._normalize(self.L[::-1])",
-      "      n = self.R.pop()",
-      "    # print(\"pop\", n, self.getList())",
-      "    return n",
-      "  def pop_l(self):",
-      "    \"\"\"先頭から取得\"\"\"",
-      "    if self.L == [] and  len(self.R) == 1: ",
-      "      n = self.R.pop()",
-      "    else:",
-      "      if self.L == []: self._normalize(self.R)",
-      "      n = self.L.pop()",
-      "    # print(\"pop\", n, self.getList())",
-      "    return n",
-      "  def size(self):",
-      "    \"\"\"要素数を返す\"\"\"",
-      "    return len(self.L) + len(self.R)",
-      "  def is_empty(self):",
-      "    \"\"\"空かどうか返す\"\"\"",
-      "    return self.size() == 0",
-      "  def get(self, ind):",
-      "    \"\"\"先頭からind番目を取得\"\"\"",
-      "    if ind < len(self.L):",
-      "      return self.L[-ind - 1]",
-      "    ind -= len(self.L)",
-      "    return self.R[ind]",
-      "      ",
-      "  def _normalize(self, d):",
-      "    self.L = d[:len(d) // 2][::-1]",
-      "    self.R = d[len(d) // 2:]",
-      "  def getList(self):",
-      "    \"\"\"チェック用 O(N)\"\"\"",
-      "    return self.L[::-1] + self.R",
-      "",
-      "# usage: dq = Deque([1,2,3]); dq.add_r(4); dq.pop_l()"
+      "# usage",
+      "# itr.rle(\"aabbb\") -> [(\"a\", 2), (\"b\", 3)]",
+      "# itr.unrle([(\"a\", 2), (\"b\", 3)]) -> [\"a\", \"a\", \"b\", \"b\", \"b\"]",
+      "# itr.accumulate([1, 2, 3]) -> [0, 1, 3, 6]",
+      "# itr.pairwise([1, 2, 3]) -> [(1, 2), (2, 3)]",
+      "# itr.flatten([[1, 2], [3, 4]]) -> [1, 2, 3, 4]"
     ]
   },
   "query": {
@@ -180,6 +155,7 @@
     "description": "クエリ種別ディスパッチャ Query_solve (ops[i-ind](*que) で呼び分け)",
     "body": [
       "class Query_solve:",
+      "  # solve(Query): 各クエリの先頭要素(種別番号)に対応する ops の処理を呼び出す",
       "  def __init__(self, ops, ind = 1):",
       "    self.ops = ops",
       "    self.ind = ind",
@@ -188,7 +164,9 @@
       "      i, que = query[0], query[1:]",
       "      self.ops[i - self.ind](*que)",
       "",
-      "# usage: solver = Query_solve([op_add, op_get]); solver.solve(Q)"
+      "# usage",
+      "# solver = Query_solve([op_add, op_get])",
+      "# solver.solve(Q)"
     ]
   }
 }

@@ -3,6 +3,9 @@
     "prefix": "treedp",
     "body": [
       "class Tree:",
+      "  # setByAdjacencyList(list): 隣接リストから木を作る",
+      "  # makeRank(root): root を根として各ノードの親/子/深さを計算する",
+      "  # allDP(): 全方位木DP(ボトムアップ+トップダウン)を実行し結果を返す",
       "  def __init__(self, num):",
       "    self.N = num",
       "    self.C = {}",
@@ -66,7 +69,11 @@
       "  def inv(self, a, mod): #逆元",
       "    return pow(a, mod - 2, mod)",
       "",
-      "# usage: t = Tree(N); t.set(u, v); ans = t.dp(root)"
+      "# usage",
+      "# t = Tree(N)",
+      "# t.setByAdjacencyList(edges)",
+      "# t.makeRank(root)",
+      "# ans = t.allDP()"
     ],
     "description": "木 DP (子の DFS 結果から親へ集約する典型木 DP テンプレ)",
     "scope": "python"
@@ -316,7 +323,9 @@
       "    def unsuccessful(self, state) -> bool: return state == self._n + 1",
       "    def stateList(self): return range(self._n + 2)",
       "",
-      "# usage: dfa = DFA.And(DFA.Leq(N), DFA.DigitSumMultipleOF(k)); ans = DFA.count(dfa, len(str(N)), DFA.ALP_DIGIT)"
+      "# usage",
+      "# dfa = DFA.And(DFA.Leq(N), DFA.DigitSumMultipleOF(k))",
+      "# ans = DFA.count(dfa, len(str(N)), DFA.ALP_DIGIT)"
     ]
   },
   "nfa": {
@@ -624,7 +633,9 @@
       "",
       "    return dfa_state_size, alphabet, dfa_transitions, state_map[dfa_start_state], list(dfa_accept_states)",
       "",
-      "# usage: dfa = DFAFactory.make_dfa_by_nfa(state_size, alphabet, trans, [start], accept_states); ans = DFA.count(dfa, n, alphabet)"
+      "# usage",
+      "# dfa = DFAFactory.make_dfa_by_nfa(state_size, alphabet, trans, [start], accept_states)",
+      "# ans = DFA.count(dfa, n, alphabet)"
     ]
   },
   "slopetrick": {
@@ -705,7 +716,11 @@
       "  def debug(self):",
       "    print(self.min, self.L.q, self.R.q)",
       "",
-      "# usage: st = SlopeTrick(); st.add_left(a); st.add_right(a); st.get_min()"
+      "# usage",
+      "# st = SlopeTrick()",
+      "# st.add_left(a)",
+      "# st.add_right(a)",
+      "# st.get_min()"
     ]
   },
   "LIS": {
@@ -762,7 +777,9 @@
       "         data[i] = n + 1",
       "    return LIS, data",
       "",
-      "# usage: length = LIS.lis_length(A); dp = LIS.lis(A)"
+      "# usage",
+      "# length = LIS.lis_length(A)",
+      "# dp = LIS.lis(A)"
     ]
   },
   "cht": {
@@ -828,7 +845,10 @@
       "    a, b = self.L[n]",
       "    return a * x + b",
       "",
-      "# usage: cht = CHT(is_min=True); cht.add(a, b); v = cht.query(x)"
+      "# usage",
+      "# cht = CHT(is_min=True)",
+      "# cht.add(a, b)",
+      "# v = cht.query(x)"
     ]
   }
 }

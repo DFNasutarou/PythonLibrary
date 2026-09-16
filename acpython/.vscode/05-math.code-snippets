@@ -38,7 +38,8 @@
       "def proc(L):",
       "  pass",
       "",
-      "# usage: exe(L, MOD) # L が in-place で畳み込まれる"
+      "# usage",
+      "# exe(L, MOD)  # L が in-place で畳み込まれる"
     ],
     "description": "アダマール変換 FWT (XOR 畳み込み、長さ 2^k)",
     "scope": "python"
@@ -47,8 +48,13 @@
     "prefix": "comb",
     "body": [
       "class comb():",
+      "  # com(n, k): n個からk個選ぶ組み合わせの数",
+      "  # com_multi(n, k): n個から重複を許してk個選ぶ組み合わせの数",
+      "  # per(n, k): n個からk個並べる順列の数",
+      "  # cataran(n): n番目のカタラン数",
+      "  # narayana(n, k): n, k番目のnarayana数",
       "  \"\"\"",
-      "  組み合わせ系",
+      "  その他の組み合わせ系メソッドあり",
       "  参考",
       "  # https://kanpurin.hatenablog.com/entry/2021/09/15/220913#kousashinai",
       "  \"\"\"",
@@ -141,7 +147,10 @@
       "      ans %= self.MOD",
       "    return ans",
       "",
-      "# usage: c = comb(N, MOD); c.com(n, k); c.com_multi(n, k)"
+      "# usage",
+      "# c = comb(N, MOD)",
+      "# c.com(n, k)",
+      "# c.com_multi(n, k)"
     ],
     "description": "二項係数 comb (前計算 階乗+逆元、O(N) 前処理 / O(1) クエリ)",
     "scope": "python"
@@ -288,7 +297,9 @@
       "        i += 1",
       "    return a",
       "",
-      "# usage: c = Convolution(MOD); h = c.convolve(f, g)"
+      "# usage",
+      "# c = Convolution(MOD)",
+      "# h = c.convolution(f, g)"
     ],
     "description": "畳み込み MOD (NTT、特定 mod 用)",
     "scope": "python"
@@ -336,7 +347,8 @@
       "",
       "    return h[:len(f) + len(g) - 1]",
       "",
-      "# usage: h = convolve(f, g)"
+      "# usage",
+      "# h = convolve(f, g)"
     ],
     "description": "畳み込み (numpy.convolve、整数係数 / 高速だが MOD 不可)",
     "scope": "python"
@@ -373,7 +385,8 @@
       "    ans %= MOD",
       "  return ans",
       "",
-      "# usage: ans = exe(x)"
+      "# usage",
+      "# ans = divhoujo(D)"
     ],
     "description": "除数包除 (約数包除原理 / ディリクレ畳み込み)",
     "scope": "python"
@@ -393,7 +406,8 @@
       "        R.append(n // i)",
       "  return L + R[::-1]",
       "",
-      "# usage: divs = divisor(n)"
+      "# usage",
+      "# divs = divisor(n)"
     ],
     "description": "約数列挙 (O(√N))",
     "scope": "python"
@@ -430,7 +444,8 @@
       "        n >>= 1",
       "    return y",
       "",
-      "# usage: A = mat_pow(M, k)  # M 正方、k 指数"
+      "# usage",
+      "# A = mat_pow(M, k)  # M 正方、k 指数"
     ],
     "description": "行列累乗 mat_pow (ダブリング、MOD は冒頭で要定義)",
     "scope": "python"
@@ -454,7 +469,8 @@
       "        L[j] ^= L[k - 1]",
       "  return L",
       "",
-      "# usage: basis = hakidasi(L)"
+      "# usage",
+      "# basis = hakidasi(L)"
     ],
     "description": "XOR 掃き出し (整数列を GF(2) 上で階段化、in-place)",
     "scope": "python"
@@ -463,6 +479,9 @@
     "prefix": "inv",
     "body": [
       "class Inv:",
+      "  # invx(a): a の逆元 (a^-1 mod MOD) を返す",
+      "  # invL(n): 0 <= x <= n の逆元リストを返す",
+      "  # invpowL(a, n): a^-x (0 <= x <= n) のリストを返す",
       "  def __init__(self, mod):",
       "    self.MOD = mod",
       "  def modpow(self, a, n):",
@@ -487,7 +506,10 @@
       "      I.append(self.MOD - I[self.MOD % i] * (self.MOD // i) % self.MOD)",
       "    return I",
       "",
-      "# usage: inv = Inv(MOD); inv.invx(a); inv.invL(n)"
+      "# usage",
+      "# inv = Inv(MOD)",
+      "# inv.invx(a)",
+      "# inv.invL(n)"
     ],
     "description": "逆元 Inv クラス (modpow + 単発逆元 + 逆元リスト)",
     "scope": "python"
@@ -508,7 +530,9 @@
       "    D = turn(D)",
       "  return D",
       "",
-      "# usage: D2 = turn(D); D3 = trim(D)"
+      "# usage",
+      "# D2 = turn(D)",
+      "# D3 = trim(D)"
     ],
     "description": "幾何ユーティリティ (2D 配列の 90° 回転 / 余白トリム)",
     "scope": "python"
@@ -531,7 +555,8 @@
       "  ma = max(ma, abs(a[1] - b[1]))",
       "  return ma",
       "",
-      "# usage: d = mdist(a, b)  # a, b = (x, y)"
+      "# usage",
+      "# d = mdist(a, b)  # a, b = (x, y)"
     ],
     "description": "2D 距離関数 (Euclid edist / Manhattan mdist / Chebyshev cdist)",
     "scope": "python"
@@ -606,7 +631,9 @@
       "  if m0 < 0: m0 += b // s",
       "  return (s, m0)",
       "",
-      "# usage: 内部関数を直接利用 (inv_mod(x, m) など)"
+      "# usage",
+      "# y = inv_mod(x, m)",
+      "# r0, m0 = crt(r, m)"
     ],
     "description": "数学ユーティリティ集 (inv_mod 等の素朴関数)",
     "scope": "python"
@@ -640,7 +667,8 @@
       "      D[loop[i]] = d",
       "  return D",
       "",
-      "# usage: ans = period(L, K, x=0)  # x から f を K 回適用"
+      "# usage",
+      "# ans = period(L, K, x=0)  # x から f を K 回適用"
     ],
     "description": "周期検出 (写像 f を K 回適用、ρ 検出で O(K の log) 化)",
     "scope": "python"
@@ -649,23 +677,36 @@
     "prefix": "prime",
     "body": [
       "import math",
+      "import bisect",
       "class Prime:",
+      "  # getPrimeList(): 素数リスト(Nまで)を返す",
+      "  # isPrime(x): 素数判定を行う",
+      "  # primeFactorization(x): 素因数分解を行う (x<=N: lpf表 / N<x<=N**2: 素数リストで試し割り / それ以上: ミラーラビン法主体)",
+      "  # factorize(x): primeFactorization のエイリアス",
+      "  LPF_LIMIT = 5 * 10 ** 6 # これを超える N では lpf 表を持たずメモリを節約する (Prime(10**8) 等での MLE を防ぐ)",
       "  def __init__(self, N: int = 1):",
       "    self.N = N",
-      "    self.lpf, self.prime = self.makeLpf(N)",
+      "    if N <= Prime.LPF_LIMIT:",
+      "      self.lpf, self.prime = self.makeLpf(N)",
+      "    else:",
+      "      self.lpf = None",
+      "      self.prime = self.makePrimeList(N)",
       "  def getPrimeList(self):",
       "    \"\"\"素数リスト(Nまで)\"\"\"",
       "    return self.prime",
       "  def isPrime(self, x : int):",
       "    \"\"\"素数判定\"\"\"",
       "    if x > self.N: return self.isPrimeBig(x)",
-      "    return self.lpf[x] == x",
+      "    if self.lpf is not None: return self.lpf[x] == x",
+      "    i = bisect.bisect_left(self.prime, x)",
+      "    return i < len(self.prime) and self.prime[i] == x",
       "  def primeFactorization(self, x: int):",
       "    \"\"\"素因数分解\"\"\"",
-      "    if x > self.N: return self.primeFactrizationBig(x)",
-      "    else: return self.primeFactrizationSmall(x)",
+      "    if self.lpf is not None and x <= self.N: return self.primeFactrizationSmall(x)",
+      "    if x <= self.N * self.N: return self.primeFactrizationTrial(x)",
+      "    return self.primeFactrizationBig(x)",
       "  def makeLpf(self, N: int):",
-      "    \"\"\"前計算O(N)\"\"\"",
+      "    \"\"\"前計算O(N) (最小素因数リスト + 素数リスト。LPF_LIMIT 以下の N でのみ使う想定)\"\"\"",
       "    lpf = [0] * (N + 1)",
       "    prime = []",
       "    for i in range(2, N + 1):",
@@ -678,6 +719,19 @@
       "        if j > N: break",
       "        lpf[j] = p",
       "    return lpf, prime",
+      "  def makePrimeList(self, N: int):",
+      "    \"\"\"",
+      "    メモリ節約版のエラトステネスの篩 (lpf 表を持たず素数リストのみ作る)",
+      "    N = 10**8 程度でも動作する (bytearray の篩は構築中のみ保持し、後は素数リストだけ残す)",
+      "    \"\"\"",
+      "    is_composite = bytearray(N + 1)",
+      "    primes = []",
+      "    for i in range(2, N + 1):",
+      "      if is_composite[i]: continue",
+      "      primes.append(i)",
+      "      if i * i <= N:",
+      "        is_composite[i * i::i] = b\"\\x01\" * len(range(i * i, N + 1, i))",
+      "    return primes",
       "  def isPrimeBig(self, x):",
       "    \"\"\"素数判定\"\"\"",
       "    if x <= 1: return False",
@@ -710,6 +764,19 @@
       "      else: p[n] = 1",
       "      x = x // n",
       "    return p",
+      "  def primeFactrizationTrial(self, x):",
+      "    \"\"\"",
+      "    前計算した素数リスト(Nまで)で試し割りして素因数分解する",
+      "    x <= N**2 程度まで対応。O(π(√x))",
+      "    \"\"\"",
+      "    p = {}",
+      "    for pr in self.prime:",
+      "      if pr * pr > x: break",
+      "      while x % pr == 0:",
+      "        p[pr] = p.get(pr, 0) + 1",
+      "        x //= pr",
+      "    if x != 1: p[x] = 1",
+      "    return p",
       "  def primeFactrizationBig(self, x):",
       "    \"\"\"O(√x)で素因数分解\"\"\"",
       "    p = {}",
@@ -731,12 +798,14 @@
       "      p[x] = 1",
       "    return p",
       "  def factorize(self, x):",
-      "    if x < len(self.lpf): return self.primeFactrizationSmall(x)",
-      "    return self.primeFactrizationBig(x)",
+      "    return self.primeFactorization(x)",
       "",
-      "# usage: pr = Prime(N); pr.getPrimeList(); pr.factorize(x)"
+      "# usage",
+      "# pr = Prime(N)",
+      "# pr.getPrimeList()",
+      "# pr.factorize(x)"
     ],
-    "description": "素数列挙 + 素因数分解 Prime クラス (線形篩 O(N))",
+    "description": "素数列挙 + 素因数分解 Prime クラス (N<=5*10**6: 線形篩+lpf表 / それ以上: メモリ節約篩+試し割りで N**2 まで対応)",
     "scope": "python"
   },
   "totu": {
@@ -812,7 +881,8 @@
       "  ans += b # (辺上の格子点を含める)",
       "  return ans",
       "",
-      "# usage: hull = convex_hull(points)"
+      "# usage",
+      "# hull = get_convex_hull(points)"
     ],
     "description": "凸包 (Andrew monotone chain、上下凸包の併合 O(N log N))",
     "scope": "python"
@@ -836,7 +906,8 @@
       "  s, _ = calc(t + 1)",
       "  return [s, pow(x, t, MOD)]",
       "",
-      "# usage: s, last = nib(x, t, MOD)"
+      "# usage",
+      "# s, last = nib(x, t, MOD)"
     ],
     "description": "等比数列和 (1 + x + ... + x^t mod MOD、ダブリング O(log t))",
     "scope": "python"
@@ -864,7 +935,10 @@
       "        ret[i+1] += ret[i]",
       "    return ret",
       "",
-      "# usage: im = Imos(N); im.add(l, r, init, diff); A = im.calc()"
+      "# usage",
+      "# im = Imos(N)",
+      "# im.add_line(l, r, init, diff)",
+      "# A = im.get_array()"
     ],
     "description": "区間に等差数列を加算 (Imos の 2 階差分版)",
     "scope": "python"
@@ -980,7 +1054,8 @@
       "        if j & i == 0: op(f, i, j)",
       "      i <<= 1",
       "",
-      "# usage: h = Convolution.andProductConv(a, b, MOD)"
+      "# usage",
+      "# h = Convolution.andProductConv(a, b, MOD)"
     ]
   },
   "gensikon": {
@@ -1037,7 +1112,8 @@
       "          return D[Y] + i*sq",
       "    return -1",
       "",
-      "# usage: g = Gensikon.primitive_root(p)"
+      "# usage",
+      "# g = Gensikon.primitive_root(p)"
     ]
   },
   "Packer": {
@@ -1069,7 +1145,10 @@
       "    data.append(packed)",
       "    return data[::-1]",
       "",
-      "# usage: p = Packer(N=10**6, size=2); k = p.pack(a, b); a, b = p.unpack(k)"
+      "# usage",
+      "# p = Packer(N=10**6, size=2)",
+      "# k = p.pack(a, b)",
+      "# a, b = p.unpack(k)"
     ]
   },
   "radix_convert": {
@@ -1113,7 +1192,9 @@
       "    x = Radix_Convert.toDec(x, n)",
       "    return Radix_Convert.fromDec(x, m)",
       "",
-      "# usage: dec = Radix_Convert.toDec(x, n); x = Radix_Convert.fromDec(dec, n)"
+      "# usage",
+      "# dec = Radix_Convert.toDec(x, n)",
+      "# x = Radix_Convert.fromDec(dec, n)"
     ]
   },
   "hakidasi2": {
@@ -1222,7 +1303,10 @@
       "        lst.append((bit, self.basis[bit], self.basis_mask[bit]))",
       "    return lst",
       "",
-      "# usage: b = XORBasis([3, 5]); mask = b.represent(6); basis = b.get_basis_list()"
+      "# usage",
+      "# b = XORBasis([3, 5])",
+      "# mask = b.represent(6)",
+      "# basis = b.get_basis_list()"
     ]
   },
   "way12": {
@@ -1231,6 +1315,12 @@
     "description": "写像 12 相 (n 玉を k 箱に入れる、玉/箱/制約 の 12 通り)",
     "body": [
       "class way12():",
+      "  # com(n, k): n個からk個選ぶ組み合わせの数",
+      "  # per(n, k): n個からk個並べる順列の数",
+      "  # sti(n, k): 第二種スターリング数",
+      "  # bel(n, k): ベル数",
+      "  # part(n, k): k を n 個に分割する方法の数",
+      "  # way(n, k, box, ball, limit): 現実のn現実/kボール12相をまとめて呼び分ける",
       "  def __init__(self, num, mod):",
       "    self.F = [1, 1]",
       "    self.Fi = [1, 1]",
@@ -1341,7 +1431,9 @@
       "          case 2: return self.part(k, n - k)",
       "    return 0",
       "",
-      "# usage: w = way12(N, MOD); w.case_XX(n, k)"
+      "# usage",
+      "# w = way12(N, MOD)",
+      "# n = w.way(n=N, k=K, box=True, ball=True, limit=0)"
     ]
   },
   "bunkatu": {
@@ -1383,7 +1475,8 @@
       "    ans.append(D + [N])",
       "    return ans",
       "",
-      "# usage: P = Bunkatu.bunkatu(N)  # P[i] = i の分割数"
+      "# usage",
+      "# P = Bunkatu.bunkatu(N)"
     ]
   },
   "ragu": {
@@ -1473,7 +1566,8 @@
       "MOD = 998244353",
       "inv = Inv(MOD)",
       "",
-      "# usage: y = ragu1(xs, ys, target_x)  # 等間隔なら ragu2"
+      "# usage",
+      "# y = ragu1(xs, ys, target_x)  # 等間隔なら ragu2"
     ],
     "description": "ラグランジュ補間 (1 次元、O(N) で f(x_target) を求める)",
     "scope": "python"

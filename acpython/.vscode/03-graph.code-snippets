@@ -212,7 +212,10 @@
       "        if a + b + value == way_length: gf.add_edge(frm, to, value)",
       "    return gf",
       "",
-      "# usage: g = Graph(N, directed=True, weighted=True); g.add_edge(a,b,w); d = Dijkstra(g).dist(s)"
+      "# usage",
+      "# g = Graph(N, directed=True, weighted=True)",
+      "# g.add_edge(a, b, w)",
+      "# d = Dijkstra(g).dist(s)"
     ],
     "description": "ダイクストラ法 (重み付きグラフの単一始点最短距離 O((N+M) log N))",
     "scope": "python"
@@ -221,6 +224,10 @@
     "prefix": "kruskal",
     "body": [
       "class Union:",
+      "  # root(x): x の属する集合の(代表元, サイズ)を返す",
+      "  # merge(x, y): x と y の集合を併合する",
+      "  # size(x): x の属する集合の要素数を返す",
+      "  # same(x, y): x と y が同じ集合かを返す",
       "  def __init__(self, num):",
       "    self.T = [-1 for i in range(num)]",
       " ",
@@ -246,6 +253,8 @@
       "    return self.root(x)[0] == self.root(y)[0]",
       "",
       "class Kruskal:",
+      "  # add(a, b, x): 重み x の辺 (a, b) を候補に追加する",
+      "  # exe(): 最小全域木を構築し (総重み, 使用した辺のリスト) を返す",
       "  def __init__(self, N):",
       "    self.N = N",
       "    self.U = Union(N)",
@@ -265,7 +274,10 @@
       "        total += x",
       "    return total, ans",
       "",
-      "# usage: k = Kruskal(N); k.add(a, b, w); total, mst_edges = k.exe()"
+      "# usage",
+      "# k = Kruskal(N)",
+      "# k.add(a, b, w)",
+      "# total, mst_edges = k.exe()"
     ],
     "description": "クラスカル法 (最小全域木 MST、辺ソート + Union-Find)",
     "scope": "python"
@@ -410,7 +422,10 @@
       "      self.to, self.rev = to, rev",
       "      self.cap = cap",
       "",
-      "# usage: mf = maxFlow(N); mf.add_edge(a, b, cap); f = mf.flow(s, t)"
+      "# usage",
+      "# mf = maxFlow(N)",
+      "# mf.add_edge(a, b, cap)",
+      "# f = mf.flow(s, t)"
     ],
     "description": "最大流 maxFlow (Dinic 系の自前実装、整数容量)",
     "scope": "python"
@@ -526,7 +541,10 @@
       "      self.to, self.rev = to, rev",
       "      self.cap, self.cost = cap, cost",
       "",
-      "# usage: mcf = mcf_graph(N); mcf.add_edge(a, b, cap, cost); flow, cost = mcf.flow(s, t, limit)"
+      "# usage",
+      "# mcf = mcf_graph(N)",
+      "# mcf.add_edge(a, b, cap, cost)",
+      "# flow, cost = mcf.flow(s, t, limit)"
     ],
     "description": "最小費用流 MinCostFlow (SPFA / ポテンシャル法)",
     "scope": "python"
@@ -621,7 +639,9 @@
       "      groups[ids[i]].append(i)",
       "    return groups",
       "",
-      "# usage: groups = scc_graph.scc(N, adj); n_components = len(groups)"
+      "# usage",
+      "# groups = scc_graph.scc(N, adj)",
+      "# n_components = len(groups)"
     ],
     "description": "強連結成分分解 SCC (有向グラフを縮約して DAG 化)",
     "scope": "python"
@@ -960,7 +980,10 @@
       "            x = self.seg.op(x, self.iseg.prod(u, v + 1))",
       "        return x",
       "",
-      "# usage: t = TreeFactory(N); t.setByAdjacencyList(edges); t.makeRank(root)"
+      "# usage",
+      "# t = TreeFactory(N)",
+      "# t.setByAdjacencyList(edges)",
+      "# lca = t.makeLca(root)"
     ],
     "description": "木構造 TreeFactory (LCA / 距離 / 部分木サイズ / 全方位木 DP 等)",
     "scope": "python"
@@ -969,15 +992,16 @@
     "prefix": "warflo",
     "body": [
       "class warflo:",
+      "  # add(a, b, c): a から b へ c の辺を張る (負の辺は不可)",
+      "  # exe(): 各点間の距離を求める (O(N^3))",
+      "  # route(a, b): a から b への経路を返す (先に exe() をすること)",
       "  def __init__(self, N, inf):",
       "    self.inf = inf",
       "    self.D = [[self.inf] * N for _ in range(N)]",
       "    self.V = [[0] * N for _ in range(N)]",
       "    self.N = N",
-      "  # aからbへcの辺を張る（負の辺は不可）",
       "  def add (self, a, b, c):",
       "    self.D[a][b] = c",
-      "  # O(N^3)で各点間の距離を求める",
       "  def exe(self):",
       "    for i in range(self.N):",
       "      for j in range(self.N):",
@@ -990,7 +1014,6 @@
       "            self.D[i][j] = self.D[i][k] + self.D[k][j]",
       "            self.V[i][j] = self.V[k][j]",
       "    return self.D",
-      "  # aからbの経路を求める(先にexeをすること）",
       "  def route(self, a, b):",
       "    if self.D[a][b] == self.inf:",
       "      return []",
@@ -1002,7 +1025,10 @@
       "    L.reverse()",
       "    return L",
       "",
-      "# usage: wf = warflo(N, inf); wf.add(a, b, w); D = wf.exe()"
+      "# usage",
+      "# wf = warflo(N, inf)",
+      "# wf.add(a, b, w)",
+      "# D = wf.exe()"
     ],
     "description": "ワーシャル・フロイド法 (全点対最短距離 O(N^3))",
     "scope": "python"
@@ -1133,7 +1159,10 @@
       "    if ans == None: return -1",
       "    return ans",
       "",
-      "# usage: t = Tree64(); t.build(adj_list, root); t.lca(u, v)"
+      "# usage",
+      "# t = Tree64()",
+      "# t.add(n)",
+      "# ok = t.find(n)"
     ]
   },
   "graph": {
@@ -1223,7 +1252,9 @@
       "        ans[1].append([x, y, w])",
       "    return ans",
       "",
-      "# usage: g = GraphData(N, directed=True, weighted=False); g.add_edge(a, b)"
+      "# usage",
+      "# g = GraphData(N, directed=True, weighted=False)",
+      "# g.add_edge(a, b)"
     ]
   },
   "bfs": {
@@ -1546,7 +1577,10 @@
       "      data = tl",
       "    return D, parent",
       "",
-      "# usage: g = Graph(N, weighted=True); g.add_edge(a, b, w_0_or_1); d = BFS(g).bfs01(s)"
+      "# usage",
+      "# g = Graph(N, weighted=True)",
+      "# g.add_edge(a, b, w_0_or_1)",
+      "# d = BFS(g).bfs01(s)"
     ]
   },
   "dag": {
@@ -1616,7 +1650,9 @@
       "          if Data[k] == i: yield (i, j, k)",
       "  ",
       "",
-      "# usage: dag = DAG(N); dag.add_edge(a, b); order = dag.topo()"
+      "# usage",
+      "# dag = DAG.makeDag(gf)",
+      "# order = dag.toposo()"
     ]
   },
   "matching": {
@@ -1627,6 +1663,9 @@
       "from atcoder.maxflow import MFGraph",
       "",
       "class Matching:",
+      "  # add_edge(a, b, weight=1): 左側の頂点 a と右側の頂点 b を辺で結ぶ",
+      "  # flow(M=None): 最大マッチング数(または最大 M まで)を返す",
+      "  # list_matching(L): 隣接リストから最大マッチングする Matching を作る (static)",
       "  def __init__(self, N, weight = 1):",
       "    self.N = N",
       "    M = 2 * N + 2",
@@ -1654,7 +1693,10 @@
       "      for j in L[i]: mcg.add_edge(i, j, 1)",
       "    return mcg",
       "",
-      "# usage: m = Matching(N); m.add_edge(l, r); n = m.flow()"
+      "# usage",
+      "# m = Matching(N)",
+      "# m.add_edge(l, r)",
+      "# n = m.flow()"
     ]
   },
   "particalgraph": {
@@ -1771,7 +1813,9 @@
       "  def _is_contains_bit(n, S):",
       "    return S & (1 << n)",
       "",
-      "# usage: pg = ParticalGraph(N); pg.add_edges(edge_subset)"
+      "# usage",
+      "# pg = ParticalGraph(N)",
+      "# pg.add_edges(edge_subset)"
     ]
   },
   "twosat": {
@@ -1871,7 +1915,11 @@
       "      self.frm = frm",
       "      self.to = to",
       "",
-      "# usage: ts = two_sat(N); ts.add_clause(x, vx, y, vy); ok = ts.satisfiable(); ans = ts.answer()"
+      "# usage",
+      "# ts = two_sat(N)",
+      "# ts.add_clause(x, vx, y, vy)",
+      "# ok = ts.satisfiable()",
+      "# ans = ts.answer()"
     ],
     "description": "2-SAT (含意グラフ + SCC、節集合を満たす変数割当を判定/構成)",
     "scope": "python"
@@ -1933,13 +1981,18 @@
       "    if complete: return dist[en]",
       "    else: return None",
       "",
-      "# usage: u = Ushi(N); u.add_edge(a, b, w); ans = u.ushi_maximam(st, en)"
+      "# usage",
+      "# u = Ushi(N)",
+      "# u.add_edge(a, b, w)",
+      "# ans = u.ushi_maximam(st, en)"
     ]
   },
   "grid": {
     "prefix": "grid",
     "body": [
       "class gridMan:",
+      "  # makeWall(x=-2): 四方を壁で囲む (範囲外アクセスを防ぐ)",
+      "  # dist(S): S から上下左右に進んで何手かかるかのリストと最大値を返す",
       "  def __init__(self, L):",
       "    L = [[0 if c == '.' else (-2 if c == '#' else c) for c in row] for row in L]",
       "    self.L = L",
@@ -1967,7 +2020,10 @@
       "    return T, k",
       "  ",
       "",
-      "# usage: g = gridMan(L); g.makeWall(); D, mx = g.dist((sr, sc))"
+      "# usage",
+      "# g = gridMan(L)",
+      "# g.makeWall()",
+      "# D, mx = g.dist((sr, sc))"
     ],
     "description": "グリッド管理 gridMan (壁付与 + 4方向 BFS 距離 / 最大値)",
     "scope": "python"

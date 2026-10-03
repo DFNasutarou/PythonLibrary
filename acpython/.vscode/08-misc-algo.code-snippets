@@ -205,5 +205,30 @@
     ],
     "description": "転倒数 (BIT で O(N log N))",
     "scope": "python"
+  },
+  "prev_greater": {
+    "prefix": "prevgreater",
+    "body": [
+      "def prev_greater(A):",
+      "  \"\"\"",
+      "  各要素について、それより前にある要素のうち、その要素より真に大きいものの",
+      "  一番右(要素番号が最大)の要素番号を返す",
+      "  A: 数値のリスト",
+      "  戻り値: A と同じ長さのリスト。該当なしは -1  (0-indexed)",
+      "  O(N)",
+      "  \"\"\"",
+      "  ans = [-1] * len(A)",
+      "  stack = []  # 値が単調減少になるように要素番号を保持",
+      "  for i, a in enumerate(A):",
+      "    while stack and A[stack[-1]] <= a: stack.pop()",
+      "    if stack: ans[i] = stack[-1]",
+      "    stack.append(i)",
+      "  return ans",
+      "",
+      "# usage",
+      "# res = prev_greater(A)  # res[i] = i より前で A[i] より大きい最も右の番号 / なければ -1"
+    ],
+    "description": "各要素の左側で、それより大きい最も右の要素の番号 (単調スタック O(N))",
+    "scope": "python"
   }
 }

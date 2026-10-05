@@ -4,7 +4,8 @@
     "body": [
       "class Rori:",
       "  # hashLR(l, r): [l, r) のハッシュ値(2つのmodの組)を返す",
-      "  # same(l1, r1, l2, r2): [l1, r1) と [l2, r2) が同じ文字列かを返す",
+      "  # same(l1, r1, l2, r2): [l1, r1) と [l2, r2) が同じ文字列かを返す (長さ一致も確認)",
+      "  # 文字は ord(c) をそのまま値に使う (英小文字以外・大文字・数字も可)",
       "  B1 = 1009",
       "  B2 = 1007",
       "  MOD1 = 10 ** 9 + 7",
@@ -18,7 +19,7 @@
       "    self.P1 = [1] * n",
       "    self.P2 = [1] * n",
       "    for i in range(n - 1):",
-      "      S = ord(L[i]) - ord('a') + 1",
+      "      S = ord(L[i])",
       "      self.H1[i + 1] = (self.H1[i] * self.B1 + S) % self.MOD1",
       "      self.H2[i + 1] = (self.H2[i] * self.B2 + S) % self.MOD2",
       "      self.P1[i + 1] = self.P1[i] * self.B1 % self.MOD1",
@@ -28,12 +29,12 @@
       "    k = ((self.H2[r] - self.H2[l] * self.P2[r - l]) % self.MOD2 + self.MOD2) % self.MOD2",
       "    return (t, k)",
       "  def same(self, l1, r1, l2, r2):",
-      "    return self.hashLR(l1, r1) == self.hashLR(l2, r2)",
+      "    return r1 - l1 == r2 - l2 and self.hashLR(l1, r1) == self.hashLR(l2, r2)",
       "",
       "# usage",
-      "# r = Rori(S)",
-      "# h = r.hashLR(l, r)",
-      "# ok = r.same(l1, r1, l2, r2)"
+      "# rh = Rori(S)",
+      "# h = rh.hashLR(l, r)  # S[l:r] のハッシュ",
+      "# ok = rh.same(l1, r1, l2, r2)  # S[l1:r1] == S[l2:r2] か"
     ],
     "description": "ローリングハッシュ Rori (二重 mod、文字列の部分一致を O(1) で比較)",
     "scope": "python"
@@ -252,6 +253,16 @@
     "description": "eertree / 回文木 (文字列内の全ての異なる回文部分文字列を管理)",
     "body": [
       "class eertree:",
+      "  # 回文木 (eertree): 文字列に含まれる回文部分文字列を管理する",
+      "  #   addChar(x): 末尾に 1 文字追加する",
+      "  #   addString(xs): 末尾に文字列を追加する",
+      "  #   getIndex(i): i 文字目(0-indexed)を末尾とする最長回文の node を返す",
+      "  #   getCount(): 回文部分文字列の総数(出現位置で区別)を返す",
+      "  #   getCountUnique(): 異なる回文部分文字列の種類数を返す",
+      "  #   getMaxSize(): 最長回文の長さを返す",
+      "  #   getMaxWord(): 最長回文を文字のリストで返す (文字列は ''.join で)",
+      "  #   getNodeList(): 作成順の node リストを返す",
+      "  #   node.getCount(): その node の回文を末尾とする回文の個数 / node.getLengthIndex(): その回文の長さ",
       "  class node:",
       "    def __init__(self, d: int, p: int, n: int):",
       "      \"\"\"",
@@ -326,6 +337,10 @@
       "  def getMaxSize(self) : return self.maxNode.length",
       "  # 最大の長さの文字",
       "  def getMaxWord(self):",
+      "    \"\"\"",
+      "    Returns:",
+      "        list[str]: 最長回文 (内部で文字をリスト保持しているため list。文字列が欲しければ ''.join(...))",
+      "    \"\"\"",
       "    d = self.maxNode.length",
       "    t = self.maxNodeInd + 1",
       "    return self.S[t - d:t]",
@@ -367,13 +382,15 @@
       "# usage",
       "# et = eertree()",
       "# et.addChar(c)",
-      "# cnt = et.getCount()"
+      "# cnt = et.getCount()",
+      "# et.addString(S)",
+      "# w = ''.join(et.getMaxWord())"
     ]
   },
   "hensyukyori": {
     "scope": "python",
     "prefix": "hensyukyori",
-    "description": "編集距離 (Levenshtein 距離、時間 O(|S| * |T|) / メモリ O(min(|S|, |T|)))",
+    "description": "編集距離 (Levenshtein 距離、hensyuKyori: 時間 O(|S| * |T|) / メモリ O(min(|S|, |T|))、hensyuKyoriK: 距離 K 以下限定の帯 DP O(|S| * K))",
     "body": [
       "def chmin(data, i, x):",
       "  if data[i] > x: data[i] = x",
@@ -390,6 +407,7 @@
       "  return prev[M]",
       "",
       "def hensyuKyoriK(S, T, K):",
+      "  # 編集距離が K 以下ならその値を返す。K を超える場合は K より大きい値を返す (正確な値ではない)",
       "  N = len(S) + 1",
       "  M = len(T) + 1",
       "  inf = N + M + 1",
@@ -412,13 +430,15 @@
       "  return dp[-1][k]",
       "",
       "# usage",
-      "# d = hensyuKyori(S, T)"
+      "# d = hensyuKyori(S, T)",
+      "# dk = hensyuKyoriK(S, T, K)",
+      "# ok = dk <= K  # 編集距離が K 以下か"
     ]
   },
   "suffixarray": {
     "scope": "python",
     "prefix": "suffixarray",
-    "description": "Suffix Array (atcoder.string ラッパ、部分文字列順序付け + LCP)",
+    "description": "Suffix Array (ac-library-python 依存: atcoder.string ラッパ、部分文字列順序付け + LCP)",
     "body": [
       "import atcoder.string",
       "class SA:",
@@ -441,9 +461,10 @@
       "    return X",
       "",
       "  @ staticmethod",
-      "  def suffix_array(s, upper = -1):",
+      "  def suffix_array(s, upper = None):",
       "    \"\"\"",
-      "    ull以下の配列の接尾辞配列",
+      "    接尾辞配列 (s は文字列 or 整数リスト)",
+      "    upper: s が整数リストで値が 0..upper に収まる場合に指定 (None なら自動で座圧)",
       "    O(n log n）",
       "    O(n + upper) upper指定時(upper <= 10^8)",
       "    O(n) sが文字列の時",
@@ -476,7 +497,7 @@
   "zalg": {
     "scope": "python",
     "prefix": "zalg",
-    "description": "Z-algorithm (atcoder.string ラッパ、各位置からの最長一致長 O(N))",
+    "description": "Z-algorithm (ac-library-python 依存: atcoder.string ラッパ、各位置からの最長一致長 O(N))",
     "body": [
       "import atcoder.string",
       "class Zalg:",

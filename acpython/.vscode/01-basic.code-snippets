@@ -4,6 +4,7 @@
     "body": [
       "import heapq",
       "class HeapQue:",
+      "  # 注意: is_max=True は値を -1 倍して管理するため数値限定 (文字列・タプル等は不可)",
       "  # pop(): 最小(is_max時は最大)値を取り出す",
       "  # top(): 最小(is_max時は最大)値を覗き見る",
       "  # push(x): 値を追加する",
@@ -66,13 +67,17 @@
     "prefix": "queue",
     "body": [
       "from collections import deque",
+      "# トップレベルに q, put, get を定義する (他の変数名 q/put/get と衝突しないよう注意)",
+      "# 名前空間を汚したくない場合は deque を直接使う",
       "q = deque()",
       "put = q.append",
       "get = q.popleft",
       "",
       "# usage",
       "# put(x)",
-      "# x = get()"
+      "# x = get()",
+      "# while q:  # 空判定は q で行う",
+      "#   x = get()"
     ],
     "description": "FIFO キュー (deque の薄いラッパ、put/get エイリアス)",
     "scope": "python"
@@ -82,9 +87,13 @@
     "body": [
       "from functools import cmp_to_key",
       "def cmpstr(a, b):",
-      "    # 比較ロジックをここで書き換える (0:等しい, 負:aが先, 正:bが先)",
-      "    return (a > b) - (a < b)",
-      "${1:arr} = sorted(${1:arr}, key=cmp_to_key(cmpstr))$0"
+      "  # 比較ロジックをここで書き換える (0:等しい, 負:aが先, 正:bが先)",
+      "  return (a > b) - (a < b)",
+      "${1:arr} = sorted(${1:arr}, key=cmp_to_key(cmpstr))$0",
+      "",
+      "# usage",
+      "# def cmpstr(a, b): return (a + b > b + a) - (a + b < b + a)  # 例: 連結して最小になる順",
+      "# arr = sorted(arr, key=cmp_to_key(cmpstr))"
     ],
     "description": "cmp_to_key で比較関数 sort (cmpstr の中身を書き換えて使う、対象リストを placeholder)",
     "scope": "python"
@@ -92,7 +101,11 @@
   "abc": {
     "prefix": "abc",
     "body": [
-      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
+      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+      "",
+      "# usage",
+      "# i = ABC.index(\"C\")  # 2",
+      "# abc = ABC.lower()"
     ],
     "description": "アルファベット 26 文字定数 ABC",
     "scope": "python"
@@ -103,7 +116,10 @@
     "description": "再帰上限の引き上げ (sys.setrecursionlimit)",
     "body": [
       "import sys",
-      "sys.setrecursionlimit(${1:10**7})$0"
+      "sys.setrecursionlimit(${1:10**7})$0",
+      "",
+      "# usage",
+      "# sys.setrecursionlimit(10**6)  # 再帰関数(DFS 等)の前に。PyPy は深い再帰が遅くメモリを食うので非再帰化も検討"
     ]
   },
   "itertools": {
@@ -143,6 +159,7 @@
       "",
       "# usage",
       "# itr.rle(\"aabbb\") -> [(\"a\", 2), (\"b\", 3)]",
+      "# itr.rle_int(\"1100\") -> [(1, 2), (0, 2)]",
       "# itr.unrle([(\"a\", 2), (\"b\", 3)]) -> [\"a\", \"a\", \"b\", \"b\", \"b\"]",
       "# itr.accumulate([1, 2, 3]) -> [0, 1, 3, 6]",
       "# itr.pairwise([1, 2, 3]) -> [(1, 2), (2, 3)]",
@@ -166,7 +183,8 @@
       "",
       "# usage",
       "# solver = Query_solve([op_add, op_get])",
-      "# solver.solve(Q)"
+      "# queries = [list(map(int, input().split())) for _ in range(Q)]",
+      "# solver.solve(queries)  # 各クエリは [種別, 引数...] (種別は ind 始まり)"
     ]
   }
 }

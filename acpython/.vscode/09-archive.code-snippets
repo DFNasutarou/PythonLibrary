@@ -589,7 +589,7 @@
       "# t.setByAdjacencyList(edges)",
       "# lca = t.makeLca(root)"
     ],
-    "description": "[旧] 木構造 TreeFactory (LCA / 距離 / 部分木サイズ / 全方位木 DP 等)（tree / treepath / rerooting / auxtree に置き換え）",
+    "description": "[旧] 木構造 TreeFactory (LCA / 距離 / 部分木サイズ / 全方位木 DP 等)（tree / treepath / treedp / auxtree に置き換え）",
     "scope": "python"
   },
   "treedp_old": {
@@ -669,7 +669,7 @@
       "# t.makeRank(root)",
       "# ans = t.allDP()"
     ],
-    "description": "[旧] 木 DP (子の DFS 結果から親へ集約する典型木 DP テンプレ)（rerooting に置き換え）",
+    "description": "[旧] 木 DP (子の DFS 結果から親へ集約する典型木 DP テンプレ)（treedp に置き換え）",
     "scope": "python"
   }
 }

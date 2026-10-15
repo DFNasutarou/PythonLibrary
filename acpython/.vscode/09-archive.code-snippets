@@ -1,7 +1,7 @@
 {
   "deque": {
     "scope": "python",
-    "prefix": "deque",
+    "prefix": "olddeque",
     "description": "両端キュー Deque (両端 O(1)・ランダムアクセス対応・二重スタック実装)",
     "body": [
       "class Deque:",
@@ -56,7 +56,7 @@
   },
   "lazysegold": {
     "scope": "python",
-    "prefix": "lazysegold",
+    "prefix": "oldlazyseg",
     "description": "遅延評価セグ木 (自己完結版・ACL 不要・op/e/mapping/composition/id 渡し)",
     "body": [
       "class lazySegTree:",
@@ -244,7 +244,7 @@
     ]
   },
   "tree_old": {
-    "prefix": "treeold",
+    "prefix": "oldtree",
     "body": [
       "import copy",
       "class TreeFactory:",
@@ -593,7 +593,7 @@
     "scope": "python"
   },
   "treedp_old": {
-    "prefix": "treedpold",
+    "prefix": "oldtreedp",
     "body": [
       "class Tree:",
       "  # setByAdjacencyList(list, index): 辺リスト list = [(u, v), ...] から木を作る",

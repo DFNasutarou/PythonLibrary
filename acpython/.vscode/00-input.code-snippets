@@ -2,9 +2,7 @@
     "input": {
         "prefix": "input",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "import sys",
             "input = sys.stdin.readline",
             ""
@@ -15,9 +13,7 @@
     "inint": {
         "prefix": "inint",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:N} = int(input())$0"
         ],
         "description": "1つの整数を読み込む (N = int(input()))",
@@ -26,9 +22,7 @@
     "inints": {
         "prefix": "inints",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:N}, ${2:M} = map(int, input().split())$0"
         ],
         "description": "1行の複数整数を個別変数に読み込む (N, M = map(int, input().split()))",
@@ -37,9 +31,7 @@
     "inarr": {
         "prefix": "inarr",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:A} = list(map(int, input().split()))$0"
         ],
         "description": "1行を int の1次元リストに変換 (A = list(map(int, input().split())))",
@@ -48,9 +40,7 @@
     "inarr1d": {
         "prefix": "inarr1d",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:A} = [int(input()) for _ in range(${2:N})]$0"
         ],
         "description": "N 行を1つずつ int で読み込み1次元リストに (A = [int(input()) for _ in range(N)])",
@@ -59,9 +49,7 @@
     "inarr2d": {
         "prefix": "inarr2d",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:A} = [list(map(int, input().split())) for _ in range(${2:N})]$0"
         ],
         "description": "N 行を int の2次元リストに変換 (A = [list(map(int, input().split())) for _ in range(N)])",
@@ -70,9 +58,7 @@
     "instr": {
         "prefix": "instr",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:S} = input().rstrip()$0"
         ],
         "description": "1行の文字列を読み込む (S = input().rstrip())",
@@ -81,9 +67,7 @@
     "instrs": {
         "prefix": "instrs",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:S} = input().rstrip().split()$0"
         ],
         "description": "1行のスペース区切り文字列をリストに読み込む (S = input().rstrip().split())",
@@ -92,9 +76,7 @@
     "ingrid": {
         "prefix": "ingrid",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:grid} = [input().rstrip() for _ in range(${2:H})]$0"
         ],
         "description": "H 行の文字列グリッドを1次元リストとして読み込む (grid = [input().rstrip() for _ in range(H)])",
@@ -103,9 +85,7 @@
     "inpair": {
         "prefix": "inpair",
         "body": [
-            "# ------------------------------------------------",
             "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/00-input.code-snippets",
-            "# ------------------------------------------------",
             "${1:edges} = [tuple(map(int, input().split())) for _ in range(${2:N})]$0"
         ],
         "description": "N 行の (a, b) ペアをタプルのリストで読み込む、辺の入力等に (edges = [tuple(...) for _ in range(N)])",

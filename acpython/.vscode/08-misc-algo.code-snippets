@@ -3,6 +3,7 @@
     "prefix": "bitall",
     "body": [
       "class BitAll:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/08-misc-algo.code-snippets",
       "  # ビット全探索ユーティリティ (Fenwick Tree の BIT ではない)",
       "  #   bitall(M): 0 <= n < 2^M を立っているビット数の少ない順に返す",
       "  #   bitall_index_list(M): bitall の順に立っているビット位置のリストを返す",
@@ -101,6 +102,7 @@
     "prefix": "nibutan",
     "body": [
       "class nibutan:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/08-misc-algo.code-snippets",
       "  # nibutan(ok, ng, op): op(ok) が True / op(ng) が False の前提で、op が True となる ng 側ぎりぎりの値を返す",
       "  # lt(L, n) / le(L, n): 昇順 L で n 未満 / n 以下の最大要素のインデックス (無ければ -1)",
       "  # gt(L, n) / ge(L, n): 昇順 L で n 超過 / n 以上の最小要素のインデックス (無ければ len(L))",
@@ -164,6 +166,7 @@
     "prefix": "tentou",
     "body": [
       "class BIT:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/08-misc-algo.code-snippets",
       "  ini = 0",
       "  def __init__(self, num):",
       "    self.N = 1",
@@ -217,6 +220,9 @@
   "prev_greater": {
     "prefix": "prevgreater",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/08-misc-algo.code-snippets",
+      "# ------------------------------------------------",
       "def prev_greater(A):",
       "  \"\"\"",
       "  各要素について、それより前にある要素のうち、その要素より真に大きいものの",
@@ -247,6 +253,7 @@
       "sys.setrecursionlimit(10**6)",
       "",
       "class Grundy:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/08-misc-algo.code-snippets",
       "  # 組み合わせゲームの Grundy 数を総当たりで求める（小さい状態で周期・規則性を探す実験用）",
       "  #   g(s): 状態 s の Grundy 数を返す（0 なら手番側の負け）",
       "  #   table(states): 各状態の Grundy 数を print する",

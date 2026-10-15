@@ -3,6 +3,7 @@
     "prefix": "mo",
     "body": [
       "class Mo:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/07-range.code-snippets",
       "  # Mo(N, Query): Query は (l, r) の列。1-indexed 半開区間 [l, r) = 要素 l..r-1 (1 <= l <= r <= N+1)",
       "  #   区間は空 [1, 1) から始まり、l_plus/l_minus/r_plus/r_minus で 1 ずつ伸縮して各クエリ区間に合わせる",
       "  # getAns(): 各クエリの答えのリストを返す (入力順)",
@@ -76,6 +77,7 @@
     "description": "区間 min/max の総和 RangeAffine (一列の N+1 点と辺重み L について、各点から他の全点へのパス上の min / max の総和を O(N) で全点分求める)",
     "body": [
       "class RangeAffine:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/07-range.code-snippets",
       "  # 区間 min/max の総和 (一列に並んだ N+1 点、点 i と i+1 の間の重みが L[i])",
       "  #   range_min_sum_list(L): 各点 i について、全ての j != i への区間 L[min(i,j):max(i,j)] の最小値の和のリスト(長さ N+1)を返す O(N)",
       "  #   range_max_sum_list(L): 同様に最大値の和のリストを返す O(N)",
@@ -163,6 +165,7 @@
     "description": "2D いもす法 (矩形加算 + 累積和、計算 O(HW))",
     "body": [
       "class Imos2D:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/07-range.code-snippets",
       "  # add(h1, w1, h2, w2, value): 矩形範囲[h1,h2)x[w1,w2)に value を加算する (0-indexed 半開、範囲外は自動クランプ)",
       "  # get_data(): 累積和を取って現在の2次元配列を返す",
       "  def __init__(self, H, W) -> None:",
@@ -204,6 +207,7 @@
     "description": "グラフの次数による平方分割 Square Split (クラス名は互換のため SquareSpilit、頂点更新を隣接頂点へ伝播、graph スニペットの GraphData(重みなし) 前提、1 クエリ O(√N + M/√N))",
     "body": [
       "class SquareSpilit:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/07-range.code-snippets",
       "  # 次数が √N 以上の頂点(重い頂点)は隣接頂点へ push せず、隣接頂点側がクエリ時に pull することで 1 クエリ O(√N + M/√N) にする",
       "  #   SquareSpilit(gf, qs): gf は graph スニペットの GraphData (重みなし: adj_list[i] が頂点番号のリスト)、qs は Query_solve",
       "  #   query(q): クエリ q を処理し、qs.solve_myself の戻り値を返す",

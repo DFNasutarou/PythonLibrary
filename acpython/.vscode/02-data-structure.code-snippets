@@ -3,6 +3,7 @@
     "prefix": "avl",
     "body": [
       "class AVL:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # insert(k, v): key=k, value=v の要素を追加する",
       "  # delete(k): key=k の要素を削除する",
       "  # check(k): key=k が存在するかを返す",
@@ -146,6 +147,7 @@
     "prefix": "bit",
     "body": [
       "class BIT:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # set(L): L の内容をまとめて反映する",
       "  # update(x, n): 位置 x に n を加算する",
       "  # getV(x): 先頭から x までの和(x を含む)を返す",
@@ -189,6 +191,7 @@
       "from atcoder.lazysegtree import LazySegTree",
       "",
       "class LSTFactory:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # 遅延セグ木 (ac-library-python の LazySegTree) の生成ファクトリ",
       "  #   makeAddMinSegTree(v) / makeAddMaxSegTree(v): 区間加算・区間 min / max",
       "  #   makeAddSumSegTree(v): 区間加算・区間和",
@@ -297,6 +300,7 @@
     "prefix": "union",
     "body": [
       "class Union:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # root(x): x の属する集合の代表元を返す",
       "  # merge(x, y): x と y の集合を併合する",
       "  # size(x): x の属する集合の要素数を返す",
@@ -364,6 +368,7 @@
     "prefix": "seg",
     "body": [
       "class segtree:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # set(p, x): 位置 p の値を x にする (1点更新)",
       "  # get(p): 位置 p の値を取得する (1点取得)",
       "  # prod(l, r): [l, r) の区間演算結果を返す",
@@ -454,6 +459,7 @@
       "    print(*ans)",
       "  ",
       "class segtreeFactory:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  MAX_INT = 10 ** 18",
       "  MOD = 998244353",
       "  # サイズNのmaxSegTree",
@@ -506,6 +512,7 @@
     "body": [
       "import heapq",
       "class wavelet:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  class bitvec:",
       "    def __init__(self, B):",
       "      N = len(B)",
@@ -722,6 +729,7 @@
     "body": [
       "import heapq",
       "class HeapQue:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  def __init__(self, is_max = False, default = None):",
       "    self.q = []",
       "    self.mlt = -1 if is_max else 1 # 最大値を管理する場合は反転させる",
@@ -738,6 +746,7 @@
       "  def reset(self): self.q = []",
       "",
       "class multiset:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # insert(v): 値 v を追加する",
       "  # delete(v): 値 v を1つ削除する",
       "  # pop_max(): 最大値を取り出して削除する",
@@ -789,6 +798,7 @@
     "body": [
       "# 連結リスト add/insertとremoveをO(1)",
       "class DoubleLinkedList():",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # data は一意であること (data をキーにノードを引く)",
       "  # add(data): 末尾に要素を追加する",
       "  # remove(data): 要素を削除する",
@@ -898,6 +908,7 @@
     "description": "トライ木 (文字列集合の prefix 共有表現)",
     "body": [
       "class Trie:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # insert(key, value): key(文字のリスト)に値を紐づけて登録する",
       "  # find(key): keyを検索して値を返す(未登録ならNone)",
       "  def __init__(self):",
@@ -936,6 +947,7 @@
     "body": [
       "import random",
       "class Map:",
+      "    # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "    # set(key, value): key に value を設定する",
       "    # get(key): key の値を返す (未設定なら init を返す)",
       "    HASH_NUM = 30",
@@ -972,6 +984,7 @@
     "prefix": "union_potential",
     "body": [
       "class UnionPotential:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # root(x): x の属する集合の代表元を返す",
       "  # merge(x, y, w): weight(y) - weight(x) = w となるように x, y を併合する",
       "  # size(x): x の属する集合の要素数を返す",
@@ -1037,6 +1050,7 @@
     "description": "Binary Trie (xor 最小値検索・整数集合 [0, 2^BIT_SIZE))",
     "body": [
       "class BinaryTrie:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  # 非負整数の集合 (重複不可: 同じ値を複数回 insert しても1個扱い、remove で消える)",
       "  # 値域: 0 <= key < 2 ** (BIT_SIZE + 1) (ビット BIT_SIZE..0 を見る)",
       "  #   insert(key): key を追加する",
@@ -1121,6 +1135,7 @@
       "from typing import Any, Callable",
       "",
       "class CartesianTree:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  def __init__(self, N: int, A: list[int], L: list[int], R: list[int], P: list[int], root: int): ",
       "    self._N = N # 要素数",
       "    self._A = A # 各要素の値",
@@ -1206,6 +1221,7 @@
       "      print(*d, sep = \"\")",
       "",
       "class CartesianTreeFactory:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  @staticmethod",
       "  def makeMinTree(A: list[int]) -> CartesianTree: return CartesianTreeFactory._makeTree(A, CartesianTreeFactory._opmin)",
       "  @staticmethod",
@@ -1253,6 +1269,7 @@
       "T = TypeVar('T')",
       "",
       "class SortedSet(Generic[T]):",
+      "    # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "    BUCKET_RATIO = 16",
       "    SPLIT_RATIO = 24",
       "",
@@ -1417,6 +1434,7 @@
     "description": "区間リストの解析 (包含区間の削除・包含/非交差ペア検出・被覆に必要な区間列)",
     "body": [
       "class RangeList:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  def __init__(self, v : list[int, int]):",
       "    \"\"\"",
       "    区間リストをindex付きで保持",
@@ -1493,6 +1511,7 @@
     "description": "永続 Union-Find (過去の時刻状態にも問い合わせ可能)",
     "body": [
       "class UnionPersistentPart:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  def __init__(self,N):",
       "    INF = float('INF')",
       "    self.now = 0",
@@ -1597,6 +1616,7 @@
     "description": "動的セグ木 (要素 index が大きくても座圧不要・遅延ノード生成)",
     "body": [
       "class dinamic_segtree:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  def __init__(self, N, op, e):",
       "    self.N = N",
       "    self.root = None",
@@ -1724,6 +1744,7 @@
       "    return self._min_left(t.left, a, c, r, f, product)",
       "",
       "class segtreeFactory:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  MAX_INT = 10 ** 18",
       "  MOD = 998244353",
       "  # サイズNのmaxSegTree",
@@ -1767,6 +1788,7 @@
     "description": "2D 座標 (a, b) を 1 整数にパックして保持するリスト (高速化用)",
     "body": [
       "class Packed2DList(list):",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/02-data-structure.code-snippets",
       "  \"\"\"",
       "  ２次元の (a, b) を内部的に 1 つの整数としてパックして保持するリスト。",
       "  b の取りうる値が 0 <= b < N のときに、N をコンストラクタ引数で渡すと、",

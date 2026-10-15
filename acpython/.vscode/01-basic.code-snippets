@@ -4,6 +4,7 @@
     "body": [
       "import heapq",
       "class HeapQue:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "  # 注意: is_max=True は値を -1 倍して管理するため数値限定 (文字列・タプル等は不可)",
       "  # pop(): 最小(is_max時は最大)値を取り出す",
       "  # top(): 最小(is_max時は最大)値を覗き見る",
@@ -38,6 +39,7 @@
     "prefix": "zaatsu",
     "body": [
       "class Zaatsu:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "  # compress(): 初期化時に渡した A を順位(0-indexed, 小さい順)のリストに変換したものを返す",
       "  # rank(x): 値 x の順位(0-indexed)を返す (x は A に含まれる値限定)",
       "  # value(i): 順位 i に対応する元の値を返す",
@@ -66,6 +68,9 @@
   "queue": {
     "prefix": "queue",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
+      "# ------------------------------------------------",
       "from collections import deque",
       "# トップレベルに q, put, get を定義する (他の変数名 q/put/get と衝突しないよう注意)",
       "# 名前空間を汚したくない場合は deque を直接使う",
@@ -85,6 +90,9 @@
   "sort": {
     "prefix": "sort",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
+      "# ------------------------------------------------",
       "from functools import cmp_to_key",
       "def cmpstr(a, b):",
       "  # 比較ロジックをここで書き換える (0:等しい, 負:aが先, 正:bが先)",
@@ -101,6 +109,9 @@
   "abc": {
     "prefix": "abc",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
+      "# ------------------------------------------------",
       "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
       "",
       "# usage",
@@ -115,6 +126,9 @@
     "prefix": "reclimit",
     "description": "再帰上限の引き上げ (sys.setrecursionlimit)",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
+      "# ------------------------------------------------",
       "import sys",
       "sys.setrecursionlimit(${1:10**7})$0",
       "",
@@ -129,6 +143,7 @@
     "body": [
       "import itertools",
       "class itr:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "  # rle(S): ランレングス圧縮 [(値, 個数), ...] を返す",
       "  # rle_int(S): 0~9の数字とみなしてランレングス圧縮する",
       "  # unrle(pairs): rle/rle_int の結果から元の列を復元する",
@@ -172,6 +187,7 @@
     "description": "クエリ種別ディスパッチャ Query_solve (ops[i-ind](*que) で呼び分け)",
     "body": [
       "class Query_solve:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "  # solve(Query): 各クエリの先頭要素(種別番号)に対応する ops の処理を呼び出す",
       "  def __init__(self, ops, ind = 1):",
       "    self.ops = ops",

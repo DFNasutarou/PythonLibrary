@@ -3,6 +3,7 @@
     "prefix": "dijkstra",
     "body": [
       "class Graph:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  __slots__ = ['N', 'directed', 'weighted', 'adj_list']",
       "  ",
       "  def __init__(self, N: int, directed: bool = False, weighted: bool = False):",
@@ -129,6 +130,7 @@
       "push = heapq.heappush",
       "",
       "class Dijkstra:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  \"\"\"",
       "  辺に重みがない場合は01bfsを使え!",
       "  \"\"\"",
@@ -236,6 +238,7 @@
     "prefix": "kruskal",
     "body": [
       "class Union:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # root(x): x の属する集合の(代表元, サイズ)を返す",
       "  # merge(x, y): x と y の集合を併合する",
       "  # size(x): x の属する集合の要素数を返す",
@@ -265,6 +268,7 @@
       "    return self.root(x)[0] == self.root(y)[0]",
       "",
       "class Kruskal:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # add(a, b, x): 重み x の辺 (a, b) を候補に追加する",
       "  # exe(): 最小全域木を構築し (総重み, 使用した辺のリスト) を返す",
       "  def __init__(self, N):",
@@ -300,6 +304,7 @@
       "NUMERIC_LIMITS = 10 ** 18",
       "from collections import deque",
       "class maxFlow:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  class edge:",
       "    def __init__(self, frm, to, cap, flow):",
       "      self.frm, self.to = frm, to",
@@ -430,6 +435,7 @@
       "NUMERIC_LIMITS = 10 ** 18",
       "",
       "class mcf_graph:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  def __init__ (self, n):",
       "    self._n = n",
       "    self.g = [[] for _ in range(n)]",
@@ -563,6 +569,7 @@
     "prefix": "scc",
     "body": [
       "class scc_graph:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  @staticmethod",
       "  def groups(N, adj):",
       "    \"\"\"",
@@ -658,6 +665,7 @@
     "prefix": "tree",
     "body": [
       "class Tree:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # 木の前処理（非再帰 DFS 1 回 + HLD）。頂点は内部で 0-indexed（index=1 で 1-indexed 入力を変換）",
       "  #   Tree(N, edges, root=None, index=0, weighted=False): edges = [(u, v)] or [(u, v, w)]",
       "#     root は edges と同じ番号付け（省略時は内部番号 0 の頂点）",
@@ -790,6 +798,7 @@
     "prefix": "treepath",
     "body": [
       "class TreePath:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # 木のパス・部分木クエリ（HLD + セグ木）。tree スニペットの Tree と seg スニペットの segtree が必要",
       "  #   TreePath(tr, val, op, e, edge=False, commutative=True)",
       "  #     val[v]: 頂点 v の値。edge=True なら辺 (par[v], v) の値を v に置く（根の値は無視）",
@@ -842,6 +851,7 @@
     "prefix": "rerooting",
     "body": [
       "class Rerooting:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # 全方位木 DP。全頂点それぞれを根にしたときの DP 値を O(N) で求める。tree スニペットの Tree が必要",
       "  #   Rerooting(tr, e, merge, add_root, add_edge=None)",
       "  #     e: merge の単位元（値）",
@@ -895,6 +905,9 @@
   "auxtree": {
     "prefix": "auxtree",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
+      "# ------------------------------------------------",
       "def auxtree(tr, vs):",
       "  # 頂点集合 vs とそれらの LCA だけを残した圧縮木（Auxiliary Tree）。tree スニペットの Tree が必要",
       "  # 戻り値 (nodes, par): nodes は圧縮木の頂点（DFS 順、nodes[0] が根）、par[i] は nodes[i] の親の nodes 内添字（根は -1）",
@@ -927,6 +940,7 @@
     "prefix": "warflo",
     "body": [
       "class warflo:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # add(a, b, c): a から b へ c の辺を張る (負の辺は不可)",
       "  # exe(): 各点間の距離を求める (O(N^3))",
       "  # route(a, b): a から b への経路を返す (先に exe() をすること)",
@@ -975,6 +989,7 @@
     "description": "Tree64 (深さ × ビット幅で部分木列を 64bit 整数化、定数倍高速化)",
     "body": [
       "class Tree64:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # 2 ** (HEIGHT * BIT_SIZE) - 1 まで可能",
       "  # HEIGHT = 8, BIT_SIZE = 6の場合",
       "  # 2 ** 48 - 1 >= 10 ** 14",
@@ -1113,6 +1128,7 @@
     "description": "グラフ汎用クラス GraphData (有向/無向 + 重み 切替)",
     "body": [
       "class GraphData:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  def __init__(self, N: int, directed: bool = False, weighted: bool = False):",
       "    self.N = N",
       "    self.directed = directed",
@@ -1217,6 +1233,7 @@
       "import heapq",
       "",
       "class Graph:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  __slots__ = ['N', 'directed', 'weighted', 'adj_list']",
       "  ",
       "  def __init__(self, N: int, directed: bool = False, weighted: bool = False):",
@@ -1339,6 +1356,7 @@
       "    return ans",
       "",
       "class BFS:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  \"\"\"",
       "  bfsしたいとき",
       "  \"\"\"",
@@ -1553,6 +1571,7 @@
       "from collections import deque",
       "sys.setrecursionlimit(10000000)",
       "class DAG:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  def __init__(self, N, AdjacencyList, ReverseList, inputCount):",
       "    self.N = N",
       "    self.AdjacencyList = AdjacencyList",
@@ -1630,6 +1649,7 @@
       "from atcoder.maxflow import MFGraph",
       "",
       "class Matching:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # Matching(N, weight=1, R=None): 左側 N 頂点(0..N-1)、右側 R 頂点(0..R-1、省略時は N)",
       "  #   weight: 各頂点が使える回数（s→左, 右→t の容量）",
       "  # add_edge(a, b, weight=1): 左側の頂点 a と右側の頂点 b を辺で結ぶ",
@@ -1677,6 +1697,7 @@
     "description": "部分グラフ ParticalGraph (元グラフからエッジ集合で誘導)",
     "body": [
       "class ParticalGraph:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  __slots__ = ['N', 'adj_list']",
       "  def __init__(self, N):",
       "    self.N = N",
@@ -1796,6 +1817,7 @@
       "# 2-SAT",
       "# scc スニペットの強連結成分分解 (scc_graph._ids) を利用する",
       "class two_sat:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # add_clause(i, f, j, g): 節 (x_i == f) or (x_j == g) を追加する",
       "  # satisfiable(): 全ての節を満たす割り当てが存在するか判定する O(n + m)",
       "  # answer(): satisfiable() が True のときの割り当て (x_0, ..., x_{n-1}) を返す",
@@ -1849,6 +1871,7 @@
     "description": "牛ゲー (差分制約 a - b ≤ w を最短路に帰着して整合性判定 / 最適値)",
     "body": [
       "class Ushi:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  def __init__(self, N):",
       "    self.N = N",
       "    self.edge = []",
@@ -1913,6 +1936,7 @@
     "prefix": "grid",
     "body": [
       "class gridMan:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/03-graph.code-snippets",
       "  # makeWall(x=-2): 四方を壁で囲む (範囲外アクセスを防ぐ)",
       "  # dist(S): S=(行, 列) から上下左右に進んで何手かかるかのリスト（到達不能は-1）と最大値を返す",
       "  #   makeWall の有無に関わらず元のグリッドの座標(0-indexed)で指定・返却する",

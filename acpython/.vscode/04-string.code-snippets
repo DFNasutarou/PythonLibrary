@@ -3,6 +3,7 @@
     "prefix": "rori",
     "body": [
       "class Rori:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
       "  # hashLR(l, r): [l, r) のハッシュ値(2つのmodの組)を返す",
       "  # same(l1, r1, l2, r2): [l1, r1) と [l2, r2) が同じ文字列かを返す (長さ一致も確認)",
       "  # 文字は ord(c) をそのまま値に使う (英小文字以外・大文字・数字も可)",
@@ -42,6 +43,9 @@
   "string": {
     "prefix": "string",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
+      "# ------------------------------------------------",
       "from functools import cmp_to_key",
       "THRESHOLD_NAIVE = 10",
       "THRESHOLD_DOUBLING = 40",
@@ -253,6 +257,7 @@
     "description": "eertree / 回文木 (文字列内の全ての異なる回文部分文字列を管理)",
     "body": [
       "class eertree:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
       "  # 回文木 (eertree): 文字列に含まれる回文部分文字列を管理する",
       "  #   addChar(x): 末尾に 1 文字追加する",
       "  #   addString(xs): 末尾に文字列を追加する",
@@ -392,6 +397,9 @@
     "prefix": "hensyukyori",
     "description": "編集距離 (Levenshtein 距離、hensyuKyori: 時間 O(|S| * |T|) / メモリ O(min(|S|, |T|))、hensyuKyoriK: 距離 K 以下限定の帯 DP O(|S| * K))",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
+      "# ------------------------------------------------",
       "def chmin(data, i, x):",
       "  if data[i] > x: data[i] = x",
       "",
@@ -442,6 +450,7 @@
     "body": [
       "import atcoder.string",
       "class SA:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
       "  \"\"\"",
       "  SuffixArrayアルゴリズム",
       "  \"\"\"",
@@ -501,6 +510,7 @@
     "body": [
       "import atcoder.string",
       "class Zalg:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/04-string.code-snippets",
       "  \"\"\"",
       "  zアルゴリズム",
       "  \"\"\"",

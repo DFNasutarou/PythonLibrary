@@ -2,6 +2,9 @@
   "adm": {
     "prefix": "adm",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "# 0 <= x <= n 逆元リスト",
       "def invL(n, MOD): ",
       "  I = [0, 1]",
@@ -48,6 +51,7 @@
     "prefix": "comb",
     "body": [
       "class comb():",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # com(n, k): n個からk個選ぶ組み合わせの数",
       "  # com_multi(n, k): n個から重複を許してk個選ぶ組み合わせの数",
       "  # per(n, k): n個からk個並べる順列の数",
@@ -160,6 +164,7 @@
     "prefix": "convmod",
     "body": [
       "class Convolution:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  def __init__(self, MOD):",
       "    self.MOD = MOD",
       "    self.PrimitiveRoot = self.primitive_root(MOD)",
@@ -308,6 +313,9 @@
   "convolvell": {
     "prefix": "convolvell",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "import numpy as np",
       "",
       "def convolve(f, g):",
@@ -357,6 +365,9 @@
   "divhoujo": {
     "prefix": "divhoujo",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "# exe(d): 「d の約数 x 全てについての R[x] の総和」になる量を書く (例: 周期が d の約数である個数)",
       "#   → divhoujo で R[d] = 「ちょうど d」の量に変換し、その総和を返す",
       "# 前提: D は約数について閉じた昇順リスト (D の各要素の約数がすべて D に含まれる。例: D = divisor(N))",
@@ -401,6 +412,9 @@
   "divisor": {
     "prefix": "divisor",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "import math",
       "def divisor(n):",
       "  if n == 1: return [1]",
@@ -422,6 +436,9 @@
   "gyoretu": {
     "prefix": "gyoretu",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "# 行列累乗",
       "# mat_pow(行列, 累乗)",
       "# MOD を設定しておく",
@@ -460,6 +477,9 @@
   "hakidasi": {
     "prefix": "hakidasi",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "def hakidasi(L):",
       "  # L: 空でない非負整数のリスト (破壊的に変更して返す)",
       "  # 返り値: 先頭 rank 個が上位ビットから階段状の基底、残りは 0",
@@ -490,6 +510,7 @@
     "prefix": "inv",
     "body": [
       "class Inv:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # invx(a): a の逆元 (a^-1 mod MOD) を返す",
       "  # invL(n): 0 <= x <= n の逆元リストを返す",
       "  # invpowL(a, n): a^-x (0 <= x <= n) のリストを返す",
@@ -528,6 +549,9 @@
   "kika": {
     "prefix": "kika",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "def turn(D):",
       "  return [list(x) for x in zip(*D)][::-1]",
       "def trim(D):",
@@ -551,6 +575,9 @@
   "kyori": {
     "prefix": "kyori",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "def edist(a, b):",
       "  x = (a[0] - b[0]) ** 2",
       "  y = (a[1] - b[1]) ** 2",
@@ -575,6 +602,9 @@
   "math": {
     "prefix": "math",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "# 逆元",
       "# O(log m)",
       "def inv_mod(x, m):",
@@ -652,6 +682,9 @@
   "period": {
     "prefix": "period",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "def period(L, K, x = 0):",
       "  # L: 関数グラフ (i -> L[i])、K >= 0",
       "  # 返り値 D: D[v] = 列 x, L[x], L[L[x]], ... の先頭 K 項に v が現れる回数",
@@ -692,6 +725,7 @@
       "import math",
       "import bisect",
       "class Prime:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # getPrimeList(): 素数リスト(Nまで)を返す",
       "  # isPrime(x): 素数判定を行う (x<=N: 篩の結果 / x>N: ミラーラビン法)",
       "  # primeFactorization(x): 素因数分解を行い {素数: 指数} を返す (x<=N: lpf表 / N<x<=N**2: 素数リストで試し割り / それ以上: O(√x) 試し割り)",
@@ -827,6 +861,9 @@
   "totu": {
     "prefix": "totu",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "import math",
       "def det(p, q):",
       "    return p[0]*q[1] - p[1]*q[0]",
@@ -906,6 +943,9 @@
   "touhi": {
     "prefix": "touhi",
     "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
       "# 1 + x + x^2 + ... + x^t (初項1 公比x 項数t+1) の和を mod で求め、[和, x^t] を返す",
       "def nib(x, t, MOD):",
       "  # calc(n) = [1 + x + ... + x^(n-1), x^n]",
@@ -932,6 +972,7 @@
     "prefix": "tousa",
     "body": [
       "class Imos:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  def __init__(self, N) -> None:",
       "    self.N = N",
       "    self.A = [0]*(N+2)",
@@ -965,6 +1006,7 @@
     "description": "その他の畳み込み集 (AND / OR / XOR 畳み込み (FWT、長さ 2^k、引数を破壊的に変換) / min-plus 畳み込み (a が下に凸))",
     "body": [
       "class Convolution:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # ※ and/or/xorProductConv は引数 a, b を破壊的に変換する (元の値が必要なら a[:], b[:] を渡す)",
       "  @staticmethod",
       "  def andProductConv(a: list[int], b: list[int], MOD):",
@@ -1054,6 +1096,7 @@
       "      yield i, a[j] + b[i]",
       "",
       "class Hadamard:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  @staticmethod",
       "  def opAndFwt(f : list[int], i: int, j: int) : f[j] += f[j | i]",
       "  @staticmethod",
@@ -1085,6 +1128,7 @@
     "description": "原始根・離散対数 Gensikon (素数 p の最小原始根 / BSGS で X^K≡Y (mod p) の最小 K を O(√p))",
     "body": [
       "class Gensikon:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # 原始根・離散対数 (インスタンス化せず Gensikon.xxx(...) で呼ぶ)",
       "  #   primitive_root(x): 素数 x (x >= 3) の最小の原始根を返す O(√x + 試す候補数 × d(x-1) log x)",
       "  #   prime(x): x の約数を昇順で返す O(√x)",
@@ -1151,6 +1195,7 @@
     "description": "タプル↔整数パッカー (辞書 key 高速化、(a,b) を 1 整数に)",
     "body": [
       "class Packer():",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  def __init__(self, N: int = 10**6, size = 2) -> None:",
       "    self.N = N",
       "    self.size = size",
@@ -1186,6 +1231,7 @@
     "description": "進数変換 Radix_Convert (任意基数 ↔ 10 進の相互変換)",
     "body": [
       "class Radix_Convert:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  @staticmethod",
       "  def toDec(x, n):",
       "    \"\"\"",
@@ -1234,6 +1280,7 @@
     "description": "XOR 基底クラス XORBasis (掃き出し法のクラス版、追加/包含/次元)",
     "body": [
       "class XORBasis:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  \"\"\"",
       "  整数リスト x = [x0, x1, ..., x_{m-1}] から GF(2) 上の基底を作り、",
       "  任意のターゲット値 t を x の XOR 組み合わせで表現できるかを判定・復元する。",
@@ -1346,6 +1393,7 @@
     "description": "写像 12 相 (n 玉を k 箱に入れる、玉/箱/制約 の 12 通り)",
     "body": [
       "class way12():",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  # com(n, k): n個からk個選ぶ組み合わせの数",
       "  # per(n, k): n個からk個並べる順列の数",
       "  # sti(n, k): 第二種スターリング数",
@@ -1479,6 +1527,7 @@
     "description": "整数分割の列挙 (n を正整数の順不同和で表す全パターンを生成)",
     "body": [
       "class Bunkatu:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  @staticmethod",
       "  def bunkatu(N):",
       "    \"\"\"",
@@ -1520,6 +1569,7 @@
     "prefix": "ragu",
     "body": [
       "class Inv:",
+      "  # https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
       "  def __init__(self, mod):",
       "    self.MOD = mod",
       "  def modpow(self, a, n):",

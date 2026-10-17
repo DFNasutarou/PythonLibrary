@@ -92,9 +92,10 @@
       "# ------------------------------------------------",
       "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "# ------------------------------------------------",
-      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
+      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+      "abc = \"abcdefghijklmnopqrstuvwxyz\""
     ],
-    "description": "アルファベット 26 文字定数 ABC",
+    "description": "アルファベット 26 文字定数 (ABC = 大文字、abc = 小文字)",
     "scope": "python"
   },
   "reclimit": {
@@ -112,7 +113,7 @@
   "itertools": {
     "scope": "python",
     "prefix": "itertools",
-    "description": "itertools 系ユーティリティ (rle/rle_int/unrle/accumulate/pairwise/flatten)",
+    "description": "itertools 系ユーティリティ (rle/rle_int/unrle/accumulate/pairwise/flatten/unflatten)",
     "body": [
       "import itertools",
       "class itr:",
@@ -122,7 +123,8 @@
       "  # unrle(pairs): rle/rle_int の結果から元の列を復元する",
       "  # accumulate(A, initial=0): 累積和のリストを返す (先頭に initial を含む)",
       "  # pairwise(A): 隣接する要素のペア (a[i], a[i+1]) のリストを返す",
-      "  # flatten(A): 2次元リストを1次元に平坦化する",
+      "  # flatten(A): 2次元リストを1次元に平坦化する（(i, j) は i * W + j に移る。各行の長さ W のとき）",
+      "  # unflatten(F, w): flatten の逆。w が int なら幅 w ごと、list なら w[i] 個ずつ区切って2次元に戻す",
       "  @staticmethod",
       "  def rle(S):",
       "    return [(k, len(list(g))) for k, g in itertools.groupby(S)]",
@@ -143,7 +145,13 @@
       "    return list(itertools.pairwise(A))",
       "  @staticmethod",
       "  def flatten(A):",
-      "    return list(itertools.chain.from_iterable(A))"
+      "    return list(itertools.chain.from_iterable(A))",
+      "  @staticmethod",
+      "  def unflatten(F, w):",
+      "    if isinstance(w, int): return [F[i:i + w] for i in range(0, len(F), w)]",
+      "    res = []; i = 0",
+      "    for k in w: res.append(F[i:i + k]); i += k",
+      "    return res"
     ]
   },
   "query": {

@@ -209,13 +209,20 @@ arr = sorted(arr, key=cmp_to_key(cmpstr))
 
 ### abc
 
-アルファベット 26 文字定数 ABC
+アルファベット 26 文字定数 (ABC = 大文字、abc = 小文字)
+
+展開結果:
+
+```python
+ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+abc = "abcdefghijklmnopqrstuvwxyz"
+```
 
 例:
 
 ```python
 i = ABC.index("C")  # 2
-abc = ABC.lower()
+c = abc[(abc.index(ch) + k) % 26]  # 小文字 ch を k 文字ずらす
 ```
 
 ### reclimit
@@ -230,7 +237,7 @@ sys.setrecursionlimit(10**6)  # 再帰関数(DFS 等)の前に。PyPy は深い�
 
 ### itertools
 
-itertools 系ユーティリティ (rle/rle_int/unrle/accumulate/pairwise/flatten)
+itertools 系ユーティリティ (rle/rle_int/unrle/accumulate/pairwise/flatten/unflatten)
 
 API:
 
@@ -241,7 +248,8 @@ class itr
   # unrle(pairs): rle/rle_int の結果から元の列を復元する
   # accumulate(A, initial=0): 累積和のリストを返す (先頭に initial を含む)
   # pairwise(A): 隣接する要素のペア (a[i], a[i+1]) のリストを返す
-  # flatten(A): 2次元リストを1次元に平坦化する
+  # flatten(A): 2次元リストを1次元に平坦化する（(i, j) は i * W + j に移る。各行の長さ W のとき）
+  # unflatten(F, w): flatten の逆。w が int なら幅 w ごと、list なら w[i] 個ずつ区切って2次元に戻す
 ```
 
 例:
@@ -253,6 +261,8 @@ itr.unrle([("a", 2), ("b", 3)]) -> ["a", "a", "b", "b", "b"]
 itr.accumulate([1, 2, 3]) -> [0, 1, 3, 6]
 itr.pairwise([1, 2, 3]) -> [(1, 2), (2, 3)]
 itr.flatten([[1, 2], [3, 4]]) -> [1, 2, 3, 4]
+itr.unflatten([1, 2, 3, 4], 2) -> [[1, 2], [3, 4]]  # 幅で復元
+itr.unflatten([1, 2, 3], [1, 2]) -> [[1], [2, 3]]  # 行ごとの長さで復元（長さは flatten 前に [len(r) for r in A] で取っておく）
 ```
 
 ### query
@@ -316,6 +326,7 @@ class BIT
   # set(L): L の内容をまとめて反映する
   # update(x, n): 位置 x に n を加算する
   # getV(x): 先頭から x までの和(x を含む)を返す
+  # print(): 各位置の値と全体の和を表示する (デバッグ用、O(N log N))
 ```
 
 例:
@@ -324,6 +335,7 @@ class BIT
 bit = BIT(N)
 bit.update(i, x)
 s = bit.getV(r)
+bit.print()  # 例: [1, 2, 13, 4, 5] sum: 25
 ```
 
 ### lazyseg
@@ -340,6 +352,7 @@ class LSTFactory
   #   makeSetMinSegTree(v) / makeSetMaxSegTree(v): 区間代入・区間 min / max
   #   makeSetSumSegTree(v): 区間代入・区間和
   #   makeAffineSumSegTree(v): 区間アフィン変換 x -> a*x+b・区間和 (mod MOD)
+  #   debug(seg): seg の各位置の値と全体の演算結果 all_prod を表示する (デバッグ用、O(N log N))
   # Sum 系は内部で要素を (値 << RNG) + 区間長 に詰めている (区間長 < 2^RNG)。
   #   get / prod / all_prod / max_right / min_left の値は自動で取り出されるので利用者は意識不要。
   #   値は負や 2^RNG 以上でも可 (Add/Set Sum)。
@@ -355,6 +368,7 @@ t.prod(l, r)
 u = LSTFactory.makeAffineSumSegTree(v)
 u.apply(l, r, a, b)  # [l, r) の各 x を a*x+b (mod MOD) に
 u.prod(l, r)
+LSTFactory.debug(t)  # 例: [6, 7, 3] all_prod: 16
 ```
 
 ### union
@@ -396,7 +410,7 @@ class segtree
   # all_prod(): 全体の演算結果を返す
   # max_right(l, g): l を左端に固定したとき g を満たす最長区間の右端を返す
   # min_left(r, g): r を右端に固定したとき g を満たす最長区間の左端を返す
-  # print(): 中身を表示する (デバッグ用)
+  # print(): 各位置の値と全体の演算結果 all_prod を表示する (デバッグ用)
 class segtreeFactory
   makeMaxSegTree(N,  v = None)
   makeMinSegTree(N, v = None)
@@ -418,6 +432,7 @@ class segtreeFactory
 t = segtreeFactory.makeSumSegTree(N)
 t.set(i, x)
 s = t.prod(l, r)
+t.print()  # 値と全体の演算結果 all_prod を表示
 ```
 
 ### wavelet
@@ -718,6 +733,7 @@ class dinamic_segtree
   reset(l, r)
   max_right(l, g)
   min_left(r, g)
+  print()  # 値を設定した位置 {index: value} と全体の演算結果 all_prod を表示する (デバッグ用)
 class segtreeFactory
   makeMaxSegTree(N)
   makeMinSegTree(N)
@@ -739,6 +755,7 @@ class segtreeFactory
 t = segtreeFactory.makeSumSegTree(N)
 t.set(i, x)
 s = t.prod(l, r)
+t.print()  # 値と全体の演算結果 all_prod を表示
 ```
 
 ### packed2dlist

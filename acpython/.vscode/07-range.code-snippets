@@ -56,17 +56,7 @@
       "  def r_plus(self):",
       "    self.r += 1",
       "  def r_minus(self):",
-      "    self.r -= 1",
-      "",
-      "# usage",
-      "# A = [0] + A  # 1-indexed にする",
-      "# class MyMo(Mo):  # 例: 区間和",
-      "#   def l_plus(self): self.ans -= A[self.l]; self.l += 1   # 要素 l を除く",
-      "#   def l_minus(self): self.l -= 1; self.ans += A[self.l]  # 要素 l-1 を加える",
-      "#   def r_plus(self): self.ans += A[self.r]; self.r += 1   # 要素 r を加える",
-      "#   def r_minus(self): self.r -= 1; self.ans -= A[self.r]  # 要素 r-1 を除く",
-      "# Query = [(l, r + 1) for l, r in LR]  # 閉区間 [l, r] (1-indexed) の入力なら r + 1 にする",
-      "# ans = MyMo(N, Query).getAns()"
+      "    self.r -= 1"
     ],
     "description": "Mo's algorithm (区間クエリのオフライン処理、クエリは 1-indexed 半開区間 [l, r)、√N ブロック並べ替え O((N + Q)√N))",
     "scope": "python"
@@ -151,12 +141,7 @@
       "      sm += L[i] * n",
       "      D.append([L[i], n])",
       "      ans[i + 1] = sm",
-      "    return ans",
-      "",
-      "# usage",
-      "# m = RangeAffine.range_min_sum_list(L)  # 長さ len(L) + 1",
-      "# M = RangeAffine.range_max_sum_list(L)",
-      "# total = sum(m) // 2  # 全区間 (i < j) の min の総和"
+      "    return ans"
     ]
   },
   "imos2d": {
@@ -193,12 +178,7 @@
       "    for j in range(self.W):",
       "      for i in range(1, self.H):",
       "        ret[i][j] += ret[i - 1][j]",
-      "    return ret",
-      "",
-      "# usage",
-      "# im = Imos2D(H, W)",
-      "# im.add(r1, c1, r2, c2, v)",
-      "# G = im.get_data()"
+      "    return ret"
     ]
   },
   "squaresplit": {
@@ -279,14 +259,7 @@
       "    ans = self.qs.solve_myself(ind, value)",
       "    for b in self.effort_list[ind]:",
       "      self.qs.effort_other(ind, b, value)",
-      "    return ans",
-      "",
-      "# usage",
-      "# gf = GraphData(N)  # graph スニペットを先に展開しておく。重みなし前提 (weighted=True だと adj_list がタプルになり動かない)",
-      "# gf.add_edges(edges)  # 0-indexed",
-      "# qs = SquareSpilit.Query_solve(N)",
-      "# sq = SquareSpilit(gf, qs)",
-      "# ans = sq.query((x, y))  # q = (頂点, 値)"
+      "    return ans"
     ]
   }
 }

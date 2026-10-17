@@ -224,12 +224,7 @@
       "        b = way_back[to]",
       "        if b == -1: continue",
       "        if a + b + value == way_length: gf.add_edge(frm, to, value)",
-      "    return gf",
-      "",
-      "# usage",
-      "# g = Graph(N, directed=True, weighted=True)",
-      "# g.add_edge(a, b, w)",
-      "# d = Dijkstra(g).dist(s)"
+      "    return gf"
     ],
     "description": "ダイクストラ法 (重み付きグラフの単一始点最短距離 O((N+M) log N))",
     "scope": "python"
@@ -288,12 +283,7 @@
       "      if self.U.merge(a, b):",
       "        ans.append([n, a, b, x])",
       "        total += x",
-      "    return total, ans",
-      "",
-      "# usage",
-      "# k = Kruskal(N)",
-      "# k.add(a, b, w)",
-      "# total, mst_edges = k.exe()"
+      "    return total, ans"
     ],
     "description": "クラスカル法 (最小全域木 MST、辺ソート + Union-Find)",
     "scope": "python"
@@ -418,12 +408,7 @@
       "  class _edge:",
       "    def __init__(self,to, rev, cap):",
       "      self.to, self.rev = to, rev",
-      "      self.cap = cap",
-      "",
-      "# usage",
-      "# mf = maxFlow(N)",
-      "# mf.add_edge(a, b, cap)",
-      "# f = mf.flow(s, t)"
+      "      self.cap = cap"
     ],
     "description": "最大流 maxFlow (Dinic 系の自前実装、整数容量)",
     "scope": "python"
@@ -555,12 +540,7 @@
       "    __slots__ = \"to\", \"rev\", \"cap\", \"cost\"",
       "    def __init__(self, to, rev, cap, cost):",
       "      self.to, self.rev = to, rev",
-      "      self.cap, self.cost = cap, cost",
-      "",
-      "# usage",
-      "# mcf = mcf_graph(N)",
-      "# mcf.add_edge(a, b, cap, cost)",
-      "# flow, cost = mcf.flow(s, t, limit)"
+      "      self.cap, self.cost = cap, cost"
     ],
     "description": "最小費用流 MinCostFlow (Dijkstra + ポテンシャル法、負コスト辺は初回 Bellman-Ford で対応・負閉路不可) O(F (N+M) log M)",
     "scope": "python"
@@ -652,11 +632,7 @@
       "          low[bef]=min(low[bef],low[v])",
       "    for i in range(N):",
       "      ids[i]=NG[1]-1-ids[i]",
-      "    return NG[1], ids",
-      "",
-      "# usage",
-      "# groups = scc_graph.groups(N, adj)  # adj[v] = vから出る辺の行き先リスト",
-      "# compressed, ids = scc_graph.compress(graph)  # graph: GraphData(N, True)"
+      "    return NG[1], ids"
     ],
     "description": "強連結成分分解 SCC (有向グラフを縮約して DAG 化)",
     "scope": "python"
@@ -797,23 +773,7 @@
       "    print(\"ch    \", self.ch)",
       "    print(\"leaves\", self.leaves)",
       "    print(\"pos   \", self.pos)",
-      "    print(\"head  \", self.head)",
-      "",
-      "# usage",
-      "# tr = Tree(N, edges, index=1)  # edges が 1-indexed なら index=1（root も同じ番号付け、以降のメソッドは 0-indexed で呼ぶ）",
-      "# tr = Tree(N, edges, weighted=True)     # 重み付き edges = [(u, v, w), ...]",
-      "# c = tr.lca(u, v)",
-      "# d = tr.dist(u, v)",
-      "# x = tr.jump(u, v, k)",
-      "# d, a, b = tr.diameter()",
-      "# p = tr.path(a, b)",
-      "# l, r = tr.subtree(v)  # v の部分木の頂点 = tr.at[l:r]",
-      "# for c in tr.ch[v]: ...  # v の子",
-      "# for v in tr.leaves: ...  # 葉",
-      "# for v in reversed(tr.order): ...  # 葉から根の順（子を処理してから親）",
-      "# tr.is_ancestor(u, v)",
-      "# g = tr.centroid()",
-      "# tr.debug()"
+      "    print(\"head  \", self.head)"
     ],
     "description": "木の前処理 Tree (LCA / k 個上の祖先 / 距離 / パス / 部分木区間 / 直径 / 子・葉リスト / 重心 / HLD 区間分解、重み対応、構築 O(N)・クエリ O(log N))",
     "scope": "python"
@@ -855,18 +815,7 @@
       "    return x",
       "  def subtree(self, v):",
       "    l, r = self.tr.subtree(v)",
-      "    return self.seg.prod(l + self.edge, r)",
-      "",
-      "# usage",
-      "# tr = Tree(N, edges)",
-      "# tp = TreePath(tr, A, lambda a, b: a + b, lambda: 0)  # 頂点 v の値 A[v]、パス和",
-      "# tp.set(v, x)",
-      "# s = tp.path(u, v)",
-      "# s = tp.subtree(v)",
-      "# B = [0] * N",
-      "# for u, v, w in wedges: B[tr.edge_vertex(u, v)] = w   # 辺の値は子側の頂点に置く",
-      "# te = TreePath(tr, B, max, lambda: -10**18, edge=True)  # パス上の辺の最大値",
-      "# m = te.path(u, v)"
+      "    return self.seg.prod(l + self.edge, r)"
     ],
     "description": "木のパス・部分木クエリ TreePath (HLD + セグ木、頂点/辺の値、非可換対応、tree と seg スニペットが必要、O(log^2 N))",
     "scope": "python"
@@ -926,24 +875,7 @@
       "        c = nb[i][0]",
       "        if c != par[v]: up[c] = add_root(merge(pre, suf[i + 1]), v)",
       "        pre = merge(pre, val[i])",
-      "    return ans",
-      "",
-      "# usage",
-      "# tr = Tree(N, edges)  # edges が 1-indexed なら index=1（以降の頂点番号は 0-indexed）",
-      "# # --- 葉→根の木 DP（bottom_up）---",
-      "# # 部分木のサイズ: 子の合計 + 自分 1",
-      "# size = TreeDP(tr, 0, lambda a, b: a + b, lambda x, v: x + 1).bottom_up()",
-      "# # 最大独立集合: dp[v] = (v を選ばない最大, v を選ぶ最大)",
-      "# #   子 c の寄与 = (max(dp[c]), dp[c][0])  ← v を選ばないなら c は自由、選ぶなら c は選べない",
-      "# mis = TreeDP(tr, (0, 0), lambda a, b: (a[0] + b[0], a[1] + b[1]), lambda x, v: (x[0], x[1] + 1), lambda x, c, v, w: (max(x), x[0])).bottom_up()",
-      "# print(max(mis[tr.root]))",
-      "# # --- 全方位木 DP（solve）---",
-      "# tr = Tree(N, edges, weighted=True)",
-      "# # 各頂点から最も遠い頂点までの距離",
-      "# far = TreeDP(tr, 0, max, lambda x, v: x, lambda x, c, v, w: x + w).solve()",
-      "# # 各頂点から全頂点への距離の総和（値 = (距離和, 頂点数)）",
-      "# rr = TreeDP(tr, (0, 0), lambda a, b: (a[0] + b[0], a[1] + b[1]), lambda x, v: (x[0], x[1] + 1), lambda x, c, v, w: (x[0] + x[1] * w, x[1]))",
-      "# tot = [s for s, _ in rr.solve()]"
+      "    return ans"
     ],
     "description": "木 DP TreeDP (葉→根の bottom_up / 全方位 solve、merge / add_root / add_edge を渡すだけ、tree スニペットが必要、O(N))",
     "scope": "python"
@@ -971,13 +903,7 @@
       "    while pos[st[-1]] + tr.size[st[-1]] <= pos[v]: st.pop()",
       "    par[idx[v]] = idx[st[-1]]",
       "    st.append(v)",
-      "  return nodes, par",
-      "",
-      "# usage",
-      "# tr = Tree(N, edges)",
-      "# nodes, par = auxtree(tr, vs)",
-      "# for i in range(1, len(nodes)):",
-      "#   length = tr.dist(nodes[i], nodes[par[i]])"
+      "  return nodes, par"
     ],
     "description": "圧縮木 Auxiliary Tree (頂点集合と LCA だけ残した木、tree スニペットが必要、O(K log N))",
     "scope": "python"
@@ -1019,12 +945,7 @@
       "      c = self.V[a][c]",
       "      L.append(c)",
       "    L.reverse()",
-      "    return L",
-      "",
-      "# usage",
-      "# wf = warflo(N, inf)",
-      "# wf.add(a, b, w)",
-      "# D = wf.exe()"
+      "    return L"
     ],
     "description": "ワーシャル・フロイド法 (全点対最短距離 O(N^3))",
     "scope": "python"
@@ -1160,12 +1081,7 @@
       "    assert 0 <= n < Tree64.LIMIT",
       "    ans = self.root.find_lower(n, Tree64.HEIGHT - 1)",
       "    if ans == None: return -1",
-      "    return ans",
-      "",
-      "# usage",
-      "# t = Tree64()",
-      "# t.add(n)",
-      "# ok = t.find(n)"
+      "    return ans"
     ]
   },
   "graph": {
@@ -1263,11 +1179,7 @@
       "        used_par[x] = True # 木辺の逆向き。2本目以降の多重辺は後退辺として扱う",
       "      elif depth[y] < depth[x]:",
       "        ans[1].append(data)",
-      "    return ans",
-      "",
-      "# usage",
-      "# g = GraphData(N, directed=True, weighted=False)",
-      "# g.add_edge(a, b)"
+      "    return ans"
     ]
   },
   "bfs": {
@@ -1600,12 +1512,7 @@
       "      cnt += 1",
       "      if len(eg) > cnt: tl.append(eg[cnt])",
       "      data = tl",
-      "    return D, parent",
-      "",
-      "# usage",
-      "# g = Graph(N, weighted=True)",
-      "# g.add_edge(a, b, w_0_or_1)",
-      "# d = BFS(g).bfs01(s)"
+      "    return D, parent"
     ]
   },
   "dag": {
@@ -1680,11 +1587,7 @@
       "      for j in x:",
       "        for k in to[j]:",
       "          if Data[k] == i: yield (i, j, k)",
-      "  ",
-      "",
-      "# usage",
-      "# dag = DAG.makeDag(gf)",
-      "# order = dag.toposo()"
+      "  "
     ]
   },
   "matching": {
@@ -1729,12 +1632,7 @@
       "    mcg = Matching(N, 1, max([N] + [j + 1 for x in L for j in x]))",
       "    for i in range(N):",
       "      for j in L[i]: mcg.add_edge(i, j, 1)",
-      "    return mcg",
-      "",
-      "# usage",
-      "# m = Matching(N)",
-      "# m.add_edge(l, r)",
-      "# n = m.flow()"
+      "    return mcg"
     ]
   },
   "particalgraph": {
@@ -1850,11 +1748,7 @@
       "  ",
       "  @ staticmethod",
       "  def _is_contains_bit(n, S):",
-      "    return S & (1 << n)",
-      "",
-      "# usage",
-      "# pg = ParticalGraph(N)",
-      "# pg.add_edges(edge_subset)"
+      "    return S & (1 << n)"
     ]
   },
   "twosat": {
@@ -1900,13 +1794,7 @@
       "    \"\"\"",
       "    満たす割り当てを返す (satisfiable() が True のときのみ有効) O(1)",
       "    \"\"\"",
-      "    return self._answer",
-      "",
-      "# usage",
-      "# ts = two_sat(N)",
-      "# ts.add_clause(x, vx, y, vy)",
-      "# ok = ts.satisfiable()",
-      "# ans = ts.answer()"
+      "    return self._answer"
     ],
     "description": "2-SAT (含意グラフ + SCC、節集合を満たす変数割当を判定/構成)",
     "scope": "python"
@@ -1970,12 +1858,7 @@
       "          complete = False",
       "      if complete: break",
       "    if complete: return dist[en]",
-      "    else: return None",
-      "",
-      "# usage",
-      "# u = Ushi(N)",
-      "# u.add_edge(a, b, w)",
-      "# ans = u.ushi_maximam(st, en)"
+      "    else: return None"
     ]
   },
   "grid": {
@@ -2014,12 +1897,7 @@
       "            T[x][y] = k + 1",
       "      List = newList",
       "    return T, k",
-      "  ",
-      "",
-      "# usage",
-      "# g = gridMan(L)",
-      "# g.makeWall()",
-      "# D, mx = g.dist((sr, sc))"
+      "  "
     ],
     "description": "グリッド管理 gridMan (壁付与 + 4方向 BFS 距離 / 最大値)",
     "scope": "python"

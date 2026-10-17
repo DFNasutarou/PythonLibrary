@@ -89,11 +89,7 @@
       "    デバッグ用: n を2進数表記（M桁まで0埋め）した文字列を返す",
       "    \"\"\"",
       "    binary_str = bin(n)[2:]",
-      "    return binary_str.zfill(M)",
-      "",
-      "# usage",
-      "# for s in BitAll.bitall(M): ...",
-      "# idx = BitAll.set_bit_indices(s)"
+      "    return binary_str.zfill(M)"
     ],
     "description": "ビット全探索 BitAll (M 桁の全ビット列を立っている数の少ない順に列挙・部分集合列挙・立っているビット位置、O(2^M))",
     "scope": "python"
@@ -153,11 +149,7 @@
       "      return L[mid] >= n ",
       "    ok = len(L) - 1",
       "    ng = -1",
-      "    return nibutan.nibutan(ok, ng, op)",
-      "",
-      "# usage",
-      "# x = nibutan.nibutan(ok, ng, op)",
-      "# i = nibutan.le(L, n)  # L[i] <= n となる最大の i (L は昇順)"
+      "    return nibutan.nibutan(ok, ng, op)"
     ],
     "description": "二分探索 (汎用 nibutan + 昇順リスト向け lt / le / gt / ge はインデックスを返す、O(log N))",
     "scope": "python"
@@ -209,10 +201,7 @@
       "    d = R[d]",
       "    ans -= b.getV(d)",
       "    b.update(d, 1)",
-      "  return ans",
-      "",
-      "# usage",
-      "# cnt = tentou(A)"
+      "  return ans"
     ],
     "description": "転倒数 (BIT で O(N log N))",
     "scope": "python"
@@ -237,10 +226,7 @@
       "    while stack and A[stack[-1]] <= a: stack.pop()",
       "    if stack: ans[i] = stack[-1]",
       "    stack.append(i)",
-      "  return ans",
-      "",
-      "# usage",
-      "# res = prev_greater(A)  # res[i] = i より前で A[i] より大きい最も右の番号 / なければ -1"
+      "  return ans"
     ],
     "description": "各要素の左側で、それより大きい最も右の要素の番号 (単調スタック O(N))",
     "scope": "python"
@@ -276,16 +262,7 @@
       "    while m in st: m += 1",
       "    return m",
       "  def table(self, states):",
-      "    for s in states: print(s, self.g(s))",
-      "",
-      "# usage",
-      "# def moves(n):  # 1〜3 個取れる石取り",
-      "#   return [n - k for k in (1, 2, 3) if n - k >= 0]",
-      "# gr = Grundy(moves)",
-      "# gr.table(range(20))  # 0 1 2 3 0 1 2 3 ... の周期が見える",
-      "# def moves2(n):  # 山を 2 つの空でない山に分ける",
-      "#   return [[a, n - a] for a in range(1, n)]",
-      "# Grundy(moves2).table(range(10))"
+      "    for s in states: print(s, self.g(s))"
     ],
     "description": "組み合わせゲームの Grundy 数を総当たり計算 (遷移関数を渡す・ゲームの和は XOR・小さい状態の実験用)",
     "scope": "python"

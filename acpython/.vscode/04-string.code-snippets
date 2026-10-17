@@ -30,12 +30,7 @@
       "    k = ((self.H2[r] - self.H2[l] * self.P2[r - l]) % self.MOD2 + self.MOD2) % self.MOD2",
       "    return (t, k)",
       "  def same(self, l1, r1, l2, r2):",
-      "    return r1 - l1 == r2 - l2 and self.hashLR(l1, r1) == self.hashLR(l2, r2)",
-      "",
-      "# usage",
-      "# rh = Rori(S)",
-      "# h = rh.hashLR(l, r)  # S[l:r] のハッシュ",
-      "# ok = rh.same(l1, r1, l2, r2)  # S[l1:r1] == S[l2:r2] か"
+      "    return r1 - l1 == r2 - l2 and self.hashLR(l1, r1) == self.hashLR(l2, r2)"
     ],
     "description": "ローリングハッシュ Rori (二重 mod、文字列の部分一致を O(1) で比較)",
     "scope": "python"
@@ -241,12 +236,7 @@
       "def suffix_array_str(s):",
       "  n = len(s)",
       "  s2 = list(map(ord, s))",
-      "  return sa_is(s2, 255)",
-      "",
-      "# usage",
-      "# sa = suffix_array(s)",
-      "# lcp = lcp_array(s, sa)",
-      "# z = z_algorithm(s)"
+      "  return sa_is(s2, 255)"
     ],
     "description": "文字列アルゴリズム集 (suffix array / LCP / 文字列ソート関連まとめ)",
     "scope": "python"
@@ -382,14 +372,7 @@
       "  def checkStr(self,  x, length):",
       "    if length >= len(self.S) - 1 : return False",
       "    return x == self.S[-2 - length]",
-      "  ",
-      "",
-      "# usage",
-      "# et = eertree()",
-      "# et.addChar(c)",
-      "# cnt = et.getCount()",
-      "# et.addString(S)",
-      "# w = ''.join(et.getMaxWord())"
+      "  "
     ]
   },
   "hensyukyori": {
@@ -435,12 +418,7 @@
       "      chmin(dp[i], k, dp[i - 1][k] + c)",
       "  k = M - N + K",
       "  # for d in dp: print(d)",
-      "  return dp[-1][k]",
-      "",
-      "# usage",
-      "# d = hensyuKyori(S, T)",
-      "# dk = hensyuKyoriK(S, T, K)",
-      "# ok = dk <= K  # 編集距離が K 以下か"
+      "  return dp[-1][k]"
     ]
   },
   "suffixarray": {
@@ -495,12 +473,7 @@
       "    suffix arrayの順に表示する",
       "    \"\"\"",
       "    for i in range(self.N):",
-      "      print(self.S[self.sa[i]:])",
-      "",
-      "# usage",
-      "# sa = SA(S)",
-      "# positions = sa.sa",
-      "# lcp = sa.lcp"
+      "      print(self.S[self.sa[i]:])"
     ]
   },
   "zalg": {
@@ -523,11 +496,7 @@
       "    zアルゴリズム",
       "    Longest Common Prefix",
       "    \"\"\"",
-      "    return atcoder.string.z_algorithm(s)",
-      "",
-      "# usage",
-      "# z = Zalg(S)",
-      "# arr = z.z"
+      "    return atcoder.string.z_algorithm(s)"
     ]
   }
 }

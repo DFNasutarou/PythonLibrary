@@ -25,12 +25,7 @@
       "  def push(self, x): heapq.heappush(self.q, x * self.mlt)",
       "  def pushpop(self, x): return heapq.heappushpop(self.q, x * self.mlt) * self.mlt",
       "  def is_empty(self): return self.q == []",
-      "  def reset(self): self.q = []",
-      "",
-      "# usage",
-      "# q = HeapQue(is_max=True)",
-      "# q.push(x)",
-      "# q.pop()"
+      "  def reset(self): self.q = []"
     ],
     "description": "ヒープキュー HeapQue (最大/最小切替・default 値・push/pop/top/pushpop)",
     "scope": "python"
@@ -55,12 +50,7 @@
       "    return self.sorted[i]",
       "  def _compress(self, A):",
       "    rank_map = self.rank_map",
-      "    return [rank_map[a] for a in A]",
-      "",
-      "# usage",
-      "# z = Zaatsu(${1:A})",
-      "# comp = z.compress()",
-      "# v = z.value(2)$0"
+      "    return [rank_map[a] for a in A]"
     ],
     "description": "座標圧縮 Zaatsu (値→順位/順位→値、前処理 O(N log N)・rank/value は O(1))",
     "scope": "python"
@@ -76,13 +66,7 @@
       "# 名前空間を汚したくない場合は deque を直接使う",
       "q = deque()",
       "put = q.append",
-      "get = q.popleft",
-      "",
-      "# usage",
-      "# put(x)",
-      "# x = get()",
-      "# while q:  # 空判定は q で行う",
-      "#   x = get()"
+      "get = q.popleft"
     ],
     "description": "FIFO キュー (deque の薄いラッパ、put/get エイリアス)",
     "scope": "python"
@@ -97,11 +81,7 @@
       "def cmpstr(a, b):",
       "  # 比較ロジックをここで書き換える (0:等しい, 負:aが先, 正:bが先)",
       "  return (a > b) - (a < b)",
-      "${1:arr} = sorted(${1:arr}, key=cmp_to_key(cmpstr))$0",
-      "",
-      "# usage",
-      "# def cmpstr(a, b): return (a + b > b + a) - (a + b < b + a)  # 例: 連結して最小になる順",
-      "# arr = sorted(arr, key=cmp_to_key(cmpstr))"
+      "${1:arr} = sorted(${1:arr}, key=cmp_to_key(cmpstr))$0"
     ],
     "description": "cmp_to_key で比較関数 sort (cmpstr の中身を書き換えて使う、対象リストを placeholder)",
     "scope": "python"
@@ -112,11 +92,7 @@
       "# ------------------------------------------------",
       "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "# ------------------------------------------------",
-      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
-      "",
-      "# usage",
-      "# i = ABC.index(\"C\")  # 2",
-      "# abc = ABC.lower()"
+      "ABC = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
     ],
     "description": "アルファベット 26 文字定数 ABC",
     "scope": "python"
@@ -130,10 +106,7 @@
       "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/01-basic.code-snippets",
       "# ------------------------------------------------",
       "import sys",
-      "sys.setrecursionlimit(${1:10**7})$0",
-      "",
-      "# usage",
-      "# sys.setrecursionlimit(10**6)  # 再帰関数(DFS 等)の前に。PyPy は深い再帰が遅くメモリを食うので非再帰化も検討"
+      "sys.setrecursionlimit(${1:10**7})$0"
     ]
   },
   "itertools": {
@@ -170,15 +143,7 @@
       "    return list(itertools.pairwise(A))",
       "  @staticmethod",
       "  def flatten(A):",
-      "    return list(itertools.chain.from_iterable(A))",
-      "",
-      "# usage",
-      "# itr.rle(\"aabbb\") -> [(\"a\", 2), (\"b\", 3)]",
-      "# itr.rle_int(\"1100\") -> [(1, 2), (0, 2)]",
-      "# itr.unrle([(\"a\", 2), (\"b\", 3)]) -> [\"a\", \"a\", \"b\", \"b\", \"b\"]",
-      "# itr.accumulate([1, 2, 3]) -> [0, 1, 3, 6]",
-      "# itr.pairwise([1, 2, 3]) -> [(1, 2), (2, 3)]",
-      "# itr.flatten([[1, 2], [3, 4]]) -> [1, 2, 3, 4]"
+      "    return list(itertools.chain.from_iterable(A))"
     ]
   },
   "query": {
@@ -195,12 +160,7 @@
       "  def solve(self, Query):",
       "    for query in Query:",
       "      i, que = query[0], query[1:]",
-      "      self.ops[i - self.ind](*que)",
-      "",
-      "# usage",
-      "# solver = Query_solve([op_add, op_get])",
-      "# queries = [list(map(int, input().split())) for _ in range(Q)]",
-      "# solver.solve(queries)  # 各クエリは [種別, 引数...] (種別は ind 始まり)"
+      "      self.ops[i - self.ind](*que)"
     ]
   }
 }

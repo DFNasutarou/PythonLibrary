@@ -39,10 +39,7 @@
       "",
       "# ここに処理を書く",
       "def proc(L):",
-      "  pass",
-      "",
-      "# usage",
-      "# exe(L, MOD)  # L が in-place で畳み込まれる"
+      "  pass"
     ],
     "description": "アダマール変換 FWT (XOR 畳み込み、長さ 2^k)",
     "scope": "python"
@@ -150,12 +147,7 @@
       "      b = self.Fi[n + i] * self.Fi[m + i] % self.MOD",
       "      ans *= a * b % self.MOD ",
       "      ans %= self.MOD",
-      "    return ans",
-      "",
-      "# usage",
-      "# c = comb(N, MOD)",
-      "# c.com(n, k)",
-      "# c.com_multi(n, k)"
+      "    return ans"
     ],
     "description": "二項係数 comb (前計算 階乗+逆元、O(N) 前処理 / O(1) クエリ)",
     "scope": "python"
@@ -301,11 +293,7 @@
       "        i = 0",
       "      else:",
       "        i += 1",
-      "    return a",
-      "",
-      "# usage",
-      "# c = Convolution(MOD)",
-      "# h = c.convolution(f, g)"
+      "    return a"
     ],
     "description": "畳み込み MOD (NTT、特定 mod 用)",
     "scope": "python"
@@ -354,10 +342,7 @@
       "    # 小数になっているので、整数にまるめる",
       "    h = np.rint(h).astype(np.int64)",
       "",
-      "    return h[:len(f) + len(g) - 1]",
-      "",
-      "# usage",
-      "# h = convolve(f, g)"
+      "    return h[:len(f) + len(g) - 1]"
     ],
     "description": "畳み込み (numpy FFT、整数係数 / 高速だが MOD 不可。float64 精度のため結果の各係数の絶対値が 1e15 程度を超えると丸め誤差で不正確)",
     "scope": "python"
@@ -399,12 +384,7 @@
       "    R[d] = p",
       "    ans += p",
       "    ans %= MOD",
-      "  return ans",
-      "",
-      "# usage",
-      "# MOD = 998244353",
-      "# D = divisor(N)",
-      "# ans = divhoujo(D)"
+      "  return ans"
     ],
     "description": "除数包除 (約数について閉じた昇順リスト D 上で「d の約数についての和」→「ちょうど d」を求めて総和、O(Σ d(x)) + 約数列挙)",
     "scope": "python"
@@ -425,10 +405,7 @@
       "      L.append(i)",
       "      if i != n // i:",
       "        R.append(n // i)",
-      "  return L + R[::-1]",
-      "",
-      "# usage",
-      "# divs = divisor(n)"
+      "  return L + R[::-1]"
     ],
     "description": "約数列挙 (O(√N))",
     "scope": "python"
@@ -466,10 +443,7 @@
       "            y = mat_mul(x, y)",
       "        x = mat_mul(x, x)",
       "        n >>= 1",
-      "    return y",
-      "",
-      "# usage",
-      "# A = mat_pow(M, k)  # M 正方、k 指数"
+      "    return y"
     ],
     "description": "行列累乗 mat_pow (ダブリング、MOD は冒頭で要定義)",
     "scope": "python"
@@ -496,12 +470,7 @@
       "    for j in range(k, end):",
       "      if (L[j] >> i) & 1:",
       "        L[j] ^= L[k - 1]",
-      "  return L",
-      "",
-      "# usage",
-      "# B = hakidasi(L[:])",
-      "# rank = sum(1 for v in B if v)",
-      "# basis = B[:rank]"
+      "  return L"
     ],
     "description": "XOR 掃き出し (整数列を GF(2) 上で階段化、in-place)",
     "scope": "python"
@@ -536,12 +505,7 @@
       "    I = [0, 1]",
       "    for i in range(2, n + 1):",
       "      I.append(self.MOD - I[self.MOD % i] * (self.MOD // i) % self.MOD)",
-      "    return I",
-      "",
-      "# usage",
-      "# inv = Inv(MOD)",
-      "# inv.invx(a)",
-      "# inv.invL(n)"
+      "    return I"
     ],
     "description": "逆元 Inv クラス (modpow + 単発逆元 + 逆元リスト)",
     "scope": "python"
@@ -563,11 +527,7 @@
       "        break",
       "    D = D[i:]",
       "    D = turn(D)",
-      "  return D",
-      "",
-      "# usage",
-      "# D2 = turn(D)",
-      "# D3 = trim(D)"
+      "  return D"
     ],
     "description": "幾何ユーティリティ (2D 配列の 90° 回転 / 余白トリム)",
     "scope": "python"
@@ -591,10 +551,7 @@
       "def cdist(a, b):",
       "  ma = abs(a[0] - b[0])",
       "  ma = max(ma, abs(a[1] - b[1]))",
-      "  return ma",
-      "",
-      "# usage",
-      "# d = mdist(a, b)  # a, b = (x, y)"
+      "  return ma"
     ],
     "description": "2D 距離関数 (Euclid edist / Manhattan mdist / Chebyshev cdist)",
     "scope": "python"
@@ -670,11 +627,7 @@
       "    s, t = t, s",
       "    m0, m1 = m1, m0",
       "  if m0 < 0: m0 += b // s",
-      "  return (s, m0)",
-      "",
-      "# usage",
-      "# y = inv_mod(x, m)",
-      "# r0, m0 = crt(r, m)"
+      "  return (s, m0)"
     ],
     "description": "数学ユーティリティ集 (inv_mod 等の素朴関数)",
     "scope": "python"
@@ -711,10 +664,7 @@
       "      D[loop[i]] = d + 1",
       "    else:",
       "      D[loop[i]] = d",
-      "  return D",
-      "",
-      "# usage",
-      "# D = period(L, K, x=0)  # D[v] = x から始めて K 項 (x を含む) の中で v を通る回数"
+      "  return D"
     ],
     "description": "周期検出 (関数グラフで x から K 項たどったときの各頂点の訪問回数、K が巨大でも O(N))",
     "scope": "python"
@@ -848,12 +798,7 @@
       "      p[x] = 1",
       "    return p",
       "  def factorize(self, x):",
-      "    return self.primeFactorization(x)",
-      "",
-      "# usage",
-      "# pr = Prime(N)",
-      "# pr.getPrimeList()",
-      "# pr.factorize(x)"
+      "    return self.primeFactorization(x)"
     ],
     "description": "素数列挙 + 素因数分解 Prime クラス (N<=5*10**6: 線形篩+lpf表 / それ以上: メモリ節約篩、素因数分解は N**2 まで素数リストで試し割り・それ超は O(√x) 試し割り、x>N の素数判定はミラーラビン)",
     "scope": "python"
@@ -932,10 +877,7 @@
       "  # ピックの定理で凸包に含まれる格子点の数を求める",
       "  ans = (S2 - b) // 2 + 1",
       "  ans += b # (辺上の格子点を含める)",
-      "  return ans",
-      "",
-      "# usage",
-      "# hull = get_convex_hull(points)"
+      "  return ans"
     ],
     "description": "凸包 (Andrew monotone chain、上下凸包の併合 O(N log N))",
     "scope": "python"
@@ -960,10 +902,7 @@
       "      p = p * x % MOD",
       "    return [s, p]",
       "  s, _ = calc(t + 1)",
-      "  return [s, pow(x, t, MOD)]",
-      "",
-      "# usage",
-      "# s, last = nib(x, t, MOD)  # s = 1 + x + ... + x^t, last = x^t"
+      "  return [s, pow(x, t, MOD)]"
     ],
     "description": "等比数列和 (1 + x + ... + x^t mod MOD、ダブリング O(log t))",
     "scope": "python"
@@ -990,12 +929,7 @@
       "        ret[i+1] = ret[i]+self.A[i+1]",
       "    for i in range(self.N-1):",
       "        ret[i+1] += ret[i]",
-      "    return ret",
-      "",
-      "# usage",
-      "# im = Imos(N)",
-      "# im.add_line(l, r, init, diff)",
-      "# A = im.get_array()"
+      "    return ret"
     ],
     "description": "区間に等差数列を加算 (Imos の 2 階差分版)",
     "scope": "python"
@@ -1116,10 +1050,7 @@
       "    while i < n:",
       "      for j in range(n):",
       "        if j & i == 0: op(f, i, j)",
-      "      i <<= 1",
-      "",
-      "# usage",
-      "# h = Convolution.andProductConv(a[:], b[:], MOD)  # a, b は破壊されるのでコピーを渡す"
+      "      i <<= 1"
     ]
   },
   "gensikon": {
@@ -1182,11 +1113,7 @@
       "      Y = Y * R % M",
       "      if Y in D:",
       "          return D[Y] + i*sq",
-      "    return -1",
-      "",
-      "# usage",
-      "# g = Gensikon.primitive_root(p)",
-      "# k = Gensikon.solve(g, y, p)  # g^k ≡ y (mod p) の最小 k (なければ -1)"
+      "    return -1"
     ]
   },
   "Packer": {
@@ -1217,12 +1144,7 @@
       "      data.append(packed & self.mask)",
       "      packed >>= self.shift",
       "    data.append(packed)",
-      "    return data[::-1]",
-      "",
-      "# usage",
-      "# p = Packer(N=10**6, size=2)",
-      "# k = p.pack(a, b)",
-      "# a, b = p.unpack(k)"
+      "    return data[::-1]"
     ]
   },
   "radix_convert": {
@@ -1267,11 +1189,7 @@
       "    n進数をm進数に変換",
       "    \"\"\"",
       "    x = Radix_Convert.toDec(x, n)",
-      "    return Radix_Convert.fromDec(x, m)",
-      "",
-      "# usage",
-      "# dec = Radix_Convert.toDec(x, n)",
-      "# x = Radix_Convert.fromDec(dec, n)"
+      "    return Radix_Convert.fromDec(x, m)"
     ]
   },
   "hakidasi2": {
@@ -1379,12 +1297,7 @@
       "    for bit in range(self.max_bit + 1):",
       "      if self.basis[bit] != 0:",
       "        lst.append((bit, self.basis[bit], self.basis_mask[bit]))",
-      "    return lst",
-      "",
-      "# usage",
-      "# b = XORBasis([3, 5])",
-      "# mask = b.represent(6)",
-      "# basis = b.get_basis_list()"
+      "    return lst"
     ]
   },
   "way12": {
@@ -1514,11 +1427,7 @@
       "          case 0: return self.part(n, k)",
       "          case 1: return 1 if k <= n else 0",
       "          case 2: return self.part(n, k - n)",
-      "    return 0",
-      "",
-      "# usage",
-      "# w = way12(N + K, MOD)",
-      "# n = w.way(n=N, k=K, box=True, ball=True, limit=0)"
+      "    return 0"
     ]
   },
   "bunkatu": {
@@ -1559,10 +1468,7 @@
       "      T = D[:] + [i]",
       "      ans.extend(Bunkatu._bunkatu_sub(N - i, i, T))",
       "    ans.append(D + [N])",
-      "    return ans",
-      "",
-      "# usage",
-      "# P = Bunkatu.bunkatu(N)"
+      "    return ans"
     ]
   },
   "ragu": {
@@ -1650,14 +1556,7 @@
       "        ret[j] -= (dp[cur][j] - pre) * xinv * y[i] % MOD",
       "        pre = -1 * (dp[cur][j] - pre) * xinv % MOD",
       "        ret[j] %= MOD",
-      "  return ret",
-      "",
-      "# usage",
-      "# MOD = 998244353",
-      "# xs = [0, 1, 2, 3]",
-      "# ys = [1, 3, 5, 7]",
-      "# v = ragu1(xs, ys, 10)  # f(10) = 21",
-      "# coef = ragu2(xs, ys)   # [1, 2, 0, 0] (f(x) = 1 + 2x)"
+      "  return ret"
     ],
     "description": "ラグランジュ補間 (ragu1: N 点から f(T) を O(N^2 log MOD) / ragu2: 係数リストを O(N^2)、x は相異なる・MOD は素数)",
     "scope": "python"

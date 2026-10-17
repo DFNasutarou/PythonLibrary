@@ -46,12 +46,7 @@
       "    self.L = d[:len(d) // 2][::-1]",
       "    self.R = d[len(d) // 2:]",
       "  def getList(self):",
-      "    return self.L[::-1] + self.R",
-      "",
-      "# usage",
-      "# dq = Deque([1, 2, 3])",
-      "# dq.add_r(4)",
-      "# dq.pop_l()"
+      "    return self.L[::-1] + self.R"
     ]
   },
   "lazysegold": {
@@ -236,11 +231,7 @@
       "def id():",
       "  return 0",
       "",
-      "seg = lazySegTree(op, e, mapping, composition, id, a)",
-      "",
-      "# usage",
-      "# t = lazySegTree(op, e, mapping, composition, id, v)",
-      "# t.apply(l, r, f)"
+      "seg = lazySegTree(op, e, mapping, composition, id, a)"
     ]
   },
   "tree_old": {
@@ -582,12 +573,7 @@
       "            u = self.N - 1 - u",
       "            v = self.N - 1 - v",
       "            x = self.seg.op(x, self.iseg.prod(u, v + 1))",
-      "        return x",
-      "",
-      "# usage",
-      "# t = TreeFactory(N)",
-      "# t.setByAdjacencyList(edges)",
-      "# lca = t.makeLca(root)"
+      "        return x"
     ],
     "description": "[旧] 木構造 TreeFactory (LCA / 距離 / 部分木サイズ / 全方位木 DP 等)（tree / treepath / treedp / auxtree に置き換え）",
     "scope": "python"
@@ -661,13 +647,7 @@
       "  def dp_sub_exe_inv(self, x, y): #トップダウンの処理",
       "    self.DP[x] += self.DP[y]",
       "  def inv(self, a, mod): #逆元",
-      "    return pow(a, mod - 2, mod)",
-      "",
-      "# usage",
-      "# t = Tree(N)",
-      "# t.setByAdjacencyList(edges)",
-      "# t.makeRank(root)",
-      "# ans = t.allDP()"
+      "    return pow(a, mod - 2, mod)"
     ],
     "description": "[旧] 木 DP (子の DFS 結果から親へ集約する典型木 DP テンプレ)（treedp に置き換え）",
     "scope": "python"

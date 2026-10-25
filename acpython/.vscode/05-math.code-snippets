@@ -1560,5 +1560,34 @@
     ],
     "description": "ラグランジュ補間 (ragu1: N 点から f(T) を O(N^2 log MOD) / ragu2: 係数リストを O(N^2)、x は相異なる・MOD は素数)",
     "scope": "python"
+  },
+  "argsort": {
+    "prefix": "argsort",
+    "body": [
+      "# ------------------------------------------------",
+      "# https://github.com/DFNasutarou/PythonLibrary/blob/main/acpython/.vscode/05-math.code-snippets",
+      "# ------------------------------------------------",
+      "from functools import cmp_to_key",
+      "# 偏角ソート: 整数座標の点を atan2 の順 (-π, π] に並べる (浮動小数を使わず外積で比較)",
+      "#   (0, 0) は偏角 0 扱い。偏角が等しい点同士は元の順を保つ (安定ソート)",
+      "#   return_index=True なら並べ替え後の添字リストを返す",
+      "def arg_sort(points, return_index=False):",
+      "  def half(p):",
+      "    # 0: 下半平面 (-π, 0) / 1: 偏角 0 (x 軸正方向と原点) / 2: (0, π]",
+      "    x, y = p",
+      "    if y < 0: return 0",
+      "    if y == 0 and x >= 0: return 1",
+      "    return 2",
+      "  def cmp(i, j):",
+      "    p, q = points[i], points[j]",
+      "    hp, hq = half(p), half(q)",
+      "    if hp != hq: return hp - hq",
+      "    c = p[0] * q[1] - p[1] * q[0]",
+      "    return -1 if c > 0 else (1 if c < 0 else 0)",
+      "  idx = sorted(range(len(points)), key=cmp_to_key(cmp))",
+      "  return idx if return_index else [points[i] for i in idx]"
+    ],
+    "description": "偏角ソート (整数のまま外積で比較、atan2 順 (-π, π]、原点は偏角 0 扱い、添字返し切替 O(N log N))",
+    "scope": "python"
   }
 }

@@ -14,7 +14,7 @@
 - [02 データ構造](#02-データ構造)：[avl](#avl) / [bit](#bit) / [lazyseg](#lazyseg) / [union](#union) / [seg](#seg) / [wavelet](#wavelet) / [multiset](#multiset) / [linkedlist](#linkedlist) / [trie](#trie) / [map](#map) / [union_potential](#union_potential) / [BinaryTrie](#binarytrie) / [cartesianTree](#cartesiantree) / [sortedSet](#sortedset) / [rangeList](#rangelist) / [union_persist](#union_persist) / [dynamic_segtree](#dynamic_segtree) / [packed2dlist](#packed2dlist)
 - [03 グラフ・木](#03-グラフ木)：[dijkstra](#dijkstra) / [kruskal](#kruskal) / [maxflow](#maxflow) / [mincost](#mincost) / [scc](#scc) / [tree](#tree) / [treepath](#treepath) / [treedp](#treedp) / [auxtree](#auxtree) / [warflo](#warflo) / [tree64](#tree64) / [graph](#graph) / [bfs](#bfs) / [dag](#dag) / [matching](#matching) / [particalgraph](#particalgraph) / [twosat](#twosat) / [ushi](#ushi) / [grid](#grid)
 - [04 文字列](#04-文字列)：[rori](#rori) / [string](#string) / [eertree](#eertree) / [hensyukyori](#hensyukyori) / [suffixarray](#suffixarray) / [zalg](#zalg)
-- [05 数学](#05-数学)：[adm](#adm) / [comb](#comb) / [convmod](#convmod) / [convolvell](#convolvell) / [divhoujo](#divhoujo) / [divisor](#divisor) / [gyoretu](#gyoretu) / [hakidasi](#hakidasi) / [inv](#inv) / [kika](#kika) / [kyori](#kyori) / [math](#math) / [period](#period) / [prime](#prime) / [totu](#totu) / [touhi](#touhi) / [tousa](#tousa) / [convolution](#convolution) / [gensikon](#gensikon) / [Packer](#packer) / [radix_convert](#radix_convert) / [hakidasi2](#hakidasi2) / [way12](#way12) / [bunkatu](#bunkatu) / [ragu](#ragu)
+- [05 数学](#05-数学)：[adm](#adm) / [comb](#comb) / [convmod](#convmod) / [convolvell](#convolvell) / [divhoujo](#divhoujo) / [divisor](#divisor) / [gyoretu](#gyoretu) / [hakidasi](#hakidasi) / [inv](#inv) / [kika](#kika) / [kyori](#kyori) / [math](#math) / [period](#period) / [prime](#prime) / [totu](#totu) / [touhi](#touhi) / [tousa](#tousa) / [convolution](#convolution) / [gensikon](#gensikon) / [Packer](#packer) / [radix_convert](#radix_convert) / [hakidasi2](#hakidasi2) / [way12](#way12) / [bunkatu](#bunkatu) / [ragu](#ragu) / [argsort](#argsort)
 - [06 DP](#06-dp)：[dfa](#dfa) / [nfa](#nfa) / [slopetrick](#slopetrick) / [LIS](#lis) / [cht](#cht)
 - [07 区間・クエリ](#07-区間クエリ)：[mo](#mo) / [rangeaffine](#rangeaffine) / [imos2d](#imos2d) / [squaresplit](#squaresplit)
 - [08 その他アルゴリズム](#08-その他アルゴリズム)：[bitall](#bitall) / [nibutan](#nibutan) / [tentou](#tentou) / [prevgreater](#prevgreater) / [grundy](#grundy)
@@ -1961,6 +1961,25 @@ xs = [0, 1, 2, 3]
 ys = [1, 3, 5, 7]
 v = ragu1(xs, ys, 10)  # f(10) = 21
 coef = ragu2(xs, ys)   # [1, 2, 0, 0] (f(x) = 1 + 2x)
+```
+
+### argsort
+
+偏角ソート (整数のまま外積で比較、atan2 順 (-π, π]、原点は偏角 0 扱い、添字返し切替 O(N log N))
+
+API:
+
+```python
+# 偏角が等しい点同士は元の順を保つ (安定ソート)
+def arg_sort(points, return_index=False)
+```
+
+例:
+
+```python
+points = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1)]
+P = arg_sort(points)                       # [(0, -1), (1, 0), (1, 1), (0, 1), (-1, 0)]
+idx = arg_sort(points, return_index=True)  # [3, 0, 4, 1, 2]
 ```
 
 
